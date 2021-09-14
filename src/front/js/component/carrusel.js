@@ -8,7 +8,7 @@ export const Carrusel = () => {
 				<Carousel.Item>
 					<img
 						className="d-block w-100"
-						src="holder.js/800x400?text=First slide&bg=373940"
+						src="https://ialtura.cl/_static/img/_proyectos/ap1733/ap-02.jpg"
 						alt="First slide"
 					/>
 					<Carousel.Caption>
@@ -19,7 +19,7 @@ export const Carrusel = () => {
 				<Carousel.Item>
 					<img
 						className="d-block w-100"
-						src="holder.js/800x400?text=Second slide&bg=282c34"
+						src="https://mexicodesign.com/wp-content/uploads/2018/07/1-8.jpg"
 						alt="Second slide"
 					/>
 
@@ -31,7 +31,7 @@ export const Carrusel = () => {
 				<Carousel.Item>
 					<img
 						className="d-block w-100"
-						src="holder.js/800x400?text=Third slide&bg=20232a"
+						src="https://www.simonetti.cl/wp-content/uploads/2017/11/gimnasio_edificio_lyon_providencia_simonetti_inmobiliaria-1600x900.jpg"
 						alt="Third slide"
 					/>
 
