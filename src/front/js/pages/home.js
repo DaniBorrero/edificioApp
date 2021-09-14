@@ -1,24 +1,46 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
+import { Navbar } from "../component/navbar";
 import "../../styles/home.scss";
+import { Carrusel } from "../component/carrusel";
+import { Card } from "../component/card";
+import { Form } from "../component/formContact";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			<div className="alert alert-info">{store.message || "Loading message from the backend..."}</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://github.com/4GeeksAcademy/react-flask-hello/tree/95e0540bd1422249c3004f149825285118594325/docs">
-					Read documentation
-				</a>
-			</p>
-		</div>
+		<>
+			<div className="container my-3">
+				<Carrusel />
+			</div>
+			<hr />
+			<div className="container">
+				<div className="row">
+					<div className="col-4">
+						<Card />
+					</div>
+					<div className="col-4">
+						<Card />
+					</div>
+					<div className="col-4">
+						<Card />
+					</div>
+				</div>
+				<h2 className="text-center my-2">Nuestro Staff</h2>
+			</div>
+
+			<hr />
+			<div className="container my-3">
+				<div className="row">
+					<div className="col-6">
+						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7MbRrwlP4MtsSXkIG-XBxvCnAQi5NuzQpqQ&usqp=CAU" />
+					</div>
+					<div className="col-6">
+						<Form />
+					</div>
+				</div>
+			</div>
+		</>
 	);
 };
