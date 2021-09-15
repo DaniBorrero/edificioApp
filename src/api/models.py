@@ -13,6 +13,7 @@ class User(db.Model):
      id_store= db.Column(db.Integer)
      id_building= db.Column(db.Integer, db.ForeignKey('building.id_building'))
      relacionmarketplace= db.relationship("Marketplace")
+     relacionreservaspacio=db.relationship("SpaceReservation")
 
      def serialize(self):
         return {
@@ -71,6 +72,7 @@ class CommonSpace(db.Model):
     name = db.Column(db.String(50),nullable=False)
     aforo= db.Column(db.Integer,nullable=False)
     relacionbuilding= db.relationship("Building")
+    relacionreservaspacio= db.relationship("SpaceReservation")
         
     def serialize(self):
         return {
@@ -87,6 +89,7 @@ class Administrator(db.Model):
     email= db.Column(db.String(50), unique=True, nullable=False)
     relacionbuilding= db.relationship("Building")
     relaciondiariomural=db.relationship("DiarioMural")
+    relacionreservaspacio=db.relationship("SpaceReservation")
 
     def serialize(self):
         return {
@@ -121,7 +124,27 @@ class Marketplace(db.Model):
             "id_marketplace": self.id_marketplace,
             "announcement": self.announcement,
             "user_id": self.user_id
-        }    
+        }
+class SpaceReservation (db.Model):
+    __tablename__ = 'spacereservation'
+    id_reservation= db.Column(db.Integer,primary_key=True)
+    date_reservation= db.Column(db.Date,nullable=False)
+    reservation_time= db.Column(db.Time,nullable=False)
+    userid= db.Column(db.Integer,db.ForeignKey('user.id_user'))
+    aproved_id= db.Column(db.Integer,db.ForeignKey('administrator.id_admin'))
+    commonspace_id= db.Column(db.Integer,db.ForeignKey('commonspace.id_commonspace'))
+
+    def serialize(self):
+        return {
+            "id_reservation":   self.id_reservation,
+            "date_reservation": self.date_reservation,
+            "reservation_time": self.reservation_time,
+            "userid"         : self.userid,
+            "aproved_id"      : self.aproved_id,
+            "commonspace_id" : self.commonspace_id
+        }
+
+         
 
 
 
