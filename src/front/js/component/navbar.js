@@ -1,26 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Container, Navbar, NavDropdown, Nav } from "react-bootstrap";
 
-export const Navbar = () => {
+export const NavBar = () => {
 	return (
 		<>
-			<nav className="navbar navbar-light text-white bg-navbarGradiente">
-				<div className="container">
-					<a className="navbar-brand">TuEdificioApp</a>
-					<form className="d-flex">
-						<input
-							id="inputNavbar"
-							className="form-control me-2"
-							type="search"
-							placeholder="Search"
-							aria-label="Search"
-						/>
-						<a className="btn" type="submit">
-							<i className="fas fa-search" />
-						</a>
-					</form>
-				</div>
-			</nav>
+			<Navbar className="bg-navbarGradiente" expand="lg">
+				<Container>
+					<Navbar.Brand href="#home">TuEdificio</Navbar.Brand>
+					<Navbar.Toggle aria-controls="basic-navbar-nav" />
+					<Navbar.Collapse id="basic-navbar-nav">
+						<Nav className="me-auto">
+							<Nav.Link href="#home">Home</Nav.Link>
+							<Nav.Link href="#link">Link</Nav.Link>
+						</Nav>
+					</Navbar.Collapse>
+				</Container>
+			</Navbar>
 		</>
 	);
 };

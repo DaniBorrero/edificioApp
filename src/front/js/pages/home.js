@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import { Navbar } from "../component/navbar";
 import "../../styles/home.scss";
 import { Carrusel } from "../component/carrusel";
-import { Card } from "../component/card";
+import { Cards } from "../component/card";
 import { Form } from "../component/formContact";
-
+import { CardGroup } from "react-bootstrap";
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 
@@ -15,19 +14,12 @@ export const Home = () => {
 				<Carrusel />
 			</div>
 			<hr />
-			<div className="container">
-				<div className="row">
-					<div className="col-4">
-						<Card />
-					</div>
-					<div className="col-4">
-						<Card />
-					</div>
-					<div className="col-4">
-						<Card />
-					</div>
-				</div>
-				<h2 className="text-center my-2">Nuestro Staff</h2>
+			<div className="container my-3">
+				<CardGroup>
+					<Cards />
+					<Cards />
+					<Cards />
+				</CardGroup>
 			</div>
 
 			<hr />
