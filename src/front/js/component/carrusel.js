@@ -30,7 +30,7 @@ export const Carrusel = () => {
 				</Carousel.Item>
 				<Carousel.Item>
 					<img
-						className="d-block w-100"
+						className="d-block w-100 "
 						src="https://www.simonetti.cl/wp-content/uploads/2017/11/gimnasio_edificio_lyon_providencia_simonetti_inmobiliaria-1600x900.jpg"
 						alt="Third slide"
 					/>

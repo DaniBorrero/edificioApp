@@ -5,7 +5,7 @@ import { Container, Navbar, NavDropdown, Nav } from "react-bootstrap";
 export const NavBar = () => {
 	return (
 		<>
-			<Navbar className="bg-navbarGradiente" expand="lg">
+			<Navbar className="bg-navbarGradiente" expand="lg" fixed="top">
 				<Container>
 					<Navbar.Brand href="#home">TuEdificio</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
