@@ -3,8 +3,8 @@ import { Context } from "../store/appContext";
 import "../../styles/home.scss";
 import { Carrusel } from "../component/carrusel";
 import { Cards } from "../component/card";
-import { Form } from "../component/formContact";
-import { CardGroup } from "react-bootstrap";
+import { FormContact } from "../component/formContact";
+import { CardGroup, Card } from "react-bootstrap";
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 
@@ -23,16 +23,24 @@ export const Home = () => {
 			</div>
 
 			<hr />
+
 			<div className="container my-3">
-				<div className="row">
-					<div className="col-6">
-						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7MbRrwlP4MtsSXkIG-XBxvCnAQi5NuzQpqQ&usqp=CAU" />
-					</div>
-					<div className="col-6">
-						<Form />
-					</div>
-				</div>
+				<CardGroup>
+					<Card className="mx-3 border none">
+						<Card.Img
+							variant="top"
+							src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7MbRrwlP4MtsSXkIG-XBxvCnAQi5NuzQpqQ&usqp=CAU"
+						/>
+					</Card>
+					<Card className="mx-3 border-none">
+						<FormContact />
+					</Card>
+				</CardGroup>
 			</div>
+
+			<hr />
+
+			<div className="container my-3" />
 		</>
 	);
 };
