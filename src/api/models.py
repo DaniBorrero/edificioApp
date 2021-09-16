@@ -17,7 +17,7 @@ class User(db.Model):
 
      def serialize(self):
         return {
-            "id_user": self.id,
+            "id_user": self.id_user,
             "full_name": self.full_name,
             "phone": self.phone,
             "email": self.email,
@@ -138,7 +138,7 @@ class SpaceReservation (db.Model):
         return {
             "id_reservation":   self.id_reservation,
             "date_reservation": self.date_reservation,
-            "reservation_time": self.reservation_time,
+            "reservation_time": str(self.reservation_time),
             "userid"         : self.userid,
             "aproved_id"      : self.aproved_id,
             "commonspace_id" : self.commonspace_id
