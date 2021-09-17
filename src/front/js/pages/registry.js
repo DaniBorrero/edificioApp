@@ -6,10 +6,10 @@ import edificioIMG from "../../img/edificio-formulario.jpg";
 
 export const RegistryForm = () => {
 	return (
-		<Container>
+		<Container className="registryConteiner">
 			<Row>
-				<Col className="left">
-					<Form>
+				<Col className="registryLeft">
+					<Form className="registryForm">
 						<Form.Group controlId="formBasicEmail">
 							<Form.Label>Email address</Form.Label>
 							<Form.Control type="email" placeholder="Enter email" />
@@ -25,8 +25,8 @@ export const RegistryForm = () => {
 					</Form>
 					<AccordionForm />
 				</Col>
-				<Col className="right">
-					<img src={edificioIMG} />
+				<Col className="registryRight">
+					<img className="registryImg" src={edificioIMG} />
 				</Col>
 			</Row>
 		</Container>

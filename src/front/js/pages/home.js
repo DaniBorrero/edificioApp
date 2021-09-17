@@ -11,7 +11,7 @@ export const Home = () => {
 	return (
 		<>
 			<div className="container my-3">
-				<Carrusel />
+				<Carrusel className="my-3" />
 			</div>
 			<hr />
 			<div className="container my-3">
