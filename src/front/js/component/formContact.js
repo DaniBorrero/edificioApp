@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 export const FormContact = () => {
 	return (
@@ -19,6 +19,7 @@ export const FormContact = () => {
 					<Form.Label>Example textarea</Form.Label>
 					<Form.Control as="textarea" rows={3} />
 				</Form.Group>
+				<Button ClassName="btn btn-primary">Enviar</Button>
 			</Form>
 		</>
 	);
