@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Container, Navbar, NavDropdown, Nav, Button } from "react-bootstrap";
+import logoIMG from "../../img/logo.png";
 
 export const NavBar = () => {
 	return (
@@ -9,14 +10,13 @@ export const NavBar = () => {
 				<Container>
 					<Link to="/">
 						<Navbar.Brand>
-							<i className="fas fa-hotel mx-3" />
-							TuEdificioApp
+							<img src={logoIMG} alt="TuEdificioAPP" style={{ width: "60px" }} />
 						</Navbar.Brand>
 					</Link>
 
 					<Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
 						<Nav className="me-auto">
-							<Nav.Link href="/registry">Iniciar Sesion</Nav.Link>
+							<Nav.Link href="/registry">Iniciar Sesión</Nav.Link>
 
 							<Button className="mx-2">
 								<i className="fab fa-github " />
