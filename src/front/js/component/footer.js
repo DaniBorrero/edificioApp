@@ -5,15 +5,28 @@ export const Footer = () => (
 		<p className="text-white">2021 Tu edificio Dereches reservados.</p>
 
 		<div className="container">
-			<a>
-				<i className="fab fa-twitter fa-3x mx-2" />
-			</a>
-			<a>
-				<i className="fab fa-instagram fa-3x mx-2" />
-			</a>
-			<a>
-				<i className="fab fa-github fa-3x mx-2" />
-			</a>
+			<ul className="social-icons">
+				<li>
+					<a href="#">
+						<i className="fa fa-instagram" />
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i className="fa fa-twitter" />
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i className="fa fa-linkedin" />
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i className="fa fa-github" />
+					</a>
+				</li>
+			</ul>
 		</div>
 	</footer>
 );

@@ -4,7 +4,7 @@ import { Carousel, Item, Caption } from "react-bootstrap";
 export const Carrusel = () => {
 	return (
 		<>
-			<Carousel>
+			<Carousel fluid>
 				<Carousel.Item>
 					<img
 						className="d-block w-100"
