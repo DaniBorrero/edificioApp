@@ -11,10 +11,12 @@ export const Carrusel = () => {
 						src="https://ialtura.cl/_static/img/_proyectos/ap1733/ap-02.jpg"
 						alt="First slide"
 					/>
-					<Carousel.Caption>
-						<h3>Fachada</h3>
-						<p>Nulla vitae elit libero, a pharetra augue mollis .</p>
-					</Carousel.Caption>
+					<div>
+						<Carousel.Caption className="bg-dark carrusel-opacity p-0 m-0">
+							<h3 className="none-opacity">Fachada</h3>
+							<p className="none-opacity">Nulla vitae elit libero, a pharetra augue mollis .</p>
+						</Carousel.Caption>
+					</div>
 				</Carousel.Item>
 				<Carousel.Item>
 					<img
@@ -23,10 +25,12 @@ export const Carrusel = () => {
 						alt="Second slide"
 					/>
 
-					<Carousel.Caption>
-						<h3>segunda fachada</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-					</Carousel.Caption>
+					<div>
+						<Carousel.Caption className="bg-dark carrusel-opacity p-0">
+							<h3 className="none-opacity">Fachada</h3>
+							<p className="none-opacity">Nulla vitae elit libero, a pharetra augue mollis .</p>
+						</Carousel.Caption>
+					</div>
 				</Carousel.Item>
 				<Carousel.Item>
 					<img
@@ -35,10 +39,12 @@ export const Carrusel = () => {
 						alt="Third slide"
 					/>
 
-					<Carousel.Caption>
-						<h3>Third slide label</h3>
-						<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-					</Carousel.Caption>
+					<div>
+						<Carousel.Caption className="bg-dark carrusel-opacity p-0">
+							<h3 className="none-opacity">Fachada</h3>
+							<p className="none-opacity">Nulla vitae elit libero, a pharetra augue mollis .</p>
+						</Carousel.Caption>
+					</div>
 				</Carousel.Item>
 			</Carousel>
 		</>
