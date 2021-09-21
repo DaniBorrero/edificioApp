@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Container, Navbar, NavDropdown, Nav } from "react-bootstrap";
+import { Container, Navbar, NavDropdown, Nav, Button } from "react-bootstrap";
 
 export const NavBar = () => {
 	return (
@@ -15,6 +15,15 @@ export const NavBar = () => {
 							<Nav.Link href="#link">Link</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
+					<Button className="mx-2">
+						<i className="fab fa-github " />
+					</Button>
+					<Button className="mx-2">
+						<i className="fab fa-twitter " />
+					</Button>
+					<Button className="mx-2">
+						<i className="fab fa-instagram  " />
+					</Button>
 				</Container>
 			</Navbar>
 		</>

@@ -5,6 +5,7 @@ import { Carrusel } from "../component/carrusel";
 import { Cards } from "../component/card";
 import { FormContact } from "../component/formContact";
 import { CardGroup, Card } from "react-bootstrap";
+import { Certificate } from "../component/certificate";
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 
@@ -13,20 +14,21 @@ export const Home = () => {
 			<div className="container my-3">
 				<Carrusel className="my-3" />
 			</div>
-			<hr />
-			<div className="container my-3">
-				<CardGroup>
+
+			<hr className="container" />
+			<div className="container my-5">
+				<CardGroup className="p-5">
 					<Cards />
 					<Cards />
 					<Cards />
 				</CardGroup>
 			</div>
 
-			<hr />
+			<hr className="container" />
 
-			<div className="container my-3">
-				<CardGroup>
-					<Card className="mx-3 border none">
+			<div className="container my-5">
+				<CardGroup className="container my-5">
+					<Card className="mx-3 border-none">
 						<Card.Img
 							variant="top"
 							src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7MbRrwlP4MtsSXkIG-XBxvCnAQi5NuzQpqQ&usqp=CAU"
@@ -37,10 +39,15 @@ export const Home = () => {
 					</Card>
 				</CardGroup>
 			</div>
+			<hr className="container" />
 
-			<hr />
-
-			<div className="container my-3" />
+			<div className="container my-5">
+				<CardGroup className="p-5">
+					<Certificate />
+					<Certificate />
+					<Certificate />
+				</CardGroup>
+			</div>
 		</>
 	);
 };
