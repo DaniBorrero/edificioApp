@@ -10,7 +10,7 @@ export const NavBar = () => {
 				<Container>
 					<Link to="/">
 						<Navbar.Brand>
-							<img src={logoIMG} alt="TuEdificioAPP" style={{ width: "60px" }} />
+							<img src={logoIMG} alt="TuEdificioAPP" style={{ width: "50px" }} />
 						</Navbar.Brand>
 					</Link>
 
