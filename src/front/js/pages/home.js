@@ -15,7 +15,7 @@ export const Home = () => {
 				<Carrusel className="my-3" />
 			</div>
 			<hr className="container" />
-			<h2 className="text-center">Certificados</h2>
+			<h2 className="text-center">Servicios</h2>
 
 			<div className="container my-5">
 				<CardGroup>
