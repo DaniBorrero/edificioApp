@@ -104,24 +104,28 @@ class DiarioMural(db.Model):
     __tablename__ = 'diariomural'
     id_diariomural= db.Column(db.Integer,primary_key=True)
     administrator_id= db.Column(db.Integer, db.ForeignKey('administrator.id_admin'))
+    title_announcement=db.Column(db.String(50), nullable=False)
     announcement= db.Column(db.String(200),nullable=False)    
 
     def serialize(self):
         return {
             "id_diariomural": self.id_diariomural,
             "administrator_id": self.administrator_id,
+            "title_announcement":self.title_announcement,
             "announcement": self.announcement  
         }  
 
 class Marketplace(db.Model):
     __tablename__ = 'marketplace'
     id_marketplace= db.Column(db.Integer,primary_key=True)
+    title_announcement=db.Column(db.String(50), nullable=False)
     announcement=db.Column(db.String(200),nullable=False) 
     user_id= db.Column(db.Integer,db.ForeignKey('user.id_user')) 
 
     def serialize(self):
         return {
             "id_marketplace": self.id_marketplace,
+            "title_announcement":self.title_announcement,
             "announcement": self.announcement,
             "user_id": self.user_id
         }
