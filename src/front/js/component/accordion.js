@@ -40,11 +40,20 @@ export const AccordionForm = () => {
 									<Form.Control placeholder="A o B" />
 								</Form.Group>
 							</Form.Row>
-
 							<Form.Row>
 								<Form.Group as={Col} controlId="Telephone">
 									<Form.Label>Telefono</Form.Label>
 									<Form.Control placeholder="+569..." />
+								</Form.Group>
+							</Form.Row>
+							<Form.Row>
+								<Form.Group as={Col} controlId="Storage">
+									<Form.Label>Bodega</Form.Label>
+									<Form.Control placeholder="A101, B102" />
+								</Form.Group>
+								<Form.Group as={Col} controlId="Parking">
+									<Form.Label>Estacionamiento</Form.Label>
+									<Form.Control placeholder="A101, B102" />
 								</Form.Group>
 							</Form.Row>
 							<Button variant="primary" type="submit">
