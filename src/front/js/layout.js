@@ -31,8 +31,9 @@ const Layout = () => {
 						<Route exact path="/registry">
 							<RegistryForm />
 						</Route>
-						<Route exact path="/logged" />
-						<Acordeonlogged />
+						<Route exact path="/logged">
+							<Acordeonlogged />
+						</Route>
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
