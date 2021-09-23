@@ -7,9 +7,11 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { RegistryForm } from "./pages/registry";
 import injectContext from "./store/appContext";
+import { FuncionesPrincipales } from "./pages/logged";
 
 import { NavBar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Acordeonlogged } from "./component/acordeonlogged";
 
 //create your first component
 const Layout = () => {
@@ -29,9 +31,8 @@ const Layout = () => {
 						<Route exact path="/registry">
 							<RegistryForm />
 						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
-						</Route>
+						<Route exact path="/logged" />
+						<Acordeonlogged />
 						<Route>
 							<h1>Not found!</h1>
 						</Route>
