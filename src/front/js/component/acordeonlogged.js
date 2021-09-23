@@ -6,11 +6,11 @@ export const Acordeonlogged = () => {
 		<Accordion>
 			<Card>
 				<Card.Header>
-					<Accordion.Toggle as={Card.Header} variant="link" eventKey="1">
+					<Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
 						MarketPlace
 					</Accordion.Toggle>
 				</Card.Header>
-				<Accordion.Collapse eventKey="1">
+				<Accordion.Collapse eventKey="0">
 					<Card.Body>
 						<Form>
 							<Form.Row>
@@ -66,11 +66,11 @@ export const Acordeonlogged = () => {
 			</Card>
 			<Card>
 				<Card.Header>
-					<Accordion.Toggle as={Card.Header} variant="link" eventKey="1">
+					<Accordion.Toggle as={Card.Header} variant="link" eventKey="2">
 						Reserva espacios comunes
 					</Accordion.Toggle>
 				</Card.Header>
-				<Accordion.Collapse eventKey="1">
+				<Accordion.Collapse eventKey="2">
 					<Card.Body>
 						<Form />
 					</Card.Body>
