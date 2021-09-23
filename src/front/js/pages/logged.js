@@ -6,12 +6,7 @@ import "../../styles/registry.scss";
 export const LoggedScreen = () => {
 	return (
 		<>
-			<Container className="loggedContainer">
-				<Row>
-					<Acordeonlogged />
-				</Row>
-			</Container>
-			;
+			<Acordeonlogged />
 		</>
 	);
 };

@@ -3,33 +3,79 @@ import { Accordion, Card, Form, Button, Col } from "react-bootstrap";
 
 export const Acordeonlogged = () => {
 	return (
-		<Accordion defaultActiveKey="0">
-			<Accordion.Item eventKey="2">
-				<Accordion.Header>Reserva tu Quincho</Accordion.Header>
-				<Accordion.Body>Ejemplo</Accordion.Body>
-			</Accordion.Item>
-			<Accordion.Item eventKey="3">
-				<Accordion.Header>Marketplace</Accordion.Header>
-				<Accordion.Body>
-					<Form>
-						<Form.Row>
-							<Form.Group as={Col} controlId="formGridUser">
-								<Form.Label>Usuario</Form.Label>
-								<Form.Control type="text" placeholder="Depto.001" />
+		<Accordion>
+			<Card>
+				<Card.Header>
+					<Accordion.Toggle as={Card.Header} variant="link" eventKey="1">
+						MarketPlace
+					</Accordion.Toggle>
+				</Card.Header>
+				<Accordion.Collapse eventKey="1">
+					<Card.Body>
+						<Form>
+							<Form.Row>
+								<Form.Group as={Col} controlId="formGridUser">
+									<Form.Label>Usuario</Form.Label>
+									<Form.Control type="user" placeholder="nombre de usuario" />
+								</Form.Group>
+							</Form.Row>
+
+							<Form.Group controlId="formGridTitle">
+								<Form.Label>Titulo</Form.Label>
+								<Form.Control placeholder="Titulo" />
 							</Form.Group>
 
-							<Form.Group as={Col} controlId="formGriTitle">
-								<Form.Label>Título</Form.Label>
-								<Form.Control type="title" placeholder="Agrega un Título" />
+							<Form.Row>
+								<Form.Group controlId="exampleForm.ControlTextarea1">
+									<Form.Label>Example textarea</Form.Label>
+									<Form.Control as="textarea" rows={6} />
+								</Form.Group>
+							</Form.Row>
+							<Button variant="primary" type="submit">
+								Publicar
+							</Button>
+						</Form>
+					</Card.Body>
+				</Accordion.Collapse>
+			</Card>
+			<Card>
+				<Card.Header>
+					<Accordion.Toggle as={Card.Header} variant="link" eventKey="1">
+						Mensaje a Administrador
+					</Accordion.Toggle>
+				</Card.Header>
+				<Accordion.Collapse eventKey="1">
+					<Card.Body>
+						<Form>
+							<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+								<Form.Label>Nombre: </Form.Label>
+								<Form.Control type="text" placeholder="Normal text" />
 							</Form.Group>
-						</Form.Row>
-						<Form.Group controlId="exampleForm.ControlTextarea1">
-							<Form.Label>Descripción</Form.Label>
-							<Form.Control as="textarea" rows={3} />
-						</Form.Group>
-					</Form>
-				</Accordion.Body>
-			</Accordion.Item>
+							<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+								<Form.Label>Email address</Form.Label>
+								<Form.Control type="email" placeholder="name@example.com" />
+							</Form.Group>
+							<Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+								<Form.Label>Example textarea</Form.Label>
+								<Form.Control as="textarea" rows={3} />
+							</Form.Group>
+							<Button ClassName="btn btn-primary">Enviar</Button>
+						</Form>
+					</Card.Body>
+				</Accordion.Collapse>
+			</Card>
+			<Card>
+				<Card.Header>
+					<Accordion.Toggle as={Card.Header} variant="link" eventKey="1">
+						Reserva espacios comunes
+					</Accordion.Toggle>
+				</Card.Header>
+				<Accordion.Collapse eventKey="1">
+					<Card.Body>
+						<Form />
+					</Card.Body>
+				</Accordion.Collapse>
+			</Card>
 		</Accordion>
 	);
 };
