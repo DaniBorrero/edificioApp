@@ -14,6 +14,7 @@ class User(db.Model):
      id_building= db.Column(db.Integer, db.ForeignKey('building.id_building'))
      relacionmarketplace= db.relationship("Marketplace")
      relacionreservaspacio=db.relationship("SpaceReservation")
+     relacionApartment =db.relationship("Apartment")
 
      def serialize(self):
         return {
@@ -23,7 +24,7 @@ class User(db.Model):
             "email": self.email,
             "id_apartment":self.id_apartment,
             "id_store":self.id_store,
-            "id_building": self.id_building
+            "id_building": self.id_building            
            
         }
 class Apartment(db.Model):
