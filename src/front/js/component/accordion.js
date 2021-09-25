@@ -7,7 +7,7 @@ export const AccordionForm = () => {
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
 	const [name, setName] = useState("");
-	const [phone, setPhone] = useState("");
+	const [phonee, setPhone] = useState("");
 
 	useEffect(
 		() => {
@@ -15,6 +15,22 @@ export const AccordionForm = () => {
 		},
 		[data]
 	);
+
+	function postUser(data) {
+		let infoNecesaria = {
+			method: "POST",
+			body: JSON.stringify(data),
+			headers: {
+				"Content-Type": "application/json"
+			}
+		};
+		fetch("https://3001-tomato-finch-mmoogi80.ws-us18.gitpod.io/api/user", infoNecesaria)
+			.then(res => res.json())
+			.then(respuesta => {
+				console.log(respuesta);
+			})
+			.catch(error => console.log("algo paso", error));
+	}
 
 	return (
 		<Accordion>
@@ -96,15 +112,13 @@ export const AccordionForm = () => {
 								variant="primary"
 								type="submit"
 								onClick={e => {
-									setData([
-										...data,
-										{
-											email: email,
-											full_name: name,
-											password: pass,
-											phone: phone
-										}
-									]);
+									setData({
+										full_name: name,
+										email: email,
+										password: pass,
+										phone: phonee
+									});
+									postUser(data);
 								}}>
 								Registrarse
 							</Button>
