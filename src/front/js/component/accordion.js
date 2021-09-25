@@ -1,7 +1,21 @@
 import React from "react";
 import { Accordion, Card, Form, Button, Col } from "react-bootstrap";
+import { useState, useEffect } from "react";
 
 export const AccordionForm = () => {
+	const [data, setData] = useState([]);
+	const [email, setEmail] = useState("");
+	const [pass, setPass] = useState("");
+	const [name, setName] = useState("");
+	const [phone, setPhone] = useState("");
+
+	useEffect(
+		() => {
+			console.log(data);
+		},
+		[data]
+	);
+
 	return (
 		<Accordion>
 			<Card>
@@ -16,18 +30,35 @@ export const AccordionForm = () => {
 							<Form.Row>
 								<Form.Group as={Col} controlId="formGridEmail">
 									<Form.Label>Correo Electronico</Form.Label>
-									<Form.Control type="email" placeholder="correo@dominio.cl" />
+									<Form.Control
+										type="email"
+										placeholder="correo@dominio.cl"
+										onChange={e => {
+											setEmail(e.target.value);
+										}}
+									/>
 								</Form.Group>
 
 								<Form.Group as={Col} controlId="formGridPassword">
 									<Form.Label>Contraseña</Form.Label>
-									<Form.Control type="password" placeholder="Password" />
+									<Form.Control
+										type="password"
+										placeholder="Password"
+										onChange={e => {
+											setPass(e.target.value);
+										}}
+									/>
 								</Form.Group>
 							</Form.Row>
 
 							<Form.Group controlId="formGridName">
 								<Form.Label>Nombre Completo</Form.Label>
-								<Form.Control placeholder="p. ej. Juan Pablo Gomez Lopez" />
+								<Form.Control
+									placeholder="p. ej. Juan Pablo Gomez Lopez"
+									onChange={e => {
+										setName(e.target.value);
+									}}
+								/>
 							</Form.Group>
 
 							<Form.Row>
@@ -43,7 +74,12 @@ export const AccordionForm = () => {
 							<Form.Row>
 								<Form.Group as={Col} controlId="Telephone">
 									<Form.Label>Telefono</Form.Label>
-									<Form.Control placeholder="+569..." />
+									<Form.Control
+										placeholder="+569..."
+										onChange={e => {
+											setPhone(e.target.value);
+										}}
+									/>
 								</Form.Group>
 							</Form.Row>
 							<Form.Row>
@@ -56,7 +92,20 @@ export const AccordionForm = () => {
 									<Form.Control placeholder="A101, B102" />
 								</Form.Group>
 							</Form.Row>
-							<Button variant="primary" type="submit">
+							<Button
+								variant="primary"
+								type="submit"
+								onClick={e => {
+									setData([
+										...data,
+										{
+											email: email,
+											full_name: name,
+											password: pass,
+											phone: phone
+										}
+									]);
+								}}>
 								Registrarse
 							</Button>
 						</Form>
