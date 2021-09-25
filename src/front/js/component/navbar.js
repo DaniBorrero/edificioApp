@@ -17,16 +17,6 @@ export const NavBar = () => {
 					<Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
 						<Nav className="me-auto">
 							<Nav.Link href="/registry">Iniciar Sesión</Nav.Link>
-
-							<Button className="mx-2">
-								<i className="fab fa-github " />
-							</Button>
-							<Button className="mx-2">
-								<i className="fab fa-twitter " />
-							</Button>
-							<Button className="mx-2">
-								<i className="fab fa-instagram  " />
-							</Button>
 						</Nav>
 					</Navbar.Collapse>
 				</Container>
