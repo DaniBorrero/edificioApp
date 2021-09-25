@@ -99,8 +99,7 @@ def post_user():
         "msg": "Usuario Registrado"
     }
     return jsonify(response_body),200
-
-       
+    
 
 
 
