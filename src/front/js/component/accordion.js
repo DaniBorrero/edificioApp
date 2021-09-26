@@ -1,36 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 import { Accordion, Card, Form, Button, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
 export const AccordionForm = () => {
-	const [data, setData] = useState([]);
+	const { store, actions } = useContext(Context);
+
+	const [data, setData] = useState();
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
 	const [name, setName] = useState("");
-	const [phonee, setPhone] = useState("");
-
+	const [phone, setPhone] = useState();
 	useEffect(
 		() => {
 			console.log(data);
+			actions.userRegister(data);
 		},
 		[data]
 	);
-
-	function postUser(data) {
-		let infoNecesaria = {
-			method: "POST",
-			body: JSON.stringify(data),
-			headers: {
-				"Content-Type": "application/json"
-			}
-		};
-		fetch("https://3001-tomato-finch-mmoogi80.ws-us18.gitpod.io/api/user", infoNecesaria)
-			.then(res => res.json())
-			.then(respuesta => {
-				console.log(respuesta);
-			})
-			.catch(error => console.log("algo paso", error));
-	}
 
 	return (
 		<Accordion>
@@ -93,7 +80,7 @@ export const AccordionForm = () => {
 									<Form.Control
 										placeholder="+569..."
 										onChange={e => {
-											setPhone(e.target.value);
+											setPhone(parseInt(e.target.value));
 										}}
 									/>
 								</Form.Group>
@@ -110,15 +97,13 @@ export const AccordionForm = () => {
 							</Form.Row>
 							<Button
 								variant="primary"
-								type="submit"
 								onClick={e => {
 									setData({
 										full_name: name,
 										email: email,
 										password: pass,
-										phone: phonee
+										phone: phone
 									});
-									postUser(data);
 								}}>
 								Registrarse
 							</Button>
@@ -136,24 +121,24 @@ export const AccordionForm = () => {
 					<Card.Body>
 						<Form>
 							<Form.Row>
-								<Form.Group as={Col} controlId="formGridEmail">
+								<Form.Group as={Col} controlId="formGridEmail2">
 									<Form.Label>Correo Electronico</Form.Label>
 									<Form.Control type="email" placeholder="correo@dominio.cl" />
 								</Form.Group>
 
-								<Form.Group as={Col} controlId="formGridPassword">
+								<Form.Group as={Col} controlId="formGridPassword2">
 									<Form.Label>Contraseña</Form.Label>
 									<Form.Control type="password" placeholder="Password" />
 								</Form.Group>
 							</Form.Row>
 
-							<Form.Group controlId="formGridName">
+							<Form.Group controlId="formGridName2">
 								<Form.Label>Nombre Completo</Form.Label>
 								<Form.Control placeholder="p. ej. Juan Pablo Gomez Lopez" />
 							</Form.Group>
 
 							<Form.Row>
-								<Form.Group as={Col} controlId="Telephone">
+								<Form.Group as={Col} controlId="Telephone2">
 									<Form.Label>Telefono</Form.Label>
 									<Form.Control placeholder="+569..." />
 								</Form.Group>
