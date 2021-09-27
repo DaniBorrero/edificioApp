@@ -4,6 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User,Apartment, Building, CommonSpace, Administrator, DiarioMural, Marketplace, SpaceReservation
 from api.utils import generate_sitemap, APIException
+from api.main import send_email
 
 api = Blueprint('api', __name__)
 
@@ -92,7 +93,7 @@ def post_user():
     
 
     newUser= User(full_name=body['full_name'],phone=body['phone'],
-    email=body['phone'],password=body['password'])
+    email=body['email'],password=body['password'])
     db.session.add(newUser)
     db.session.commit()
     response_body={
