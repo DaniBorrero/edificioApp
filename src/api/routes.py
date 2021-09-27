@@ -93,7 +93,7 @@ def post_user():
     
 
     newUser= User(full_name=body['full_name'],phone=body['phone'],
-    email=body['phone'],password=body['password'])
+    email=body['email'],password=body['password'])
     db.session.add(newUser)
     db.session.commit()
     response_body={

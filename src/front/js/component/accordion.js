@@ -11,6 +11,7 @@ export const AccordionForm = () => {
 	const [pass, setPass] = useState("");
 	const [name, setName] = useState("");
 	const [phone, setPhone] = useState();
+
 	useEffect(
 		() => {
 			console.log(data);
@@ -75,7 +76,7 @@ export const AccordionForm = () => {
 								</Form.Group>
 							</Form.Row>
 							<Form.Row>
-								<Form.Group as={Col} controlId="Telephone">
+								<Form.Group as={Col} controlId="formGridPhone">
 									<Form.Label>Telefono</Form.Label>
 									<Form.Control
 										placeholder="+569..."
