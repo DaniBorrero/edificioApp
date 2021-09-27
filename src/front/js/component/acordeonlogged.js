@@ -1,9 +1,11 @@
 import React from "react";
 import { Accordion, Card, Form, Button, Col } from "react-bootstrap";
 
+import DatePicker from "react-datepicker";
+
 export const Acordeonlogged = () => {
 	return (
-		<Accordion>
+		<Accordion className="datepicker">
 			<Card>
 				<Card.Header>
 					<Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
@@ -67,12 +69,12 @@ export const Acordeonlogged = () => {
 			<Card>
 				<Card.Header>
 					<Accordion.Toggle as={Card.Header} variant="link" eventKey="2">
-						Reserva espacios comunes
+						Reserva de Espacios Comunes
 					</Accordion.Toggle>
 				</Card.Header>
 				<Accordion.Collapse eventKey="2">
 					<Card.Body>
-						<Form />
+						<DatePicker />
 					</Card.Body>
 				</Accordion.Collapse>
 			</Card>
