@@ -1,27 +1,28 @@
-from mailjet_rest import Client
+import Client
 import os
-api_key = 'cc580c7f14b0cfdc5af6343135b8b7d5'
-api_secret = 'e5865e3a1325358760fbb08d3f02a076'
-mailjet = Client(auth=(api_key, api_secret), version='v3.1')
-data = {
-  'Messages': [
-    {
-      "From": {
-        "Email": "tuedificioapp@gmail.com",
-        "Name": "tuedificio"
-      },
-      "To": [
+def send_email():
+    api_key = 'cc580c7f14b0cfdc5af6343135b8b7d5'
+    api_secret = 'e5865e3a1325358760fbb08d3f02a076'
+    mailjet = mailjet_rest.Client(auth=(api_key, api_secret), version='v3.1')
+    data = {
+    'Messages': [
         {
-          "Email": "tuedificioapp@gmail.com",
-          "Name": "tuedificio"
+        "From": {
+            "Email":"tereelena@gmail.com",
+            "Name": "teresa"
+        },
+        "To": [
+            {
+            "Email": "tuedificioapp@gmail.com",
+            "Name": "tuedificio"
+            }
+        ],
+        "Subject": "Greetings from Mailjet.",
+        "TextPart": "My first Mailjet email",
+        "HTMLPart": "<h3>Dear passenger 1, welcome to <a href='https://www.mailjet.com/'>Mailjet</a>!</h3><br />May the delivery force be with you!",
+        "CustomID": "AppGettingStartedTest"
         }
-      ],
-      "Subject": "Greetings from Mailjet.",
-      "TextPart": "My first Mailjet email",
-      "HTMLPart": "<h3>Dear passenger 1, welcome to <a href='https://www.mailjet.com/'>Mailjet</a>!</h3><br />May the delivery force be with you!",
-      "CustomID": "AppGettingStartedTest"
+    ]
     }
-  ]
-}
-result = mailjet.send.create(data=data)
-
+    result = mailjet.send.create(data=data)
+send_email()
