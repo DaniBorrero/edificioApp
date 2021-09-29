@@ -6,8 +6,9 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { RegistryForm } from "./pages/registry";
-import injectContext from "./store/appContext";
 import { FuncionesPrincipales } from "./pages/logged";
+
+import injectContext from "./store/appContext";
 
 import { NavBar } from "./component/navbar";
 import { Footer } from "./component/footer";
