@@ -1,20 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
+import { Context } from "../store/appContext";
 
 export const FormContact = () => {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [text, setText] = useState("");
-
+	const { store, actions } = useContext(Context);
+	
+	
 	const handlerOnclick = e => {
 		e.preventDefault();
 		const form = {
-			name,
-			email,
-			text
+			name:name,
+			email:email,
+			text:text
 		};
 		console.log(form);
+		actions.enviaremail(form)
+		// aqui debeir el actions enviar email y con la variable form actions.enviaremail(form)
 	};
 
 	return (
@@ -43,7 +48,9 @@ export const FormContact = () => {
 					<Form.Label>Example textarea</Form.Label>
 					<Form.Control as="textarea" rows={3} onChange={e => setText(e.target.value)} value={text} />
 				</Form.Group>
-				<Button ClassName="btn btn-primary" type="submit">
+				<Button
+					ClassName="btn btn-primary"
+					type="submit">
 					Enviar
 				</Button>
 			</Form>
