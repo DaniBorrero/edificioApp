@@ -4,7 +4,8 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User,Apartment, Building, CommonSpace, Administrator, DiarioMural, Marketplace, SpaceReservation
 from api.utils import generate_sitemap, APIException
-from api.main import send_email
+from mailjet_rest import Client
+import os
 
 
 api = Blueprint('api', __name__)
@@ -103,17 +104,44 @@ def post_user():
     return jsonify(response_body),200
 
 # Post Enviar email Formulario contacto    
-@api.route('/enviardatos', methods=['POST'])    
+@api.route('/enviardatos', methods=['GET'])    
 def enviardatos():
     # body va a recibir la info de la api y la va a transformar en formato json    
     body=request.get_json()
-    send_email()  
+    send_email(body)  
     response_body={
         "msg": "Correo Enviado"
     }
     return jsonify(response_body),200 
    
-
+def send_email(body):
+    api_key = 'cc580c7f14b0cfdc5af6343135b8b7d5'
+    api_secret = 'e5865e3a1325358760fbb08d3f02a076'
+    mailjet = Client(auth=(api_key, api_secret), version='v3.1')
+    if body:
+        result = mailjet.send.create(data=body)
+    else:
+        data = {
+        'Messages': [
+            {
+            "From": {
+                "Email":"tereelena@gmail.com",
+                "Name": "teresa"
+            },
+            "To": [
+                {
+                "Email": "tuedificioapp@gmail.com",
+                "Name": "tuedificio"
+                }
+            ],
+            "Subject": "MAIL PREDEFINIDO .",
+            "TextPart": "My first Mailjet email",
+            "HTMLPart": "<h3>Dear passenger 1, welcome to <a href='https://www.mailjet.com/'>Mailjet</a>!</h3><br />May the delivery force be with you!",
+            "CustomID": "AppGettingStartedTest"
+            }
+        ]
+        }
+        result = mailjet.send.create(data=data)
     
 
 

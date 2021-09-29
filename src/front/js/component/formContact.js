@@ -7,19 +7,20 @@ export const FormContact = () => {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [text, setText] = useState("");
-
+	const { store, actions } = useContext(Context);
+	
+	
 	const handlerOnclick = e => {
 		e.preventDefault();
 		const form = {
-			name,
-			email,
-			text
+			name:name,
+			email:email,
+			text:text
 		};
 		console.log(form);
+		actions.enviaremail(form)
 		// aqui debeir el actions enviar email y con la variable form actions.enviaremail(form)
 	};
-
-	const { store, actions } = useContext(Context);
 
 	return (
 		<>
@@ -49,12 +50,7 @@ export const FormContact = () => {
 				</Form.Group>
 				<Button
 					ClassName="btn btn-primary"
-					type="submit"
-					onClick={e => {
-						actions.enviaremail();
-
-						alert("paso, envio el correo");
-					}}>
+					type="submit">
 					Enviar
 				</Button>
 			</Form>

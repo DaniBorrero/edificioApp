@@ -10,7 +10,6 @@ from api.utils import APIException, generate_sitemap
 from api.models import db
 from api.routes import api
 from api.admin import setup_admin
-from api.main import send_email
 #from models import Person
 
 ENV = os.getenv("FLASK_ENV")

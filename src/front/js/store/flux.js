@@ -17,24 +17,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			// form
-			enviaremail: () => {
+			enviaremail: (form) => {
 				const store = getStore();
 				var url = "https://olive-gecko-z048x7n7.ws-us18.gitpod.io/api/enviardatos";
 				var data = {
 					Messages: [
 						{
+							/* Quién envía el mail, estos valores
+							salen del formulario*/ 
 							From: {
-								Email: "tereelena@gmail.com",
-								Name: "teresa"
+								Email: form.email,
+								Name: form.name
 							},
-							To: [
+							/*no se cambia*/
+						   To: [
 								{
 									Email: "tuedificioapp@gmail.com",
 									Name: "tuedificio"
 								}
-							],
-							Subject: "Greetings from Mailjet.",
-							TextPart: "My first Mailjet email",
+							],/*hasta aca*/
+						/* Este es el asunto del mail */ 	
+						Subject: "Consulta desde el frontend.",
+							/* Este es el cuerpo del mail */ 
+							TextPart: form.text,
+							/* aca es un html que puedes poner lindo para el mail */ 
 							HTMLPart:
 								"<h3>Dear passenger 1, welcome to <a href='https://www.mailjet.com/'>Mailjet</a>!</h3><br />May the delivery force be with you!",
 							CustomID: "AppGettingStartedTest"
