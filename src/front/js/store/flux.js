@@ -5,45 +5,58 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		actions: {
 			// form
-			enviaremail: (form) => {
-				const store = getStore();
-				var url = "https://olive-gecko-z048x7n7.ws-us18.gitpod.io/api/enviardatos";
+			enviaremail: (name, email, text) => {
+				console.log("flux", name, email, text);
+				//var url = "https://olive-gecko-z048x7n7.ws-us18.gitpod.io/api/enviardatos";
 				var data = {
 					Messages: [
 						{
 							/* Quién envía el mail, estos valores
-							salen del formulario*/ 
+							salen del formulario*/
+
 							From: {
-								Email: form.email,
-								Name: form.name
+								Email: "tuedificioapp@gmail.com",
+								Name: name
 							},
 							/*no se cambia*/
-						   To: [
+							To: [
 								{
 									Email: "tuedificioapp@gmail.com",
 									Name: "tuedificio"
 								}
-							],/*hasta aca*/
-						/* Este es el asunto del mail */ 	
-						Subject: "Consulta desde el frontend.",
-							/* Este es el cuerpo del mail */ 
-							TextPart: form.text,
-							/* aca es un html que puedes poner lindo para el mail */ 
+							] /*hasta aca*/,
+							/* Este es el asunto del mail */
+
+							Subject: "Correo enviado desde el Formulario",
+							/* Este es el cuerpo del mail */
+
+							TextPart: text + email,
+							/* aca es un html que puedes poner lindo para el mail */
+
 							HTMLPart:
-								"<h3>Dear passenger 1, welcome to <a href='https://www.mailjet.com/'>Mailjet</a>!</h3><br />May the delivery force be with you!",
+								"<h5> El usuario:</h5>" +
+								email +
+								"  envió el siguiente mensaje: " +
+								text +
+								"<br/> TuEdificio © 2021",
 							CustomID: "AppGettingStartedTest"
 						}
 					]
 				};
+
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+				console.log(data, "prueba");
+
 				var raw = JSON.stringify(data);
-				var myHeaders = { "Content-Type": "application/json" };
 				var requestOptions = {
 					method: "POST",
 					headers: myHeaders,
-					body: raw
+					body: raw,
+					redirect: "follow"
 				};
-				fetch(url, requestOptions)
-					.then(response => response.json())
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/enviardatos", requestOptions)
+					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			},
