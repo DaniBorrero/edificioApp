@@ -104,7 +104,7 @@ def post_user():
     return jsonify(response_body),200
 
 # Post Enviar email Formulario contacto    
-@api.route('/enviardatos', methods=['GET'])    
+@api.route('/enviardatos', methods=['POST'])    
 def enviardatos():
     # body va a recibir la info de la api y la va a transformar en formato json    
     body=request.get_json()
@@ -125,8 +125,8 @@ def send_email(body):
         'Messages': [
             {
             "From": {
-                "Email":"tereelena@gmail.com",
-                "Name": "teresa"
+                "Email":"tuedificioapp@gmail.com",
+                "Name": body.name
             },
             "To": [
                 {
@@ -135,7 +135,7 @@ def send_email(body):
                 }
             ],
             "Subject": "MAIL PREDEFINIDO .",
-            "TextPart": "My first Mailjet email",
+            "TextPart": body.text + body.email,
             "HTMLPart": "<h3>Dear passenger 1, welcome to <a href='https://www.mailjet.com/'>Mailjet</a>!</h3><br />May the delivery force be with you!",
             "CustomID": "AppGettingStartedTest"
             }
