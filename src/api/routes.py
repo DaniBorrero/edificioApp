@@ -6,10 +6,16 @@ from api.models import db, User,Apartment, Building, CommonSpace, Administrator,
 from api.utils import generate_sitemap, APIException
 from mailjet_rest import Client
 import os
+from flask_migrate import Migrate
+from flask_swagger import swagger
+from flask_cors import CORS
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity 
 
 
 api = Blueprint('api', __name__)
 
+app = Flask(__name__)
+jwt = JWTManager(app)
 
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
@@ -19,13 +25,39 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
     
-@api.route('/user', methods=['GET'])
+@api.route('/user', methods=['GET','POST'])
 def get_all_user():
-    # esta varibale estoy consultando a la base de datos por todos los registros de la tabla users
-    all_users= User.query.all()
-    all_users= list(map(lambda x: x.serialize(),all_users))
-    return jsonify(all_users), 200
+    if request.method =='GET':
+        # esta varibale estoy consultando a la base de datos por todos los registros de la tabla users
+        all_users= User.query.all()
+        all_users= list(map(lambda x: x.serialize(),all_users))
+        return jsonify(all_users), 200
+    else:
+        body = request.get_json() # obtener el request body de la solicitud
+        if body is None:
+            return "The request body is null", 400
+        if 'email' not in body:
+            return 'Especificar email', 400
+        if 'password' not in body:
+            return 'Especificar password',400
+        #estoy consultando si existe alguien con el email que mande en la api y consigo la primera coincidencia
+        onePeople = User.query.filter_by(email=body["email"]).first()
+        if onePeople:
+            if (onePeople.password == body["password"] ):
+                #CUANDO VALIDAMOS LA PASSWORD CREAREMOS EL TOKEN                
+                access_token = create_access_token(identity=onePeople.email)
+                data = {
+                    "info_user": onePeople.serialize(),
+                    "token": access_token
+                    
+                }
+                return(jsonify(data))
+            else:
+                return(jsonify({"mensaje":False}))
+        else:
+            return(jsonify({"mensaje":"mail no se encuentra registrado"}))
 
 @api.route('/apartment', methods=['GET'])
 def get_all_apartment():
@@ -77,7 +109,7 @@ def get_all_spacereservation():
     return jsonify(all_reservation), 200   
 
  # Post User#
-@api.route('/user', methods=['POST'])
+@api.route('/register', methods=['POST'])
 def post_user():
  # body va a recibir la info de la api y la va a transformar en formato json    
     body=request.get_json()
