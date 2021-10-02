@@ -5,23 +5,58 @@ import { useState, useEffect } from "react";
 
 export const AccordionForm = () => {
 	const { store, actions } = useContext(Context);
-
+	// Para registrarse
 	const [data, setData] = useState();
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
 	const [name, setName] = useState("");
 	const [phone, setPhone] = useState();
+	//Para iniciar session
+	//podriamos usar los mismos hooks?
+	const [emailLogin, setEmailLogin] = useState("");
+	const [passLogin, setPassLogin] = useState("");
 
 	useEffect(
 		() => {
-			console.log(data);
+			// console.log(data);
+			// console.log(login);
 			actions.userRegister(data);
 		},
 		[data]
 	);
+	const handlerOnclick = e => {
+		e.preventDefault();
+		actions.loginUser(emailLogin, passLogin);
+	};
 
 	return (
 		<Accordion>
+			<Form className="registryForm" onSubmit={handlerOnclick}>
+				<Form.Group controlId="formBasicEmail">
+					<Form.Label>Email address</Form.Label>
+					<Form.Control
+						type="email"
+						placeholder="Enter email"
+						onChange={e => {
+							setEmailLogin(e.target.value);
+						}}
+					/>
+				</Form.Group>
+
+				<Form.Group controlId="formBasicPassword">
+					<Form.Label>Password</Form.Label>
+					<Form.Control
+						type="password"
+						placeholder="Password"
+						onChange={e => {
+							setPassLogin(e.target.value);
+						}}
+					/>
+				</Form.Group>
+				<Button variant="primary" type="submit">
+					Ingresar
+				</Button>
+			</Form>
 			<Card>
 				<Card.Header>
 					<Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
