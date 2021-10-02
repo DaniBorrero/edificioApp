@@ -34,6 +34,14 @@ def get_all_apartment():
     all_apartment= list(map(lambda x: x.serialize(), all_apartment))
     return jsonify( all_apartment), 200
 
+#POST apartment
+@api.route('/building', methods=['POST'])
+def post_apartment():
+ # body va a recibir la info de la api y la va a transformar en formato json    
+    body=request.get_json()
+    #validamos que  lo que se traiga en el request no este vacio o null
+
+
 @api.route('/building', methods=['GET'])
 def get_all_building():
     # esta varibale estoy consultando a la base de datos por todos los registros de la tabla building
@@ -41,6 +49,34 @@ def get_all_building():
     all_building= list(map(lambda x: x.serialize(), all_building))
     return jsonify(all_building), 200
 
+#Post Building
+@api.route('/building', methods=['POST'])
+def post_building():
+ # body va a recibir la info de la api y la va a transformar en formato json    
+    body=request.get_json()
+    #validamos que  lo que se traiga en el request no este vacio o null
+    if body is None:
+        return "The request body is null", 400
+    if 'name' not in body:
+        return "Debe especificar Nombre del Edificio",400
+    if 'adress' not in body:
+        return "Debe especificar la direccion",400
+    if 'region' not in body:
+        return "Debe especificar la region",400  
+    if 'comuna'not in body:
+        return "Debe especificar la comuna",400
+    
+
+    newBuilding= Building(name=body['name'],phone=body['adress'],
+    email=body['region'],password=body['comuna'])
+    db.session.add(newBuilding)
+    db.session.commit()
+    response_body={
+        "msg": "Edificio Registrado"
+    }
+    return jsonify(response_body),200
+
+# GET COMMONSPACE
 @api.route('/commonSpace', methods=['GET'])
 def get_all_commonspace():
     # esta varibale estoy consultando a la base de datos por todos los registros de la tabla commonspace
@@ -48,12 +84,60 @@ def get_all_commonspace():
     all_common_space= list(map(lambda x: x.serialize(), all_common_space))
     return jsonify(all_common_space), 200 
 
+# POST COMMONSPACE
+@api.route('/commonSpace', methods=['POST'])
+def post_commonspace():
+# body va a recibir la info de la api y la va a transformar en formato json    
+    body=request.get_json()
+    #validamos que  lo que se traiga en el request no este vacio o null
+    if body is None:
+        return "The request body is null", 400
+    if 'name' not in body:
+        return "Debe especificar Nombre del Espacio Comun",400
+    if 'aforo' not in body:
+        return "Debe especificar aforo maximo",400
+
+    newCommonSpace= CommonSpace(name=body['name'],aforo=body['aforo'])
+    db.session.add(newCommonSpace)
+    db.session.commit()
+    response_body={
+        "msg": "Espacio Comun Registrado"
+    }
+    return jsonify(response_body),200
+
+
 @api.route('/administrator', methods=['GET'])
 def get_all_administrator():
     # esta varibale estoy consultando a la base de datos por todos los registros de la tabla administrator
     all_administrator= Administrator.query.all()
     all_administrator= list(map(lambda x: x.serialize(), all_administrator))
-    return jsonify(all_administrator), 200    
+    return jsonify(all_administrator), 200   
+
+# POST administrator
+@api.route('/administrator', methods=['POST'])
+def post_administrator():
+# body va a recibir la info de la api y la va a transformar en formato json    
+    body=request.get_json()
+    #validamos que  lo que se traiga en el request no este vacio o null
+    if body is None:
+        return "The request body is null", 400
+    if 'full_name' not in body:
+        return "Debe especificar Nombre Completo",400
+    if 'phone' not in body:
+        return "Debe especificar el telefono",400
+    if 'email' not in body:
+        return "Debe especificar el email",400  
+    if 'password'not in body:
+        return "Debe especificar el paswword",400
+
+    newAdministrator= Administrator(full_name=body['full_name'],phone=body['phone'],email=body['email'],password=body['password'])
+    db.session.add(newAdministrator)
+    db.session.commit()
+    response_body={
+        "msg": "Administrador Registrado"
+    }
+    return jsonify(response_body),200     
+
 
 @api.route('/diariomural', methods=['GET'])
 def get_all_diariomural():
@@ -62,19 +146,86 @@ def get_all_diariomural():
     all_diariomural= list(map(lambda x: x.serialize(), all_diariomural))
     return jsonify(all_diariomural), 200  
 
+# POST diariomural
+@api.route('/diariomural', methods=['POST'])
+def post_diariomural():
+# body va a recibir la info de la api y la va a transformar en formato json    
+    body=request.get_json()
+    #validamos que  lo que se traiga en el request no este vacio o null
+    if body is None:
+        return "The request body is null", 400
+    if 'title_announcement' not in body:
+        return "Debe especificar El Titulo del Anuncio",400
+    if 'announcement' not in body:
+        return "Debe especificar el anuncio",400
+    
+    newDiarioMural= DiarioMural(title_announcement=body['title_announcement'],announcement=body['announcement'])
+    db.session.add(newDiarioMural)
+    db.session.commit()
+    response_body={
+        "msg": "Anuncio Registrado en el Diario Mural"
+    }
+    return jsonify(response_body),200       
+
 @api.route('/marketplace', methods=['GET'])
 def get_all_marketplace():
     # esta varibale estoy consultando a la base de datos por todos los registros de la tabla marketplace
     all_marketplace= Marketplace.query.all()
     all_marketplace= list(map(lambda x: x.serialize(), all_marketplace))
-    return jsonify(all_marketplace), 200               
-                
+    return jsonify(all_marketplace), 200    
+
+# POST marketplace
+@api.route('/marketplace', methods=['POST'])
+def post_marketplace():
+# body va a recibir la info de la api y la va a transformar en formato json    
+    body=request.get_json()
+    #validamos que  lo que se traiga en el request no este vacio o null
+    if body is None:
+        return "The request body is null", 400
+    if 'title_announcement' not in body:
+        return "Debe especificar El Titulo del Anuncio",400
+    if 'announcement' not in body:
+        return "Debe especificar el anuncio",400
+    
+    newMarketplace= Marketplace(title_announcement=body['title_announcement'],announcement=body['announcement'])
+    db.session.add(newMarketplace)
+    db.session.commit()
+    response_body={
+        "msg": "Anuncio Registrado en el Marketplace"
+    }
+    return jsonify(response_body),200        
+
+ #GET Spacereservation              
 @api.route('/spacereservation', methods=['GET'])
 def get_all_spacereservation():
     # esta varibale estoy consultando a la base de datos por todos los registros de la tabla spacereservation
     all_reservation= SpaceReservation.query.all()
     all_reservation= list(map(lambda x: x.serialize(), all_reservation))
-    return jsonify(all_reservation), 200   
+    return jsonify(all_reservation), 200  
+    
+
+#POST Spacereservation
+@api.route('/spacereservation', methods=['POST'])
+def post_spacereservation():
+# body va a recibir la info de la api y la va a transformar en formato json    
+    body=request.get_json()
+    #validamos que  lo que se traiga en el request no este vacio o null
+    if body is None:
+        return "The request body is null", 400
+    if 'date_reservation' not in body:
+        return "Debe especificar la fecha de la reservacion",400
+    if 'reservation_time' not in body:
+        return "Debe especificar la cantidad de horas de reservacion",400 
+
+    newSpacereservation=SpaceReservation(date_reservation=body['date_reservation'],reservation_time=body['reservation_time'])
+    db.session.add(newSpacereservation)
+    db.session.commit()
+    response_body={
+        "msg": "El espacio comun fue reservado con exito"
+    }
+    return jsonify(response_body),200   
+
+
 
  # Post User#
 @api.route('/user', methods=['POST'])

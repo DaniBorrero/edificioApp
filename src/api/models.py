@@ -10,7 +10,7 @@ class User(db.Model):
      email = db.Column(db.String(50), unique=True, nullable=False)
      password = db.Column(db.String(16), unique=False, nullable=False)
      id_apartment= db.Column(db.Integer, db.ForeignKey('apartment.id_apartment'))
-     id_store= db.Column(db.Integer)
+     numero_bodega= db.Column(db.Integer,unique=True, nullable=False)
      id_building= db.Column(db.Integer, db.ForeignKey('building.id_building'))
      relacionmarketplace= db.relationship("Marketplace")
      relacionreservaspacio=db.relationship("SpaceReservation")
@@ -23,7 +23,7 @@ class User(db.Model):
             "phone": self.phone,
             "email": self.email,
             "id_apartment":self.id_apartment,
-            "id_store":self.id_store,
+            "numero_bodega":self.numero_bodega,
             "id_building": self.id_building            
            
         }
@@ -88,6 +88,7 @@ class Administrator(db.Model):
     full_name= db.Column(db.String(50),unique=True, nullable=False)
     phone=  db.Column(db.Integer, unique=True,nullable=False)
     email= db.Column(db.String(50), unique=True, nullable=False)
+    password = db.Column(db.String(16), unique=False, nullable=False)
     relacionbuilding= db.relationship("Building")
     relaciondiariomural=db.relationship("DiarioMural")
     relacionreservaspacio=db.relationship("SpaceReservation")
@@ -97,7 +98,8 @@ class Administrator(db.Model):
             "id_admin": self.id_admin,
             "full_name": self.full_name,
             "phone": self.phone,
-            "email": self.email
+            "email": self.email,
+            "password":self.password
             
         }
 
