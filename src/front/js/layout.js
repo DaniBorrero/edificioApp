@@ -4,7 +4,9 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
+import { Marketplace } from "./pages/marketplace";
 import { Single } from "./pages/single";
+import { LoggedScreen } from "./pages/logged";
 import { RegistryForm } from "./pages/registry";
 import { FuncionesPrincipales } from "./pages/logged";
 
@@ -32,8 +34,11 @@ const Layout = () => {
 						<Route exact path="/registry">
 							<RegistryForm />
 						</Route>
+						<Route exact path="/marketplace">
+							<h1>Aca debemos mostrar todos los datos del marketplace</h1>
+						</Route>
 						<Route exact path="/logged">
-							<Acordeonlogged />
+							<LoggedScreen />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

@@ -19,11 +19,9 @@ jwt = JWTManager(app)
 
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
-
     response_body = {
         "message": "Hello! I'm a message that came from the backend"
     }
-
     return jsonify(response_body), 200
 
     
@@ -82,6 +80,7 @@ def get_all_commonspace():
 
 @api.route('/administrator', methods=['GET'])
 def get_all_administrator():
+
     # esta varibale estoy consultando a la base de datos por todos los registros de la tabla administrator
     all_administrator= Administrator.query.all()
     all_administrator= list(map(lambda x: x.serialize(), all_administrator))
@@ -92,14 +91,36 @@ def get_all_diariomural():
     # esta varibale estoy consultando a la base de datos por todos los registros de la tabla diairomural
     all_diariomural= DiarioMural.query.all()
     all_diariomural= list(map(lambda x: x.serialize(), all_diariomural))
-    return jsonify(all_diariomural), 200  
+    return jsonify(all_diariomural), 200 
+
 
 @api.route('/marketplace', methods=['GET'])
 def get_all_marketplace():
     # esta varibale estoy consultando a la base de datos por todos los registros de la tabla marketplace
     all_marketplace= Marketplace.query.all()
     all_marketplace= list(map(lambda x: x.serialize(), all_marketplace))
-    return jsonify(all_marketplace), 200               
+    return jsonify(all_marketplace), 200      
+
+@api.route('/perfilprivado', methods = ['POST'])
+@jwt_required()
+def get_datos():
+    '''
+    body = request.get_json()
+    if body is None:
+        return "The request body is null", 400
+    if 'token' not in body:
+        return 'Inicia sesion primero', 400 '''   
+    token = get_jwt_identity()
+    checkUser = User.query.filter_by(email = token).first()    
+    checkAdmin = Administrator.query.filter_by(email = token).first()
+
+    if checkUser : 
+        return jsonify(checkUser.serialize())
+    if checkAdmin : 
+        return jsonify(checkUser)
+
+            
+
                 
 @api.route('/spacereservation', methods=['GET'])
 def get_all_spacereservation():
@@ -136,6 +157,8 @@ def post_user():
     return jsonify(response_body),200
 
 # Post Enviar email Formulario contacto    
+
+
 @api.route('/enviardatos', methods=['POST'])    
 def enviardatos():
     # body va a recibir la info de la api y la va a transformar en formato json    
@@ -144,8 +167,7 @@ def enviardatos():
     response_body={
         "msg": "Correo Enviado"
     }
-    return jsonify(response_body),200 
-   
+    return jsonify(response_body),200    
 def send_email(body):
     api_key = 'cc580c7f14b0cfdc5af6343135b8b7d5'
     api_secret = 'e5865e3a1325358760fbb08d3f02a076'

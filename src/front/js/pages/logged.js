@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Acordeonlogged } from "../component/acordeonlogged";
 import { Container, Row } from "react-bootstrap";
 import "../../styles/registry.scss";
+import { Context } from "../store/appContext";
 
 export const LoggedScreen = () => {
+	const { store, actions } = useContext(Context);
 	return (
 		<>
-			<Acordeonlogged />
+			{sessionStorage.getItem("token") != undefined ? (
+				<Acordeonlogged />
+			) : (
+				<h1>No tiene persmiso para entrar a esta pagina</h1>
+			)}
 		</>
 	);
 };
