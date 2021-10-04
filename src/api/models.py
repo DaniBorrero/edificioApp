@@ -10,7 +10,7 @@ class User(db.Model):
      email = db.Column(db.String(50), unique=True, nullable=False)
      password = db.Column(db.String(16), unique=False, nullable=False)
      id_apartment= db.Column(db.Integer, db.ForeignKey('apartment.id_apartment'))
-     numero_bodega= db.Column(db.Integer,unique=True, nullable=False)
+     numero_bodega= db.Column(db.Integer,unique=True)
      id_building= db.Column(db.Integer, db.ForeignKey('building.id_building'))
      relacionmarketplace= db.relationship("Marketplace")
      relacionreservaspacio=db.relationship("SpaceReservation")
