@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			// form
 
+
 			enviaremail: (name, email, text) => {
 				console.log("flux", name, email, text);
 				//var url = "https://olive-gecko-z048x7n7.ws-us18.gitpod.io/api/enviardatos";
@@ -16,6 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							salen del formulario*/
 
 							From: {
+
 								Email: "tuedificioapp@gmail.com",
 								Name: name
 							},
@@ -28,10 +30,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 							] /*hasta aca*/,
 							/* Este es el asunto del mail */
 
+
 							Subject: "Correo enviado desde el Formulario",
 							/* Este es el cuerpo del mail */
 
 							TextPart: text + email,
+
 							/* aca es un html que puedes poner lindo para el mail */
 
 							HTMLPart:
@@ -56,6 +60,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
+
 				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/enviardatos", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
@@ -112,6 +117,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			},
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

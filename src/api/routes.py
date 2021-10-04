@@ -288,6 +288,34 @@ def post_user():
     }
     return jsonify(response_body),200
 
+#INICIO Reserva espacio comun
+
+@app.rout('/logged', methods=['POST'])
+def SpaceReservation();
+
+    body=request.get_json()
+
+    if body is None:
+        return "The request body is null", 400
+    if date_reservation is None:
+        return "Especificar fecha de reserva", 400
+    if reservation_time is None:
+        return "Especificar hora de reserva", 400
+
+    newReservation= spacereservation(date_reservation=body['date_reservation'],
+    reservation_time=body['reservation_time'])
+    db.session.add(newReservation)
+    db.session.commit()
+    response_body={
+
+        "msg": "Reserva Exitosa"
+
+    }
+    return jsonify(response_body),200
+
+#FIN Reserva espacio comun
+
+
 # Post Enviar email Formulario contacto    
 @api.route('/enviardatos', methods=['POST'])    
 def enviardatos():
