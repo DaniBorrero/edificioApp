@@ -46,6 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					headers: myHeaders,
 					body: raw
 				};
+
 				fetch(url, requestOptions)
 					.then(response => response.json())
 					.then(result => console.log(result))
@@ -83,6 +84,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			},
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

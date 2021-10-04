@@ -2,7 +2,6 @@ import React from "react";
 import { Accordion, Card, Form, Button, Col } from "react-bootstrap";
 import { DateP } from "./datepicker";
 
-
 export const Acordeonlogged = () => {
 	return (
 		<Accordion className="datepicker">
@@ -76,7 +75,6 @@ export const Acordeonlogged = () => {
 					<Card.Body style={{ height: "400px" }}>
 						<Form>
 							<DateP />
-							<button>Reservar</button>
 						</Form>
 					</Card.Body>
 				</Accordion.Collapse>
