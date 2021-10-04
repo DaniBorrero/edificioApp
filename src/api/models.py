@@ -10,7 +10,7 @@ class User(db.Model):
      email = db.Column(db.String(50), unique=True, nullable=False)
      password = db.Column(db.String(16), unique=False, nullable=False)
      id_apartment= db.Column(db.Integer, db.ForeignKey('apartment.id_apartment'))
-     id_store= db.Column(db.Integer)
+     numero_bodega= db.Column(db.Integer,unique=True, nullable=False)
      id_building= db.Column(db.Integer, db.ForeignKey('building.id_building'))
      relacionmarketplace= db.relationship("Marketplace")
      relacionreservaspacio=db.relationship("SpaceReservation")
@@ -23,7 +23,7 @@ class User(db.Model):
             "phone": self.phone,
             "email": self.email,
             "id_apartment":self.id_apartment,
-            "id_store":self.id_store,
+            "numero_bodega":self.numero_bodega,
             "id_building": self.id_building            
            
         }
@@ -88,6 +88,7 @@ class Administrator(db.Model):
     full_name= db.Column(db.String(50),unique=True, nullable=False)
     phone=  db.Column(db.Integer, unique=True,nullable=False)
     email= db.Column(db.String(50), unique=True, nullable=False)
+    password = db.Column(db.String(16), unique=False, nullable=False)
     relacionbuilding= db.relationship("Building")
     relaciondiariomural=db.relationship("DiarioMural")
     relacionreservaspacio=db.relationship("SpaceReservation")
@@ -97,7 +98,8 @@ class Administrator(db.Model):
             "id_admin": self.id_admin,
             "full_name": self.full_name,
             "phone": self.phone,
-            "email": self.email
+            "email": self.email,
+            "password":self.password
             
         }
 
@@ -105,13 +107,15 @@ class DiarioMural(db.Model):
     __tablename__ = 'diariomural'
     id_diariomural= db.Column(db.Integer,primary_key=True)
     administrator_id= db.Column(db.Integer, db.ForeignKey('administrator.id_admin'))
+    type_publication=db.Column(db.String(1),nullable=False)
     title_announcement=db.Column(db.String(50), nullable=False)
     announcement= db.Column(db.String(200),nullable=False)    
 
     def serialize(self):
         return {
             "id_diariomural": self.id_diariomural,
-            "administrator_id": self.administrator_id,
+            "administrator_id":self.administrator_id,
+            "type_publication":self.type_publication,
             "title_announcement":self.title_announcement,
             "announcement": self.announcement  
         }  
@@ -119,6 +123,7 @@ class DiarioMural(db.Model):
 class Marketplace(db.Model):
     __tablename__ = 'marketplace'
     id_marketplace= db.Column(db.Integer,primary_key=True)
+    type_publication=db.Column(db.String(1),nullable=False)
     title_announcement=db.Column(db.String(50), nullable=False)
     announcement=db.Column(db.String(200),nullable=False) 
     user_id= db.Column(db.Integer,db.ForeignKey('user.id_user')) 
@@ -126,6 +131,7 @@ class Marketplace(db.Model):
     def serialize(self):
         return {
             "id_marketplace": self.id_marketplace,
+            "type_publication":self.type_publication,
             "title_announcement":self.title_announcement,
             "announcement": self.announcement,
             "user_id": self.user_id
