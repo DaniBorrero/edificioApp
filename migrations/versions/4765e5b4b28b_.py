@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 120757dd66c4
+Revision ID: 4765e5b4b28b
 Revises: 
-Create Date: 2021-09-26 01:02:37.729750
+Create Date: 2021-10-04 23:54:56.505396
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '120757dd66c4'
+revision = '4765e5b4b28b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,6 +23,7 @@ def upgrade():
     sa.Column('full_name', sa.String(length=50), nullable=False),
     sa.Column('phone', sa.Integer(), nullable=False),
     sa.Column('email', sa.String(length=50), nullable=False),
+    sa.Column('password', sa.String(length=16), nullable=False),
     sa.PrimaryKeyConstraint('id_admin'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('full_name'),
@@ -58,6 +59,7 @@ def upgrade():
     op.create_table('diariomural',
     sa.Column('id_diariomural', sa.Integer(), nullable=False),
     sa.Column('administrator_id', sa.Integer(), nullable=True),
+    sa.Column('type_publication', sa.String(length=1), nullable=False),
     sa.Column('title_announcement', sa.String(length=50), nullable=False),
     sa.Column('announcement', sa.String(length=200), nullable=False),
     sa.ForeignKeyConstraint(['administrator_id'], ['administrator.id_admin'], ),
@@ -70,17 +72,19 @@ def upgrade():
     sa.Column('email', sa.String(length=50), nullable=False),
     sa.Column('password', sa.String(length=16), nullable=False),
     sa.Column('id_apartment', sa.Integer(), nullable=True),
-    sa.Column('id_store', sa.Integer(), nullable=True),
+    sa.Column('numero_bodega', sa.Integer(), nullable=True),
     sa.Column('id_building', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['id_apartment'], ['apartment.id_apartment'], ),
     sa.ForeignKeyConstraint(['id_building'], ['building.id_building'], ),
     sa.PrimaryKeyConstraint('id_user'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('full_name'),
+    sa.UniqueConstraint('numero_bodega'),
     sa.UniqueConstraint('phone')
     )
     op.create_table('marketplace',
     sa.Column('id_marketplace', sa.Integer(), nullable=False),
+    sa.Column('type_publication', sa.String(length=1), nullable=False),
     sa.Column('title_announcement', sa.String(length=50), nullable=False),
     sa.Column('announcement', sa.String(length=200), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),

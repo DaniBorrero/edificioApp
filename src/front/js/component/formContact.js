@@ -11,13 +11,15 @@ export const FormContact = () => {
 
 	const handlerOnclick = e => {
 		e.preventDefault();
-		const form = {
+
+		/*let form = {
 			name: name,
 			email: email,
 			text: text
-		};
-		console.log(form);
-		actions.enviaremail(form);
+		};*/
+
+		actions.enviaremail(name, email, text);
+
 		// aqui debeir el actions enviar email y con la variable form actions.enviaremail(form)
 	};
 
@@ -44,7 +46,7 @@ export const FormContact = () => {
 					/>
 				</Form.Group>
 				<Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-					<Form.Label>Example textarea</Form.Label>
+					<Form.Label>Escriba su Mensaje</Form.Label>
 					<Form.Control as="textarea" rows={3} onChange={e => setText(e.target.value)} value={text} />
 				</Form.Group>
 				<Button ClassName="btn btn-primary" type="submit">

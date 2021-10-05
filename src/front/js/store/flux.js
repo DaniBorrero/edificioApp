@@ -1,13 +1,14 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	store: {
-		data: [];
+		logged: false;
 	}
 	return {
 		actions: {
 			// form
-			enviaremail: form => {
-				const store = getStore();
-				var url = "https://olive-gecko-z048x7n7.ws-us18.gitpod.io/api/enviardatos";
+
+			enviaremail: (name, email, text) => {
+				console.log("flux", name, email, text);
+				//var url = "https://olive-gecko-z048x7n7.ws-us18.gitpod.io/api/enviardatos";
 				var data = {
 					Messages: [
 						{
@@ -15,8 +16,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 							salen del formulario*/
 
 							From: {
-								//Email: form.email,
-								//Name: form.name
+								Email: "tuedificioapp@gmail.com",
+								Name: name
 							},
 							/*no se cambia*/
 							To: [
@@ -27,28 +28,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 							] /*hasta aca*/,
 							/* Este es el asunto del mail */
 
-							Subject: "Consulta desde el frontend.",
+							Subject: "Correo enviado desde el Formulario",
 							/* Este es el cuerpo del mail */
 
-							//TextPart: form.text,
+							TextPart: text + email,
+
 							/* aca es un html que puedes poner lindo para el mail */
 
 							HTMLPart:
-								"<h3>Dear passenger 1, welcome to <a href='https://www.mailjet.com/'>Mailjet</a>!</h3><br />May the delivery force be with you!",
+								"<h5> El usuario:</h5>" +
+								email +
+								"  envió el siguiente mensaje: " +
+								text +
+								"<br/> TuEdificio © 2021",
 							CustomID: "AppGettingStartedTest"
 						}
 					]
 				};
+
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+				console.log(data, "prueba");
+
 				var raw = JSON.stringify(data);
-				var myHeaders = { "Content-Type": "application/json" };
 				var requestOptions = {
 					method: "POST",
 					headers: myHeaders,
-					body: raw
+					body: raw,
+					redirect: "follow"
 				};
 
-				fetch(url, requestOptions)
-					.then(response => response.json())
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/enviardatos", requestOptions)
+					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			},
@@ -65,13 +76,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ message: data.message }))
 					.catch(error => console.log("Error loading message from backend", error));
 			},
-
-			userRegister: data => {
+			loginUser: (emailLogin, passLogin) => {
 				var myHeaders = new Headers();
 				myHeaders.append("Content-Type", "application/json");
+				var raw = JSON.stringify({ email: emailLogin, password: passLogin });
 
-				console.log(data, "test");
-				var raw = JSON.stringify(data);
 				var requestOptions = {
 					method: "POST",
 					headers: myHeaders,
@@ -79,7 +88,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-tomato-finch-mmoogi80.ws-us18.gitpod.io/api/user", requestOptions)
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/user", requestOptions)
+					.then(response => response.text())
+					.then(result => {
+						sessionStorage.setItem("token", result.token);
+						setStore({ logged: true });
+					})
+					.catch(error => console.log("error", error));
+			},
+
+			userRegister: data => {
+				var myHeaders = new Headers();
+				//myHeaders.append("Content-Type", "application/json");
+				var raw = JSON.stringify(data);
+
+				var requestOptions = {
+					method: "POST",
+					//	headers: myHeaders,
+					body: raw,
+					redirect: "follow"
+				};
+
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/register", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
