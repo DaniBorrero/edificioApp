@@ -6,7 +6,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			// form
 
-
 			enviaremail: (name, email, text) => {
 				console.log("flux", name, email, text);
 				//var url = "https://olive-gecko-z048x7n7.ws-us18.gitpod.io/api/enviardatos";
@@ -17,7 +16,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 							salen del formulario*/
 
 							From: {
-
 								Email: "tuedificioapp@gmail.com",
 								Name: name
 							},
@@ -29,7 +27,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 								}
 							] /*hasta aca*/,
 							/* Este es el asunto del mail */
-
 
 							Subject: "Correo enviado desde el Formulario",
 							/* Este es el cuerpo del mail */
@@ -102,12 +99,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			userRegister: data => {
 				var myHeaders = new Headers();
-				myHeaders.append("Content-Type", "application/json");
+				//myHeaders.append("Content-Type", "application/json");
 				var raw = JSON.stringify(data);
 
 				var requestOptions = {
 					method: "POST",
-					headers: myHeaders,
+					//	headers: myHeaders,
 					body: raw,
 					redirect: "follow"
 				};
