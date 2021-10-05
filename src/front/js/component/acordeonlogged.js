@@ -78,26 +78,34 @@ export const Acordeonlogged = () => {
 							{["radio"].map(type => (
 								<div key={`inline-${type}`} className="mb-3">
 									<Form.Check
-										inline
+										inline-block
 										label="Quincho"
 										name="group1"
 										type={type}
 										id={`inline-${type}-1`}
 									/>
 									<Form.Check
-										inline
+										inline-block
+										size="lg"
 										label="Gimnasio"
 										name="group1"
 										type={type}
 										id={`inline-${type}-2`}
 									/>
 									<Form.Check
-										inline
+										inline-block
 										label="Piscina"
 										name="group1"
 										type={type}
 										id={`inline-${type}-3`}
 									/>
+									<Button onClick={e => {
+										setData({
+											SubmitEvent()
+										})
+									}} 
+									type="submit"
+									variant="primary">Reservar</Button>{" "}
 								</div>
 							))}
 						</Form>
