@@ -14,6 +14,7 @@ import { NavBar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Acordeonlogged } from "./component/acordeonlogged";
 import { Marketplace } from "./pages/marketplace";
+import { DiarioMural } from "./pages/diariomural";
 
 //create your first component
 const Layout = () => {
@@ -41,6 +42,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/marketplace">
 							<Marketplace />
+						</Route>
+						<Route exact path="/diariomural">
+							<DiarioMural />
 						</Route>
 					</Switch>
 				</ScrollToTop>
