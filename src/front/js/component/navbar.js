@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Container, Navbar, NavDropdown, Nav, Button } from "react-bootstrap";
+import { Container, Navbar, Nav } from "react-bootstrap";
 import logoIMG from "../../img/logo.png";
 
 export const NavBar = () => {
 	return (
 		<>
-			<Navbar className="bg-navbarGradiente" expand="lg" fixed="top">
+			<Navbar className="bg-navbarGradiente transparent" expand="lg" fixed="top">
 				<Container>
 					<Link to="/">
 						<Navbar.Brand>
