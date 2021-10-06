@@ -30,12 +30,12 @@ export const FormContact = () => {
 						<Row>
 							<Col md={6} className="info-box">
 								<Icon icon="bx:bx-envelope" color="#5c7aea" width="52" height="52" />
-								<h3 className="d-inline">Email Us</h3>
+								<h3 className="d-inline">Escríbenos</h3>
 								<p>tuedificioapp@gmail.com</p>
 							</Col>
 							<Col md={6} className="info-box">
 								<Icon icon="bx:bx-phone" color="#5c7aea" width="52" height="52" />
-								<h3 className="d-inline">Call Us</h3>
+								<h3 className="d-inline">Contáctanos</h3>
 								<p>+56 222 232 233</p>
 							</Col>
 						</Row>

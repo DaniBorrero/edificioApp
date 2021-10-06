@@ -16,7 +16,9 @@ export const NavBar = () => {
 
 					<Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
 						<Nav className="me-auto">
-							<Nav.Link href="/registry">Iniciar Sesión</Nav.Link>
+							<Nav.Link href="/registry" style={{ color: "white" }}>
+								Iniciar Sesión
+							</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
 				</Container>
