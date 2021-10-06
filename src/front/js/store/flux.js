@@ -58,7 +58,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/enviardatos", requestOptions)
+				fetch("https://3001-plum-heron-kbcr7qj4.ws-us18.gitpod.io/api/enviardatos", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -88,7 +88,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/user", requestOptions)
+				fetch("https://3001-plum-heron-kbcr7qj4.ws-us18.gitpod.io/api/user", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						sessionStorage.setItem("token", result.token);
@@ -97,19 +97,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("error", error));
 			},
 
-			userRegister: data => {
-				var myHeaders = new Headers();
+			userRegister: (email, pass, phone, name) => {
+				console.log(email, pass, phone, name);
+				//var myHeaders = new Headers();
 				//myHeaders.append("Content-Type", "application/json");
-				var raw = JSON.stringify(data);
+				var raw = JSON.stringify({
+					full_name: name,
+					email: email,
+					password: pass,
+					phone: phone,
+					numero_apartment: null,
+					id_building: null,
+					numero_bodega: null
+				});
 
 				var requestOptions = {
 					method: "POST",
-					//	headers: myHeaders,
+					headers: { "Content-Type": "application/json" },
 					body: raw,
 					redirect: "follow"
 				};
 
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/register", requestOptions)
+				fetch("https://3001-plum-heron-kbcr7qj4.ws-us18.gitpod.io/api/register", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));

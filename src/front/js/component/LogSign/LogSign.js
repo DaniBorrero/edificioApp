@@ -14,6 +14,7 @@ export const LogSign = () => {
 	const [pass, setPass] = useState("");
 	const [name, setName] = useState("");
 	const [phone, setPhone] = useState();
+	const [numeroApartment, setNumeroApartment] = useState();
 	//Para iniciar session
 	//podriamos usar los mismos hooks?
 	const [emailLogin, setEmailLogin] = useState("");
@@ -26,13 +27,19 @@ export const LogSign = () => {
 		() => {
 			// console.log(data);
 			// console.log(login);
-			actions.userRegister(data);
+			//actions.userRegister(data);
 		},
 		[data]
 	);
 	const handlerOnclick = e => {
 		e.preventDefault();
 		actions.loginUser(emailLogin, passLogin);
+	};
+
+	const handlersubmit = e => {
+		e.preventDefault();
+		actions.userRegister(email, pass, phone, name);
+		console.log("hola");
 	};
 
 	return (
@@ -73,7 +80,7 @@ export const LogSign = () => {
 				</div>
 				<div className="user signupBx">
 					<div className="formBx">
-						<form>
+						<form onSubmit={e => handlersubmit(e)}>
 							<h2>Crea una cuenta</h2>
 							<input
 								type="email"
@@ -99,31 +106,26 @@ export const LogSign = () => {
 									setName(e.target.value);
 								}}
 							/>
-							<input type="text" name="" placeholder="Departamento" />
-							<input type="text" name="" placeholder="torre" />
 							<input
 								type="text"
 								name=""
-								placeholder="Telefono +56..."
+								placeholder="Departamento"
+								onChange={e => {
+									setNumeroApartment(parseInt(e.target.value));
+								}}
+							/>
+
+							<input
+								type="text"
+								name=""
+								placeholder="Telefono 56..."
 								onChange={e => {
 									setPhone(parseInt(e.target.value));
 								}}
 							/>
-							<input type="text" name="" placeholder="Numero bodega" />
-							<input type="text" name="" placeholder="Numero estacionamiento" />
-							<input
-								type="submit"
-								name=""
-								value="Registrar"
-								onClick={e => {
-									setData({
-										full_name: name,
-										email: email,
-										password: pass,
-										phone: phone
-									});
-								}}
-							/>
+							{/* <input type="text" name="" placeholder="Numero bodega" />
+							<input type="text" name="" placeholder="Numero estacionamiento" /> */}
+							<input type="submit" name="ingresar" value="Registrar" onSubmit={e => handlersubmit(e)} />
 							<p className="signup">
 								¿ya tienes una cuenta?{" "}
 								<a href="#" onClick={e => toggleFormRegister()}>
