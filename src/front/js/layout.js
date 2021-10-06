@@ -15,6 +15,7 @@ import injectContext from "./store/appContext";
 import { NavBar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Acordeonlogged } from "./component/acordeonlogged";
+import { Marketplace } from "./pages/marketplace";
 
 //create your first component
 const Layout = () => {
@@ -42,6 +43,9 @@ const Layout = () => {
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
+						</Route>
+						<Route exact path="/marketplace">
+							<Marketplace />
 						</Route>
 					</Switch>
 				</ScrollToTop>

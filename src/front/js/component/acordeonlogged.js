@@ -75,6 +75,42 @@ export const Acordeonlogged = () => {
 					<Card.Body style={{ height: "400px" }}>
 						<Form>
 							<DateP />
+<<<<<<< HEAD
+=======
+							{["radio"].map(type => (
+								<div key={`inline-${type}`} className="mb-3">
+									<Form.Check
+										inline-block
+										label="Quincho"
+										name="group1"
+										type={type}
+										id={`inline-${type}-1`}
+									/>
+									<Form.Check
+										inline-block
+										size="lg"
+										label="Gimnasio"
+										name="group1"
+										type={type}
+										id={`inline-${type}-2`}
+									/>
+									<Form.Check
+										inline-block
+										label="Piscina"
+										name="group1"
+										type={type}
+										id={`inline-${type}-3`}
+									/>
+									<Button onClick={e => {
+										setData({
+											SubmitEvent()
+										})
+									}} 
+									type="submit"
+									variant="primary">Reservar</Button>{" "}
+								</div>
+							))}
+>>>>>>> 012906e37f2c31e41f22df29dbed890ea73d51ae
 						</Form>
 					</Card.Body>
 				</Accordion.Collapse>

@@ -232,24 +232,7 @@ def get_all_marketplace():
        response_body={
             "msg": "Anuncio Registrado en el Marketplace"
        }
-       return jsonify(response_body),200      
-@api.route('/perfilprivado', methods = ['POST'])
-@jwt_required()
-def get_datos():
-    '''
-    body = request.get_json()
-    if body is None:
-        return "The request body is null", 400
-    if 'token' not in body:
-        return 'Inicia sesion primero', 400 '''   
-    token = get_jwt_identity()
-    checkUser = User.query.filter_by(email = token).first()    
-    checkAdmin = Administrator.query.filter_by(email = token).first()
-
-    if checkUser : 
-        return jsonify(checkUser.serialize())
-    if checkAdmin : 
-        return jsonify(checkUser)  
+       return jsonify(response_body),200        
               
 @api.route('/spacereservation', methods=['GET','POST'])
 def get_all_spacereservation():
@@ -330,7 +313,7 @@ def post_user():
 #     }
 #     return jsonify(response_body),200
 
-#FIN Reserva espacio comun
+# #FIN Reserva espacio comun
 
 
 # Post Enviar email Formulario contacto    

@@ -9,12 +9,11 @@ class User(db.Model):
      phone=  db.Column(db.Integer, unique=True,nullable=False)
      email = db.Column(db.String(50), unique=True, nullable=False)
      password = db.Column(db.String(16), unique=False, nullable=False)
-     id_apartment= db.Column(db.Integer, db.ForeignKey('apartment.id_apartment'))
-     numero_bodega= db.Column(db.Integer,unique=True )
+     numero_apartment= db.Column(db.Integer)
+     numero_bodega= db.Column(db.Integer,unique=True)
      id_building= db.Column(db.Integer, db.ForeignKey('building.id_building'))
      relacionmarketplace= db.relationship("Marketplace")
      relacionreservaspacio=db.relationship("SpaceReservation")
-     relacionApartment =db.relationship("Apartment")
 
      def serialize(self):
         return {
@@ -22,7 +21,7 @@ class User(db.Model):
             "full_name": self.full_name,
             "phone": self.phone,
             "email": self.email,
-            "id_apartment":self.id_apartment,
+            "numero_apartment":self.numero_apartment,
             "numero_bodega":self.numero_bodega,
             "id_building": self.id_building            
            
@@ -32,7 +31,6 @@ class Apartment(db.Model):
     id_apartment = db.Column(db.Integer, primary_key=True)
     num_apartment= db.Column(db.Integer,unique=True,nullable=False)     
     floor_apartment= db.Column(db.Integer,nullable=False)
-    relacionuser = db.relationship("User")  
     relacionbuilding= db.relationship("Building")
 
     def serialize(self):

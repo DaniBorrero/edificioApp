@@ -41,12 +41,6 @@ export const Home = () => {
 			<div className="container my-5">
 				<CardGroup className="container my-5">
 					<Card className="mx-3 border-none">
-						<Card.Img
-							variant="top"
-							src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7MbRrwlP4MtsSXkIG-XBxvCnAQi5NuzQpqQ&usqp=CAU"
-						/>
-					</Card>
-					<Card className="mx-3 border-none">
 						<FormContact />
 					</Card>
 				</CardGroup>

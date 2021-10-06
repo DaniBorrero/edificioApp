@@ -97,14 +97,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("error", error));
 			},
 
-			userRegister: data => {
-				var myHeaders = new Headers();
-				myHeaders.append("Content-Type", "application/json");
-				var raw = JSON.stringify(data);
+			userRegister: (email, pass, phone, name) => {
+				console.log(email, pass, phone, name);
+				//var myHeaders = new Headers();
+				//myHeaders.append("Content-Type", "application/json");
+				var raw = JSON.stringify({
+					full_name: name,
+					email: email,
+					password: pass,
+					phone: phone,
+					numero_apartment: null,
+					id_building: null,
+					numero_bodega: null
+				});
 
 				var requestOptions = {
 					method: "POST",
-					headers: myHeaders,
+					headers: { "Content-Type": "application/json" },
 					body: raw,
 					redirect: "follow"
 				};
