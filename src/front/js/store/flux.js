@@ -32,6 +32,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							/* Este es el cuerpo del mail */
 
 							TextPart: text + email,
+
 							/* aca es un html que puedes poner lindo para el mail */
 
 							HTMLPart:
@@ -56,6 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
+
 				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/enviardatos", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
@@ -112,6 +114,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			},
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
