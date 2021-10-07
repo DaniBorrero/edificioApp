@@ -7,14 +7,12 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { RegistryForm } from "./pages/registry";
 import { FuncionesPrincipales } from "./pages/logged";
-
 import injectContext from "./store/appContext";
-
 import { NavBar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Acordeonlogged } from "./component/acordeonlogged";
 import { Marketplace } from "./pages/marketplace";
-
+import { AdminOperation } from "./pages/operationadministrator";
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -36,11 +34,11 @@ const Layout = () => {
 						<Route exact path="/logged">
 							<Acordeonlogged />
 						</Route>
-						<Route>
-							<h1>Not found!</h1>
-						</Route>
 						<Route exact path="/marketplace">
 							<Marketplace />
+						</Route>
+						<Route exact path="/operationadministrator">
+							<AdminOperation />
 						</Route>
 					</Switch>
 				</ScrollToTop>

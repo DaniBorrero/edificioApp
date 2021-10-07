@@ -99,13 +99,9 @@ export const Acordeonlogged = () => {
 										type={type}
 										id={`inline-${type}-3`}
 									/>
-									<Button onClick={e => {
-										setData({
-											SubmitEvent()
-										})
-									}} 
-									type="submit"
-									variant="primary">Reservar</Button>{" "}
+									<Button onClick={e => {}} type="submit" variant="primary">
+										Reservar
+									</Button>{" "}
 								</div>
 							))}
 						</Form>
