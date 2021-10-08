@@ -1,8 +1,11 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	store: {
-		logged: false;
-	}
 	return {
+		store: {
+			//logged: false,
+			espacio_comun: [], // arrglo de objeto
+			diario_mural: []
+		},
+
 		actions: {
 			registraredificio: (NameBuilding, Address, Region, Comuna) => {
 				console.log("flux edificio", NameBuilding, Address, Region, Comuna);
@@ -57,13 +60,51 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			}, //fin de regitrar espacio comun
+			getespaciocomun: () => {
+				const store = getStore();
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/commonSpace")
+					.then(response => response.json())
+					.then(result => {
+						setStore({ espacio_comun: result });
+						//console.log(store.espacio_comun);
+					})
+					.catch(error => console.log("error", error));
+			}, //fin de espacio comun
+			registrardiariomural: (Titulo, TipoPublicacion, Anuncio) => {
+				console.log("flux registrar diario mural", Titulo, TipoPublicacion, Anuncio);
+				var raw = JSON.stringify({
+					title_announcement: Titulo,
+					type_publication: TipoPublicacion,
+					announcement: Anuncio
+				});
+				var requestOptions = {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: raw,
+					redirect: "follow"
+				};
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/diariomural", requestOptions)
+					.then(response => response.text())
+					.then(result => console.log(result))
+					.catch(error => console.log("error", error));
+			}, //fin de registrardiariomural
+			getdiariomural: () => {
+				const store = getStore();
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/diariomural")
+					.then(response => response.json())
+					.then(result => {
+						setStore({ diario_mural: result });
+						//console.log(store.espacio_comun);
+					})
+					.catch(error => console.log("error", error));
+			}, //fin de getdirariomural
 			enviaremail: (name, email, text) => {
 				console.log("flux", name, email, text);
 				var data = {
 					Messages: [
 						{
 							/* Quién envía el mail, estos valores
-								salen del formulario*/
+										salen del formulario*/
 
 							From: {
 								Email: "tuedificioapp@gmail.com",
