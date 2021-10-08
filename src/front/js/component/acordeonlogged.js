@@ -99,9 +99,9 @@ export const Acordeonlogged = () => {
 										type={type}
 										id={`inline-${type}-3`}
 									/>
-									<Button 
-									type="submit"
-									variant="primary">Reservar</Button>{" "}
+									<Button type="submit" variant="primary">
+										Reservar
+									</Button>{" "}
 								</div>
 							))}
 						</Form>
