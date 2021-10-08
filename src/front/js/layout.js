@@ -13,6 +13,8 @@ import { Footer } from "./component/footer";
 import { Acordeonlogged } from "./component/acordeonlogged";
 import { Marketplace } from "./pages/marketplace";
 import { AdminOperation } from "./pages/operationadministrator";
+import { DiarioMural } from "./pages/diariomural";
+
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -39,6 +41,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/operationadministrator">
 							<AdminOperation />
+					    </Route> 		
+						<Route exact path="/diariomural">
+							<DiarioMural />
 						</Route>
 					</Switch>
 				</ScrollToTop>
