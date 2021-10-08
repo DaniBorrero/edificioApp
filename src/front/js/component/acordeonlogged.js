@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Accordion, Card, Form, Button, Col } from "react-bootstrap";
 import { DateP } from "./datepicker";
 
@@ -75,35 +75,9 @@ export const Acordeonlogged = () => {
 					<Card.Body style={{ height: "400px" }}>
 						<Form>
 							<DateP />
-							{["radio"].map(type => (
-								<div key={`inline-${type}`} className="mb-3">
-									<Form.Check
-										inline-block
-										label="Quincho"
-										name="group1"
-										type={type}
-										id={`inline-${type}-1`}
-									/>
-									<Form.Check
-										inline-block
-										size="lg"
-										label="Gimnasio"
-										name="group1"
-										type={type}
-										id={`inline-${type}-2`}
-									/>
-									<Form.Check
-										inline-block
-										label="Piscina"
-										name="group1"
-										type={type}
-										id={`inline-${type}-3`}
-									/>
-									<Button 
-									type="submit"
-									variant="primary">Reservar</Button>{" "}
-								</div>
-							))}
+
+							<button /* onClick={actions.reservaEsopacio(espacio, date)}*/>Reservar</button>
+
 						</Form>
 					</Card.Body>
 				</Accordion.Collapse>
