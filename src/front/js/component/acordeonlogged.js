@@ -75,7 +75,9 @@ export const Acordeonlogged = () => {
 					<Card.Body style={{ height: "400px" }}>
 						<Form>
 							<DateP />
+
 							<button /* onClick={actions.reservaEsopacio(espacio, date)}*/>Reservar</button>
+
 						</Form>
 					</Card.Body>
 				</Accordion.Collapse>
