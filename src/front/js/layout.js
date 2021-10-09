@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { RegistryForm } from "./pages/registry";
@@ -8,31 +8,34 @@ import { Marketplace } from "./pages/marketplace";
 import { AdminOperation } from "./pages/operationadministrator";
 import { DiarioMural } from "./pages/diariomural";
 import { NavbarOne } from "./component/NavbarOne";
-import { Hero } from "./component/Hero";
-import { SliderData } from "./component/data/SliderData";
 import { HomeOne } from "./pages/HomeOne";
 import GlobalStyle from "./globalstyle";
 import { Dropdown } from "react-bootstrap";
-import { Footer } from "./component/Footer";
 import { LoginAdmin } from "./component/LoginAdmin/LoginAdmin";
+import { Footer } from "./component/Footer";
 
-//create your first component
 const Layout = () => {
+	const [open, setOpen] = useState(false);
+
+	const toggle = () => {
+		setOpen(!open);
+		console.log("funciona");
+	};
+
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
 
 	return (
 		<div>
+			<GlobalStyle />
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<GlobalStyle />
-					<NavbarOne />
-					<Dropdown />
+					<NavbarOne toggle={toggle} />
+					<Dropdown open={open} toggle={toggle} />
 					<Switch>
 						<Route exact path="/">
 							<HomeOne />
-							<Footer />
 						</Route>
 						<Route exact path="/registry">
 							<RegistryForm />
@@ -54,6 +57,7 @@ const Layout = () => {
 						</Route>
 					</Switch>
 				</ScrollToTop>
+				<Footer />
 			</BrowserRouter>
 		</div>
 	);
