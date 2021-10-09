@@ -1,18 +1,24 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Accordion, Container, Modal, Tabs, Table, Tab, Button, Card, Form, Col } from "react-bootstrap";
+import { FaRegTrashAlt } from "react-icons/fa";
+import context from "react-bootstrap/esm/AccordionContext";
 
 export const AdminAcordeon = () => {
 	const { store, actions } = useContext(Context);
 	useEffect(
 		() => {
+			actions.getdepartamento();
 			actions.getespaciocomun();
 			actions.getdiariomural();
 		},
+
+		[store.departamento],
 		[store.espacio_comun],
 		[store.diario_mural]
 	);
-	console.log(store.espacio_comun);
+
+	//console.log(store.espacio_comun);
 	// Hooks Building//
 	const [NameBuilding, setNameBuilding] = useState("");
 	const [Address, setAddress] = useState("");
@@ -38,12 +44,22 @@ export const AdminAcordeon = () => {
 	const handlerOnclick = e => {
 		e.preventDefault();
 		actions.registraredificio(NameBuilding, Address, Region, Comuna);
+	};
+	const handlerOnclickDpto = e => {
+		e.preventDefault();
 		actions.registrarapartamento(NumApartment, FloorApartment);
+	};
+	const handlerOnclickEspComun = e => {
+		e.preventDefault();
 		actions.registrarespaciocomun(CommonSpace, Aforo);
+	};
+	const handlerOnclickDiarioMural = e => {
+		e.preventDefault();
 		actions.registrardiariomural(Titulo, TipoPublicacion, Anuncio);
 	};
 
 	return (
+		//Hooks Modal
 		<Accordion defaultActiveKey="0">
 			<Card>
 				<Card.Header>
@@ -52,49 +68,104 @@ export const AdminAcordeon = () => {
 					</Accordion.Toggle>
 				</Card.Header>
 				<Accordion.Collapse eventKey="0">
-					<Card.Body>
-						<Form onSubmit={handlerOnclick}>
-							<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-								<Form.Label>Nombre del Edificio:</Form.Label>
-								<Form.Control
-									type="text"
-									placeholder="Coloque el Nombre del Edificio"
-									onChange={e => setNameBuilding(e.target.value)}
-									value={NameBuilding}
-								/>
-							</Form.Group>
-							<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-								<Form.Label>Direccion del Edificio:</Form.Label>
-								<Form.Control
-									type="text"
-									placeholder="Coloque la Dirección"
-									onChange={e => setAddress(e.target.value)}
-									value={Address}
-								/>
-							</Form.Group>
-							<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-								<Form.Label>Region:</Form.Label>
-								<Form.Control
-									type="text"
-									placeholder="Coloque la Región"
-									onChange={e => setRegion(e.target.value)}
-									value={Region}
-								/>
-							</Form.Group>
-							<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-								<Form.Label>Comuna:</Form.Label>
-								<Form.Control
-									type="text"
-									placeholder="Coloque la Comuna"
-									onChange={e => setComuna(e.target.value)}
-									value={Comuna}
-								/>
-							</Form.Group>
-							<Button ClassName="btn btn-primary" size="sm" type="submit">
-								Registrar Edificio
-							</Button>
-						</Form>
-					</Card.Body>
+					<Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+						<Tab eventKey="home" title="Registrar">
+							<Card.Body>
+								<Form onSubmit={handlerOnclick}>
+									<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+										<Form.Label>Nombre del Edificio:</Form.Label>
+										<Form.Control
+											type="text"
+											placeholder="Coloque el Nombre del Edificio"
+											onChange={e => setNameBuilding(e.target.value)}
+											value={NameBuilding}
+										/>
+									</Form.Group>
+									<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+										<Form.Label>Direccion del Edificio:</Form.Label>
+										<Form.Control
+											type="text"
+											placeholder="Coloque la Dirección"
+											onChange={e => setAddress(e.target.value)}
+											value={Address}
+										/>
+									</Form.Group>
+									<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+										<Form.Label>Region:</Form.Label>
+										<Form.Control
+											type="text"
+											placeholder="Coloque la Región"
+											onChange={e => setRegion(e.target.value)}
+											value={Region}
+										/>
+									</Form.Group>
+									<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+										<Form.Label>Comuna:</Form.Label>
+										<Form.Control
+											type="text"
+											placeholder="Coloque la Comuna"
+											onChange={e => setComuna(e.target.value)}
+											value={Comuna}
+										/>
+									</Form.Group>
+									<Button ClassName="btn btn-primary" size="sm" type="submit" onClick={handleShow}>
+										Registrar Edificio
+									</Button>
+									<Modal show={show} onHide={handleClose}>
+										<Modal.Header closeButton>
+											<Modal.Title>Enhorabuena!</Modal.Title>
+										</Modal.Header>
+										<Modal.Body> Registro Exitoso...</Modal.Body>
+										<Modal.Footer>
+											<Button variant="info" size="sm" onClick={handleClose}>
+												Cerrar
+											</Button>
+										</Modal.Footer>
+									</Modal>
+								</Form>
+							</Card.Body>
+						</Tab>
+						<Tab eventKey="profile" title="Listar Edificio">
+							<Card.Body>
+								<Table striped bordered hover size="sm">
+									<thead>
+										<tr>
+											<th />
+											<th>Id</th>
+											<th>Nombre</th>
+											<th>Direccion</th>
+											<th>Region</th>
+											<th>Comuna</th>
+										</tr>
+									</thead>
+									<tbody>
+										{store.edificio.map((elemento, posicion) => {
+											return (
+												<tr key={posicion}>
+													<td>
+														<Button
+															className="btn btn-light"
+															type="button"
+															onClick={() => {
+																actions.borrarEdificio(elemento);
+																console.log("hola");
+															}}>
+															<i className="fas fa-trash-alt"> </i>
+														</Button>{" "}
+													</td>
+													<td>{elemento.id_building}</td>
+													<td> {elemento.name}</td>
+													<td>{elemento.adress}</td>
+													<td>{elemento.region}</td>
+													<td>{elemento.comuna}</td>
+												</tr>
+											);
+										})}
+									</tbody>
+								</Table>
+							</Card.Body>
+						</Tab>
+					</Tabs>
 				</Accordion.Collapse>
 			</Card>
 			<Card>
@@ -104,34 +175,77 @@ export const AdminAcordeon = () => {
 					</Accordion.Toggle>
 				</Card.Header>
 				<Accordion.Collapse eventKey="1">
-					<Card.Body>
-						<Form onSubmit={handlerOnclick}>
-							<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-								<Form.Label>Numero de Departamento</Form.Label>
-								<Form.Control
-									type="text"
-									placeholder="Coloque el Numero de Dpto"
-									onChange={e => setNumApartment(e.target.value)}
-									value={NumApartment}
-								/>
-							</Form.Group>
-							<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-								<Form.Label>Piso:</Form.Label>
-								<Form.Control
-									type="text"
-									placeholder="Coloque el piso"
-									onChange={e => setFloorApartment(e.target.value)}
-									value={FloorApartment}
-								/>
-							</Form.Group>
-							<Button ClassName="btn btn-primary" size="sm" type="submit">
-								Registrar Depto
-							</Button>
-						</Form>
-					</Card.Body>
+					<Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+						<Tab eventKey="home" title="Registrar">
+							<Card.Body>
+								<Form onSubmit={handlerOnclickDpto}>
+									<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+										<Form.Label>Numero de Departamento</Form.Label>
+										<Form.Control
+											type="text"
+											placeholder="Coloque el Numero de Dpto"
+											onChange={e => setNumApartment(e.target.value)}
+											value={NumApartment}
+										/>
+									</Form.Group>
+									<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+										<Form.Label>Piso:</Form.Label>
+										<Form.Control
+											type="text"
+											placeholder="Coloque el piso"
+											onChange={e => setFloorApartment(e.target.value)}
+											value={FloorApartment}
+										/>
+									</Form.Group>
+									<Button ClassName="btn btn-primary" size="sm" type="submit" onClick={handleShow}>
+										Registrar Depto
+									</Button>
+									<Modal show={show} onHide={handleClose}>
+										<Modal.Header closeButton>
+											<Modal.Title>Enhorabuena!</Modal.Title>
+										</Modal.Header>
+										<Modal.Body> Registro Exitoso...</Modal.Body>
+										<Modal.Footer>
+											<Button variant="info" size="sm" onClick={handleClose}>
+												Cerrar
+											</Button>
+										</Modal.Footer>
+									</Modal>
+								</Form>
+							</Card.Body>
+						</Tab>
+						<Tab eventKey="profile" title="Listar Departamento">
+							<Card.Body>
+								<Table striped bordered hover size="sm">
+									<thead>
+										<tr>
+											<th />
+											<th>Id</th>
+											<th>Numero Depto</th>
+											<th>Piso</th>
+										</tr>
+									</thead>
+									<tbody>
+										{store.departamento.map((elemento, posicion) => {
+											return (
+												<tr key={posicion}>
+													<td>
+														{" "}
+														<i className="fas fa-trash-alt"> </i>
+													</td>
+													<td>{elemento.id_apartment}</td>
+													<td> {elemento.num_apartment}</td>
+													<td>{elemento.floor_apartment}</td>
+												</tr>
+											);
+										})}
+									</tbody>
+								</Table>
+							</Card.Body>
+						</Tab>
+					</Tabs>
 				</Accordion.Collapse>
 			</Card>
-
 			<Card>
 				<Card.Header>
 					<Accordion.Toggle as={Card.Header} eventKey="2">
@@ -142,7 +256,7 @@ export const AdminAcordeon = () => {
 					<Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
 						<Tab eventKey="home" title="Registrar">
 							<Card.Body>
-								<Form onSubmit={handlerOnclick}>
+								<Form onSubmit={handlerOnclickEspComun}>
 									<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
 										<Form.Label>Espacio Comun </Form.Label>
 										<Form.Control
@@ -166,9 +280,9 @@ export const AdminAcordeon = () => {
 									</Button>
 									<Modal show={show} onHide={handleClose}>
 										<Modal.Header closeButton>
-											<Modal.Title>Enhorabuena</Modal.Title>
+											<Modal.Title>Enhorabuena!</Modal.Title>
 										</Modal.Header>
-										<Modal.Body>Espacio Comun Registrado!</Modal.Body>
+										<Modal.Body>Registro Exitoso...</Modal.Body>
 										<Modal.Footer>
 											<Button variant="info" size="sm" onClick={handleClose}>
 												Cerrar
@@ -215,7 +329,7 @@ export const AdminAcordeon = () => {
 					<Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
 						<Tab eventKey="home" title="Registrar">
 							<Card.Body>
-								<Form onSubmit={handlerOnclick}>
+								<Form onSubmit={handlerOnclickDiarioMural}>
 									<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
 										<Form.Label>Titulo </Form.Label>
 										<Form.Control
@@ -250,7 +364,7 @@ export const AdminAcordeon = () => {
 										<Modal.Header closeButton>
 											<Modal.Title>Enhorabuena!</Modal.Title>
 										</Modal.Header>
-										<Modal.Body>Anuncio Registrado!</Modal.Body>
+										<Modal.Body>Registro Exitoso...</Modal.Body>
 										<Modal.Footer>
 											<Button variant="info" size="sm" onClick={handleClose}>
 												Cerrar

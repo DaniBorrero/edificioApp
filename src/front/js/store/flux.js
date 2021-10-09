@@ -3,7 +3,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			//logged: false,
 			espacio_comun: [], // arrglo de objeto
-			diario_mural: []
+			diario_mural: [],
+			edificio: [],
+			departamento: [],
+			marketplace:[],
+			token: null,
+			user: ""
 		},
 
 		actions: {
@@ -26,6 +31,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			}, // fin de registrar edificio
+			getedificio: () => {
+				const store = getStore();
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/building")
+					.then(response => response.json())
+					.then(result => {
+						setStore({ edificio: result });
+						//console.log(store.espacio_comun);
+					})
+					.catch(error => console.log("error", error));
+			}, // fin de get edificio
 			registrarapartamento: (NumApartment, FloorApartment) => {
 				console.log("flux apartamento", NumApartment, FloorApartment);
 				var raw = JSON.stringify({
@@ -43,6 +58,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			}, // fin de registrar apartamento
+			getdepartamento: () => {
+				const store = getStore();
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/apartment")
+					.then(response => response.json())
+					.then(result => {
+						setStore({ departamento: result });
+						//console.log(store.espacio_comun);
+					})
+					.catch(error => console.log("error", error));
+			}, //fin getdepartamento
 			registrarespaciocomun: (CommonSpace, Aforo) => {
 				console.log("flux registrar espacio comun", CommonSpace, Aforo);
 				var raw = JSON.stringify({
@@ -98,6 +123,62 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.log("error", error));
 			}, //fin de getdirariomural
+            registrarmarketplace:(Titulo, TipoPublicacion, Anuncio)=>{
+				console.log("flux registrar maretplace", Titulo, TipoPublicacion, Anuncio);
+				var raw = JSON.stringify({
+					title_announcement: Titulo,
+					type_publication: TipoPublicacion,
+					announcement: Anuncio
+				});
+				var requestOptions = {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: raw,
+					redirect: "follow"
+				};
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/marketplace", requestOptions)
+					.then(response => response.text())
+					.then(result => console.log(result))
+					.catch(error => console.log("error", error));
+			}, //fin de registrarmarketplace
+			getmarketplace:()=>{
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/marketplace")
+					.then(response => response.json())
+					.then(result => {
+						setStore({marketplace : result });
+						//console.log(store.espacio_comun);
+					})
+					.catch(error => console.log("error", error));
+
+
+
+			},//fin de getmarketplace			
+
+			registrarespacioreservado: () => {
+				console.log("flux registrar espacio reservado", startDate, cantidadhoras);
+				var raw = JSON.stringify({
+					date_reservation: startDate,
+					reservation_time: cantidadhoras
+				});
+				var requestOptions = {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: raw,
+					redirect: "follow"
+				};
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/spacereservation", requestOptions)
+					.then(response => response.text())
+					.then(result => console.log(result))
+					.catch(error => console.log("error", error));
+			},
+			//function borrar edificio
+			borrarEdificio: elemento => {
+				const store = getStore();
+				const edifAux = store.edificio.filter(key => key !== elemento);
+				setStore({ edificio: edifAux });
+				console.log(store.edificio);
+				//registraredificio(edifAux.NameBuilding, edifAux.Address, edifAux.Region, edifAux.Comuna);
+			}, //fin de borrar edificio
 			enviaremail: (name, email, text) => {
 				console.log("flux", name, email, text);
 				var data = {
@@ -147,7 +228,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/enviardatos", requestOptions)
+
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/enviardatos", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -164,7 +246,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ message: data.message }))
 					.catch(error => console.log("Error loading message from backend", error));
 			},
+
 			loginUser: (emailLogin, passLogin) => {
+				const store = getStore();
 				var myHeaders = new Headers();
 				myHeaders.append("Content-Type", "application/json");
 				var raw = JSON.stringify({ email: emailLogin, password: passLogin });
@@ -176,11 +260,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/user", requestOptions)
-					.then(response => response.text())
-					.then(result => {
-						sessionStorage.setItem("token", result.token);
-						setStore({ logged: true });
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/user", requestOptions)
+					.then(response => response.json())
+					.then(res => {
+						localStorage.setItem("token", res.token);
+						setStore({ token: res.token });
+						setStore({ user: res.info_user });
+						alert("Bienvenido: " + store.user.full_name);
+						location = "/logged";
 					})
 					.catch(error => console.log("error", error));
 			}, // fin loginUser
@@ -206,9 +293,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/register", requestOptions)
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/register", requestOptions)
 					.then(response => response.text())
-					.then(result => console.log(result))
+					.then(result => {
+						console.log(result);
+						location = "/registry";
+					})
 					.catch(error => console.log("error", error));
 			}, // fin de UserRegister
 

@@ -15,6 +15,7 @@ export const FormContact = () => {
 		e.preventDefault();
 
 		actions.enviaremail(name, email, text);
+
 		// aqui debeir el actions enviar email y con la variable form actions.enviaremail(form)
 	};
 

@@ -9,14 +9,6 @@ export const DiarioMural = () => {
 			<h1 className="Muralplaceheader">Diario Mural</h1>
 			<CardGroup className="containermural row">
 				<CardMural />
-				<CardMural />
-				<CardMural />
-				<CardMural />
-				<CardMural />
-				<CardMural />
-				<CardMural />
-				<CardMural />
-				<CardMural />
 			</CardGroup>
 		</div>
 	);
