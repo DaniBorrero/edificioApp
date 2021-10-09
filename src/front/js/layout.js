@@ -34,9 +34,7 @@ const Layout = () => {
 						<Route exact path="/registry">
 							<RegistryForm />
 						</Route>
-						<Route exact path="/marketplace">
-							<h1>Aca debemos mostrar todos los datos del marketplace</h1>
-						</Route>
+
 						<Route exact path="/logged">
 							<LoggedScreen />
 						</Route>

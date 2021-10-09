@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			diario_mural: [],
 			edificio: [],
 			departamento: [],
-			marketplace:[],
+			marketplace: [],
 			token: null,
 			user: ""
 		},
@@ -123,7 +123,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.log("error", error));
 			}, //fin de getdirariomural
-            registrarmarketplace:(Titulo, TipoPublicacion, Anuncio)=>{
+			registrarmarketplace: (Titulo, TipoPublicacion, Anuncio) => {
 				console.log("flux registrar maretplace", Titulo, TipoPublicacion, Anuncio);
 				var raw = JSON.stringify({
 					title_announcement: Titulo,
@@ -141,18 +141,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			}, //fin de registrarmarketplace
-			getmarketplace:()=>{
+			getmarketplace: () => {
 				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/marketplace")
 					.then(response => response.json())
 					.then(result => {
-						setStore({marketplace : result });
+						setStore({ marketplace: result });
 						//console.log(store.espacio_comun);
 					})
 					.catch(error => console.log("error", error));
-
-
-
-			},//fin de getmarketplace			
+			}, //fin de getmarketplace
 
 			registrarespacioreservado: () => {
 				console.log("flux registrar espacio reservado", startDate, cantidadhoras);
@@ -229,7 +226,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/enviardatos", requestOptions)
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/enviardatos", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -260,7 +257,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/user", requestOptions)
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/user", requestOptions)
 					.then(response => response.json())
 					.then(res => {
 						localStorage.setItem("token", res.token);
@@ -293,7 +290,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/register", requestOptions)
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/register", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);

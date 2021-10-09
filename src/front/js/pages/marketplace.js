@@ -10,14 +10,6 @@ export const Marketplace = () => {
 			<h1 className="Marketplaceheader">Marketplace</h1>
 			<CardGroup className="containermarket row">
 				<CardMarketplace />
-				<CardMarketplace />
-				<CardMarketplace />
-				<CardMarketplace />
-				<CardMarketplace />
-				<CardMarketplace />
-				<CardMarketplace />
-				<CardMarketplace />
-				<CardMarketplace />
 			</CardGroup>
 		</div>
 	);
