@@ -7,6 +7,8 @@ import "./LogSign.css";
 import { Link } from "react-router-dom";
 
 export const LogSign = () => {
+	const { store, actions } = useContext(Context);
+
 	const [click, setClick] = useState("false");
 	const [data, setData] = useState();
 	const [email, setEmail] = useState("");
