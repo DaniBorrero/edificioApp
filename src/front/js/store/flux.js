@@ -1,9 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			//logged: false,
-			espacio_comun: [], // arrglo de objeto
-			diario_mural: []
+			token: null,
+			user: ""
 		},
 
 		actions: {
@@ -147,7 +146,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/enviardatos", requestOptions)
+
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/enviardatos", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -164,7 +164,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ message: data.message }))
 					.catch(error => console.log("Error loading message from backend", error));
 			},
+
 			loginUser: (emailLogin, passLogin) => {
+				const store = getStore();
 				var myHeaders = new Headers();
 				myHeaders.append("Content-Type", "application/json");
 				var raw = JSON.stringify({ email: emailLogin, password: passLogin });
@@ -176,11 +178,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/user", requestOptions)
-					.then(response => response.text())
-					.then(result => {
-						sessionStorage.setItem("token", result.token);
-						setStore({ logged: true });
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/user", requestOptions)
+					.then(response => response.json())
+					.then(res => {
+						localStorage.setItem("token", res.token);
+						setStore({ token: res.token });
+						setStore({ user: res.info_user });
+						alert("Bienvenido: " + store.user.full_name);
+						location = "/logged";
 					})
 					.catch(error => console.log("error", error));
 			}, // fin loginUser
@@ -206,9 +211,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/register", requestOptions)
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/register", requestOptions)
 					.then(response => response.text())
-					.then(result => console.log(result))
+					.then(result => {
+						console.log(result);
+						location = "/registry";
+					})
 					.catch(error => console.log("error", error));
 			}, // fin de UserRegister
 

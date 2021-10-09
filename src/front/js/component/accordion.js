@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Accordion, Card, Form, Button, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export const AccordionForm = () => {
 	const { store, actions } = useContext(Context);
@@ -53,9 +54,9 @@ export const AccordionForm = () => {
 						}}
 					/>
 				</Form.Group>
-				<Button variant="primary" type="submit">
+				<Link to="/logged" className="btn btn-primary my-3" type="submit">
 					Ingresar
-				</Button>
+				</Link>
 			</Form>
 			<Card>
 				<Card.Header>
