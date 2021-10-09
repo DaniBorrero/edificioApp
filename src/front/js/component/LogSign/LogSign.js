@@ -8,8 +8,6 @@ import { Link } from "react-router-dom";
 
 export const LogSign = () => {
 	const [click, setClick] = useState("false");
-	const { store, actions } = useContext(Context);
-	// Para registrarse
 	const [data, setData] = useState();
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
