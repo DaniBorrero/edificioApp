@@ -1,13 +1,8 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Yaldevi', sans-serif;
-  }
+
   section {
     position: relative;
     min-height: 100vh;
-    background: #fff;
+    background: #6baeb1;
     display:flex;
     justify-content: center;
     align-items: center;
@@ -38,6 +33,19 @@
     height: 100%;
     background: #6baeb1;
     transition: 0.5s;
+  }
+  .imgBx .copy {
+    color: white;
+    font-size: 34px;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    z-index: 2;
+    position: absolute;
+    margin-top: 230px;
+    margin-left: 69px;
+
+   
   }
   section .container .user .imgBx img {
     position: absolute;
@@ -92,22 +100,8 @@
     letter-spacing: 1px;
     transition-duration: 0.5s;
   }
-  section .container .user .formBx form .signup {
-    position: relative;
-    margin-top: 20px;
-    font-size:12px;
-    letter-spacing: 1px;
-    color: #555;
-    text-transform: uppercase;
-    font-weight: 300;
-  }
   
-  section .container .user .formBx form .signup a {
-    font-weight: 600;
-    text-decoration: none;
-    color:#6baeb1;
-  }
-  section .container .signupBx{
+  /* section .container .signupBx{
     pointer-events: none;
   }
   section .container.active .signupBx{
@@ -139,8 +133,8 @@
   }
   section .container.active .signinBx .imgBx{
     left: -100%;
-  }
-  @media (max-width:991px) {
+  } */
+  @media (max-width:768px) {
     section .container{
         max-width: 400px;
     }

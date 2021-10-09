@@ -77,7 +77,6 @@ export const Acordeonlogged = () => {
 							<DateP />
 
 							<button /* onClick={actions.reservaEsopacio(espacio, date)}*/>Reservar</button>
-
 						</Form>
 					</Card.Body>
 				</Accordion.Collapse>
