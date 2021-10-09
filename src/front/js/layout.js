@@ -41,7 +41,7 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/operationadministrator">
 							<AdminOperation />
-					    </Route> 		
+						</Route>
 						<Route exact path="/diariomural">
 							<DiarioMural />
 						</Route>
