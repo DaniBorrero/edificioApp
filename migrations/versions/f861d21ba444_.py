@@ -1,8 +1,20 @@
 """empty message
 
+<<<<<<< HEAD:migrations/versions/f861d21ba444_.py
+Revision ID: f861d21ba444
+Revises: 
+Create Date: 2021-10-08 23:29:33.316125
+=======
+<<<<<<< HEAD:migrations/versions/a6cc19bc57ec_.py
+Revision ID: a6cc19bc57ec
+Revises: 
+Create Date: 2021-10-09 02:05:09.353242
+=======
 Revision ID: 1c82cc7346df
 Revises: 
 Create Date: 2021-10-06 19:39:12.317865
+>>>>>>> bbdb8943bfe62a1ba6cc40cc3e298d23ed034efd:migrations/versions/1c82cc7346df_.py
+>>>>>>> fca1b2b4701f36268c1bae9c4a31b3cb9edcd62d:migrations/versions/1c82cc7346df_.py
 
 """
 from alembic import op
@@ -10,7 +22,15 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
+<<<<<<< HEAD:migrations/versions/f861d21ba444_.py
+revision = 'f861d21ba444'
+=======
+<<<<<<< HEAD:migrations/versions/a6cc19bc57ec_.py
+revision = 'a6cc19bc57ec'
+=======
 revision = '1c82cc7346df'
+>>>>>>> bbdb8943bfe62a1ba6cc40cc3e298d23ed034efd:migrations/versions/1c82cc7346df_.py
+>>>>>>> fca1b2b4701f36268c1bae9c4a31b3cb9edcd62d:migrations/versions/1c82cc7346df_.py
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -40,7 +60,8 @@ def upgrade():
     sa.Column('id_commonspace', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=50), nullable=False),
     sa.Column('aforo', sa.Integer(), nullable=False),
-    sa.PrimaryKeyConstraint('id_commonspace')
+    sa.PrimaryKeyConstraint('id_commonspace'),
+    sa.UniqueConstraint('name')
     )
     op.create_table('building',
     sa.Column('id_building', sa.Integer(), nullable=False),

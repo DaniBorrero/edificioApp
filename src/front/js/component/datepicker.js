@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,15 +7,23 @@ import "react-datepicker/dist/react-datepicker-cssmodules.css";
 
 export const DateP = () => {
 	const [startDate, setStartDate] = useState(new Date());
-	const [espacio, setEspacio] = useState("");
+	const [espacio, setEspacio] = useState("Piscina");
 
 	let date = new Date();
-	console.log(date);
 
 	const onChangeValue = event => {
 		setEspacio(event.target.value);
-		console.log(espacio);
 	};
+
+	useEffect(
+		() => {
+			const onChangeValue = event => {
+				setEspacio(event.target.value);
+			};
+			console.log(espacio);
+		},
+		[espacio]
+	);
 
 	let handleColor = time => {
 		return time.getHours() > 12 ? "text-success" : "text-error";
@@ -34,12 +42,33 @@ export const DateP = () => {
 			/>
 
 			<div className="App" style={{ display: "flex" }}>
-				<div onChange={onChangeValue}>
-					<input type="radio" value="Quincho" name="espacio" />
+				<div>
+					<input
+						id="Quincho"
+						type="radio"
+						value="Quincho"
+						name="espacio"
+						checked={espacio == "Quincho" ? true : false}
+						onChange={onChangeValue}
+					/>
 					Quincho
-					<input type="radio" value="Piscina" name="espacio" />
+					<input
+						id="Piscina"
+						type="radio"
+						value="Piscina"
+						name="espacio"
+						checked={espacio == "Piscina" ? true : false}
+						onChange={onChangeValue}
+					/>
 					Piscina
-					<input type="radio" value="Gimnasio" name="espacio" />
+					<input
+						id="Gimnasio"
+						type="radio"
+						value="Gimnasio"
+						name="espacio"
+						checked={espacio == "Gimnasio" ? true : false}
+						onChange={onChangeValue}
+					/>
 					Gimnasio
 				</div>
 			</div>
