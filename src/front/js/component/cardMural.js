@@ -1,14 +1,17 @@
 import React, { useEffect, useContext } from "react";
 import { Card, Row, Col } from "react-bootstrap";
 import { Context } from "../store/appContext";
+
+
 export const CardMural = () => {
-	const { store, actions } = useContext(Context);
+const { store, actions } = useContext(Context);
 	useEffect(
 		() => {
 			actions.getdiariomural();
 		},
-		[store.espacio_comun]
+		[store.diario_mural]
 	);
+
 	return (
 		<Row>
 			{store.diario_mural.map((elemento, posicion) => {
@@ -18,7 +21,6 @@ export const CardMural = () => {
 							<Card.Body>
 								<Card.Title>{elemento.title_announcement}</Card.Title>
 								<Card.Text>{elemento.announcement}</Card.Text>
-								console.log(elemento.announcement);
 							</Card.Body>
 						</Card>
 					</Col>

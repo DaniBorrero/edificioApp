@@ -68,7 +68,7 @@ class Building(db.Model):
 class CommonSpace(db.Model):
     __tablename__ = 'commonspace'
     id_commonspace = db.Column(db.Integer,primary_key=True)
-    name = db.Column(db.String(50),nullable=False)
+    name = db.Column(db.String(50),nullable=False,unique=True)
     aforo= db.Column(db.Integer,nullable=False)
     relacionbuilding= db.relationship("Building")
     relacionreservaspacio= db.relationship("SpaceReservation")
@@ -142,6 +142,7 @@ class SpaceReservation (db.Model):
     userid= db.Column(db.Integer,db.ForeignKey('user.id_user'))
     aproved_id= db.Column(db.Integer,db.ForeignKey('administrator.id_admin'))
     commonspace_id= db.Column(db.Integer,db.ForeignKey('commonspace.id_commonspace'))
+   
 
     def serialize(self):
         return {

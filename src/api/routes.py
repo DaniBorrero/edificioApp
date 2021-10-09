@@ -115,6 +115,20 @@ def get_all_building():
             "msg": "Edificio Registrado"
         }
         return jsonify(response_body),200   
+ # DELETE       
+@app.route('/building<int:position>', methods=['DELETE'])
+def DeleteBuilding():
+    all_building = Building.query.all()
+    all_building = list(map(lambda x: x.serialize(), all_building))
+    return jsonify(all_building),200
+
+
+
+
+
+
+
+
 
 
 @api.route('/commonSpace', methods=['GET','POST'])
