@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { menuData } from "../data/MenuData";
+import { menuData } from "../component/data/MenuData";
 import { Button } from "./Button";
 import { FaTimes } from "react-icons/fa";
+import PropTypes from "prop-types";
+
 
 const DropdownContainer = styled.div`
   position: fixed;
@@ -90,4 +92,9 @@ export const Dropdown = ({ open, toggle }) => {
       </DropdownWrapper>
     </DropdownContainer>
   );
+};
+
+Dropdown.propTypes = { 
+  toggle: PropTypes.object,
+  open: PropTypes.object,
 };

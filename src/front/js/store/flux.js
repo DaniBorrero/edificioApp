@@ -26,7 +26,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/building", requestOptions)
+				fetch("https://3001-yellow-lungfish-x3uiy2gc.ws-us18.gitpod.io/api/building", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -53,7 +53,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/apartment", requestOptions)
+				fetch("https://3001-yellow-lungfish-x3uiy2gc.ws-us18.gitpod.io/api/apartment", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -80,14 +80,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/commonSpace", requestOptions)
+				fetch("https://3001-yellow-lungfish-x3uiy2gc.ws-us18.gitpod.io/api/commonSpace", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			}, //fin de regitrar espacio comun
 			getespaciocomun: () => {
 				const store = getStore();
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/commonSpace")
+				fetch("https://3001-yellow-lungfish-x3uiy2gc.ws-us18.gitpod.io/api/commonSpace")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ espacio_comun: result });
@@ -108,14 +108,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/diariomural", requestOptions)
+				fetch("https://3001-yellow-lungfish-x3uiy2gc.ws-us18.gitpod.io/api/diariomural", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			}, //fin de registrardiariomural
 			getdiariomural: () => {
 				const store = getStore();
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/diariomural")
+				fetch("https://3001-yellow-lungfish-x3uiy2gc.ws-us18.gitpod.io/api/diariomural")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ diario_mural: result });
@@ -225,8 +225,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/enviardatos", requestOptions)
+				fetch("https://3001-yellow-lungfish-x3uiy2gc.ws-us18.gitpod.io/api/enviardatos", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -290,7 +289,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/register", requestOptions)
+				fetch("https://3001-yellow-lungfish-x3uiy2gc.ws-us18.gitpod.io/api/register", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
