@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-export const Footer = () => (
-	<footer className="footer py-3 text-center bg-navbarGradiente">
+export const Footer1 = () => (
+	<footer className="footer fixed-bottom py-3 text-center bg-navbarGradiente">
 		<p className="text-white">2021 Tu edificio Dereches reservados.</p>
 
 		<div className="container">

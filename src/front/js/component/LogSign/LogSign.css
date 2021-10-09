@@ -7,7 +7,7 @@
   section {
     position: relative;
     min-height: 100vh;
-    background: #fff;
+    background: black;
     display:flex;
     justify-content: center;
     align-items: center;

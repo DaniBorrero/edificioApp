@@ -1,8 +1,26 @@
-import React, { useState } from "react";
-import { Accordion, Card, Form, Button, Col } from "react-bootstrap";
+import React, { useState, useEffect, useContext } from "react";
+import { Accordion, Modal, Button, Card, Form, Col } from "react-bootstrap";
+import { Context } from "../store/appContext";
 import { DateP } from "./datepicker";
 
 export const Acordeonlogged = () => {
+	const { store, actions } = useContext(Context);
+
+	//Hooks Marketplace
+	const [Titulo, setTitulo] = useState("");
+	const [TipoPublicacion, setPublicacion] = useState("");
+	const [Anuncio, setAnuncio] = useState("");
+
+	//Hooks Modal
+	const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+
+	const handlerOnclickMarketplace = e => {
+		e.preventDefault();
+		actions.registrarmarketplace(Titulo, TipoPublicacion, Anuncio);
+	};
+
 	return (
 		<Accordion className="datepicker my-5">
 			<Card>
@@ -13,28 +31,48 @@ export const Acordeonlogged = () => {
 				</Card.Header>
 				<Accordion.Collapse eventKey="0">
 					<Card.Body>
-						<Form>
-							<Form.Row>
-								<Form.Group as={Col} controlId="formGridUser">
-									<Form.Label>Usuario</Form.Label>
-									<Form.Control type="user" placeholder="nombre de usuario" />
-								</Form.Group>
-							</Form.Row>
-
-							<Form.Group controlId="formGridTitle">
-								<Form.Label>Titulo</Form.Label>
-								<Form.Control placeholder="Titulo" />
+						<Form onSubmit={handlerOnclickMarketplace}>
+							<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+								<Form.Label>Titulo </Form.Label>
+								<Form.Control
+									type="text"
+									placeholder="Coloque el titulo del anuncio"
+									onChange={e => setTitulo(e.target.value)}
+									value={Titulo}
+								/>
 							</Form.Group>
-
-							<Form.Row>
-								<Form.Group controlId="exampleForm.ControlTextarea1">
-									<Form.Label>Example textarea</Form.Label>
-									<Form.Control as="textarea" rows={6} />
-								</Form.Group>
-							</Form.Row>
-							<Button variant="primary" type="submit">
-								Publicar
+							<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+								<Form.Label>Tipo de Publicacion:</Form.Label>
+								<Form.Control
+									type="text"
+									placeholder="Coloque el tipo publicacion"
+									onChange={e => setPublicacion(e.target.value)}
+									value={TipoPublicacion}
+								/>
+							</Form.Group>
+							<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+								<Form.Label>Anuncio:</Form.Label>
+								<Form.Control
+									type="text"
+									placeholder="Coloque el anuncio a mostrar en el diario mural"
+									onChange={e => setAnuncio(e.target.value)}
+									value={Anuncio}
+								/>
+							</Form.Group>
+							<Button ClassName="btn btn-primary" size="sm" type="submit" onClick={handleShow}>
+								Registro de MarketPlace
 							</Button>
+							<Modal show={show} onHide={handleClose}>
+								<Modal.Header closeButton>
+									<Modal.Title>Enhorabuena!</Modal.Title>
+								</Modal.Header>
+								<Modal.Body>Registro Exitoso...</Modal.Body>
+								<Modal.Footer>
+									<Button variant="info" size="sm" onClick={handleClose}>
+										Cerrar
+									</Button>
+								</Modal.Footer>
+							</Modal>
 						</Form>
 					</Card.Body>
 				</Accordion.Collapse>
