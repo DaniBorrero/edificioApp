@@ -6,24 +6,23 @@ export const CardMarketplace = () => {
 	const { store, actions } = useContext(Context);
 	useEffect(
 		() => {
-			actions.getespaciocomun();
+			actions.getmarketplace();
 		},
-		[store.espacio_comun]
+		[store.marketplace]
 	);
 
 	return (
 		<Row>
-			{store.espacio_comun.map((elemento, posicion) => {
-					<Col xs={12} md={8}>
-						<Card className="mx-3 my-3" bg={"info"} style={{ width: "18rem" }} text={"light"}>
-							<Card.Body>
-								<Card.Title>{}</Card.Title>
-								<Card.Text>Compra/Venta</Card.Text>
-								<Card.Text>Aqui iria el contenido del posteo.</Card.Text>
-							</Card.Body>
-						</Card>
-					</Col>
-			})}				
+			{store.marketplace.map((elemento, posicion) => {
+				<Col xs={12} md={8} key={posicion}>
+					<Card className="mx-3 my-3" bg={"info"} style={{ width: "18rem" }} text={"light"}>
+						<Card.Body>
+							<Card.Title>{elemento.title_announcement}</Card.Title>
+							<Card.Text>{elemento.announcement}</Card.Text>
+						</Card.Body>
+					</Card>
+				</Col>;
+			})}
 		</Row>
 	);
 };

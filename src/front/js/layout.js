@@ -17,7 +17,7 @@ import { SliderData } from "./component/data/SliderData";
 import { HomeOne } from "./pages/HomeOne";
 import GlobalStyle from "./globalstyle";
 import { Dropdown } from "react-bootstrap";
-import { Footer } from "./component/Footer";
+import { Footer } from "./component/footer";
 import { LoginAdmin } from "./component/LoginAdmin/LoginAdmin";
 
 //create your first component

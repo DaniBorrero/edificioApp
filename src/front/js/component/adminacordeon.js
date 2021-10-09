@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Accordion, Container, Modal, Tabs, Table, Tab, Button, Card, Form, Col } from "react-bootstrap";
 import { FaRegTrashAlt } from "react-icons/fa";
-import context from "react-bootstrap/esm/AccordionContext";
 
 export const AdminAcordeon = () => {
 	const { store, actions } = useContext(Context);
