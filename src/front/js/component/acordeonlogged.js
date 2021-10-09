@@ -4,7 +4,7 @@ import { DateP } from "./datepicker";
 
 export const Acordeonlogged = () => {
 	return (
-		<Accordion className="datepicker">
+		<Accordion className="datepicker my-5">
 			<Card>
 				<Card.Header>
 					<Accordion.Toggle as={Card.Header} variant="link" eventKey="0">

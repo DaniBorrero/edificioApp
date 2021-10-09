@@ -67,8 +67,9 @@ export const LogSign = () => {
 								type="submit"
 								name=""
 								value="Enviar"
-								onClick={handlerOnclick}
-							/>
+								onClick={handlerOnclick}>
+								Enviar
+							</button>
 
 							<p className="signup">
 								¿No tienes una cuenta?{" "}

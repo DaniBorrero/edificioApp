@@ -2,9 +2,8 @@ import React, { useEffect, useContext } from "react";
 import { Card, Row, Col } from "react-bootstrap";
 import { Context } from "../store/appContext";
 
-
 export const CardMural = () => {
-const { store, actions } = useContext(Context);
+	const { store, actions } = useContext(Context);
 	useEffect(
 		() => {
 			actions.getdiariomural();

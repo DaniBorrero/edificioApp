@@ -21,6 +21,12 @@ export const LoginAdmin = () => {
 							<input type="password" name="" placeholder="Password" />
 							<input type="submit" name="" value="Enviar" />
 						</form>
+						<form>
+							<h2>Inicia Sesión</h2>
+							<input type="email" name="" placeholder="Email" />
+							<input type="password" name="" placeholder="Password" />
+							<input type="submit" name="" value="Enviar" />
+						</form>
 					</div>
 				</div>
 			</div>

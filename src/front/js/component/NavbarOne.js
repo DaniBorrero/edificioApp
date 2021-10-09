@@ -92,7 +92,7 @@ export const NavbarOne = () => {
 				))}
 			</NavMenu>
 			<NavBtn>
-				<Button to="/login" primary="true">
+				<Button to="/registry" primary="true">
 					Inicio
 				</Button>
 			</NavBtn>

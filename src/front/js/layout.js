@@ -17,7 +17,7 @@ import { SliderData } from "./component/data/SliderData";
 import { HomeOne } from "./pages/HomeOne";
 import GlobalStyle from "./globalstyle";
 import { Dropdown } from "react-bootstrap";
-import { Footer } from "./component/Footer";
+import { Foot } from "./component/Footer";
 import { LoginAdmin } from "./component/LoginAdmin/LoginAdmin";
 
 //create your first component
@@ -30,13 +30,12 @@ const Layout = () => {
 		<div>
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<GlobalStyle />
 					<NavbarOne />
+					<GlobalStyle />
 					<Dropdown />
 					<Switch>
 						<Route exact path="/">
 							<HomeOne />
-							<Footer />
 						</Route>
 						<Route exact path="/registry">
 							<RegistryForm />
@@ -59,7 +58,7 @@ const Layout = () => {
 						</Route>
 					</Switch>
 				</ScrollToTop>
-				<Footer />
+				<Foot />
 			</BrowserRouter>
 		</div>
 	);

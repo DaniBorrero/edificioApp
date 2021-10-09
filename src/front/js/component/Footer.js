@@ -40,7 +40,7 @@ const Youtube = styled(FaYoutube)`
 	${Icons};
 `;
 
-export const Footer = () => {
+export const Foot = () => {
 	return (
 		<Section>
 			<SocialIcons>
