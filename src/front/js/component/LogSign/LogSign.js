@@ -75,7 +75,7 @@ export const LogSign = () => {
 								<a
 									href="#"
 									onClick={e => {
-										handleClick, toggleFormRegister();
+										toggleFormRegister();
 									}}>
 									Registrate
 								</a>

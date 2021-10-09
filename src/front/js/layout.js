@@ -13,7 +13,6 @@ import injectContext from "./store/appContext";
 import { NavBar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Acordeonlogged } from "./component/acordeonlogged";
-import { Marketplace } from "./pages/marketplace";
 import { AdminOperation } from "./pages/operationadministrator";
 import { DiarioMural } from "./pages/diariomural";
 

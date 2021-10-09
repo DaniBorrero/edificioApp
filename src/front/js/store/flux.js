@@ -3,7 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			token: null,
 			user: ""
-		},		
+		},
 
 		actions: {
 			registraredificio: (NameBuilding, Address, Region, Comuna) => {
@@ -213,7 +213,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/register", requestOptions)
 					.then(response => response.text())
-					.then(result => console.log(result))
+					.then(result => {
+						console.log(result);
+						location = "/registry";
+					})
 					.catch(error => console.log("error", error));
 			}, // fin de UserRegister
 
