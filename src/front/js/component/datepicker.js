@@ -13,19 +13,6 @@ export const DateP = () => {
 	};
 
 	return (
-<<<<<<< HEAD
-		<>
-			<DatePicker
-				showTimeSelect
-				selected={startDate}
-				onChange={date => {
-					setStartDate(date);
-					console.log(date);
-				}}
-				timeClassName={handleColor}
-			/>
-		</>
-=======
 		<DatePicker
 			showTimeSelect
 			selected={startDate}
@@ -35,6 +22,5 @@ export const DateP = () => {
 			}}
 			timeClassName={handleColor}
 		/>
->>>>>>> 012906e37f2c31e41f22df29dbed890ea73d51ae
 	);
 };

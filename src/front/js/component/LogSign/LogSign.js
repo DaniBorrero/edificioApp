@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import photosign from "../../../img/edificio-regitro-small.jpeg";
 import photosignup from "../../../img/edificio-login-user.jpeg";
 import "./LogSign.css";
+import { Link } from "react-router-dom";
 
 export const LogSign = () => {
 	const [click, setClick] = useState("false");
@@ -23,14 +24,6 @@ export const LogSign = () => {
 	const toggleFormRegister = e => {
 		setClick(!click);
 	};
-	useEffect(
-		() => {
-			// console.log(data);
-			// console.log(login);
-			//actions.userRegister(data);
-		},
-		[data]
-	);
 	const handlerOnclick = e => {
 		e.preventDefault();
 		actions.loginUser(emailLogin, passLogin);
@@ -39,7 +32,6 @@ export const LogSign = () => {
 	const handlersubmit = e => {
 		e.preventDefault();
 		actions.userRegister(email, pass, phone, name);
-		console.log("hola");
 	};
 
 	return (
@@ -50,7 +42,7 @@ export const LogSign = () => {
 						<img className="photosign" src={photosign} width="500px" height="750px" />
 					</div>
 					<div className="formBx">
-						<form onSubmit={handlerOnclick}>
+						<form onSubmit={e => handlerOnclick(e)}>
 							<h2>Inicia Sesión</h2>
 							<input
 								type="email"
@@ -68,10 +60,23 @@ export const LogSign = () => {
 									setPassLogin(e.target.value);
 								}}
 							/>
-							<input type="submit" name="" value="Enviar" />
+
+							<button
+								href="/logged/"
+								className="btn btn-primary"
+								type="submit"
+								name=""
+								value="Enviar"
+								onClick={handlerOnclick}
+							/>
+
 							<p className="signup">
 								¿No tienes una cuenta?{" "}
-								<a href="#" onClick={e => toggleFormRegister()}>
+								<a
+									href="#"
+									onClick={e => {
+										handleClick, toggleFormRegister();
+									}}>
 									Registrate
 								</a>
 							</p>
@@ -136,6 +141,9 @@ export const LogSign = () => {
 					</div>
 					<div className="imgBx">
 						<img className="photosign" src={photosignup} width="500px" height="750px" />
+					</div>
+					<div>
+						<h1 />
 					</div>
 				</div>
 			</div>

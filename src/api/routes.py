@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User,Apartment, Building, CommonSpace, Administrator, DiarioMural, Marketplace, SpaceReservation
 from api.utils import generate_sitemap, APIException
 from mailjet_rest import Client
+import datetime
 import os
 from flask_migrate import Migrate
 from flask_swagger import swagger
@@ -45,15 +46,19 @@ def get_all_user():
         #estoy consultando si existe alguien con el email que mande en la api y consigo la primera coincidencia
         onePeople = User.query.filter_by(email=body["email"]).first()
         if onePeople:
-            if (onePeople.password == body["password"] ):
-                #CUANDO VALIDAMOS LA PASSWORD CREAREMOS EL TOKEN                
-                access_token = create_access_token(identity=onePeople.email)
+            if (onePeople.password == body["password"] ):                 
+                expira = datetime.timedelta(minutes=2)
+                access_token = create_access_token(identity=onePeople.email, expires_delta=expira)
                 data = {
                     "info_user": onePeople.serialize(),
-                    "token": access_token
-                    
+                    "token": access_token,
+                    "expires": expira.total_seconds()
                 }
-                return(jsonify(data))
+                
+                return(
+                    jsonify(data)
+                    
+                )
             else:
                 return(jsonify({"mensaje":False}))
         else:
@@ -314,6 +319,19 @@ def post_user():
 #     return jsonify(response_body),200
 
 # #FIN Reserva espacio comun
+
+@api.route('/perfilprivado', methods = ['POST'])
+@jwt_required()
+def get_datos():     
+    token = get_jwt_identity()
+    checkUser = User.query.filter_by(email = token).first()    
+    checkAdmin = Administrator.query.filter_by(email = token).first()
+
+    if checkUser : 
+        return jsonify(checkUser.serialize())
+    if checkAdmin : 
+        return jsonify(checkUser)
+
 
 
 # Post Enviar email Formulario contacto    

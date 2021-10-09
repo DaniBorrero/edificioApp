@@ -1,8 +1,9 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	store: {
-		logged: false;
-	}
 	return {
+		store: {
+			token: null,
+			user: ""
+		},
 		actions: {
 			// form
 
@@ -76,7 +77,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => setStore({ message: data.message }))
 					.catch(error => console.log("Error loading message from backend", error));
 			},
+
 			loginUser: (emailLogin, passLogin) => {
+				const store = getStore();
 				var myHeaders = new Headers();
 				myHeaders.append("Content-Type", "application/json");
 				var raw = JSON.stringify({ email: emailLogin, password: passLogin });
@@ -89,10 +92,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				fetch("https://3001-sapphire-crow-ulv91v34.ws-us18.gitpod.io/api/user", requestOptions)
-					.then(response => response.text())
-					.then(result => {
-						sessionStorage.setItem("token", result.token);
-						setStore({ logged: true });
+					.then(response => response.json())
+					.then(res => {
+						localStorage.setItem("token", res.token);
+						setStore({ token: res.token });
+						setStore({ user: res.info_user });
+						alert("Bienvenido: " + store.user.full_name);
+						location = "/logged";
 					})
 					.catch(error => console.log("error", error));
 			},
