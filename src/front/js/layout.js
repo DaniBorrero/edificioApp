@@ -17,7 +17,7 @@ import { SliderData } from "./component/data/SliderData";
 import { HomeOne } from "./pages/HomeOne";
 import GlobalStyle from "./globalstyle";
 import { Dropdown } from "react-bootstrap";
-import { Footer } from "./component/footer";
+import { Footer } from "./component/Footer";
 import { LoginAdmin } from "./component/LoginAdmin/LoginAdmin";
 
 //create your first component
@@ -59,7 +59,6 @@ const Layout = () => {
 						</Route>
 					</Switch>
 				</ScrollToTop>
-				<Footer />
 			</BrowserRouter>
 		</div>
 	);

@@ -16,11 +16,21 @@ export const Acordeonlogged = () => {
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
+	//Hooks Modal Correo Enviado
+
+	//Hooks Enviar Datos admin
+	const [name, setName] = useState("");
+	const [email, setEmail] = useState("");
+	const [text, setText] = useState("");
+
 	const handlerOnclickMarketplace = e => {
 		e.preventDefault();
 		actions.registrarmarketplace(Titulo, TipoPublicacion, Anuncio);
 	};
-
+	const handlerOnclickEnviarCorreoAdmin = e => {
+		e.preventDefault();
+		actions.enviaremail(name, email, text);
+	};
 	return (
 		<Accordion className="datepicker">
 			<Card>
@@ -85,20 +95,49 @@ export const Acordeonlogged = () => {
 				</Card.Header>
 				<Accordion.Collapse eventKey="1">
 					<Card.Body>
-						<Form>
+						<Form onSubmit={handlerOnclickEnviarCorreoAdmin}>
 							<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-								<Form.Label>Nombre: </Form.Label>
-								<Form.Control type="text" placeholder="Normal text" />
+								<Form.Label>Nombre:</Form.Label>
+								<Form.Control
+									type="text"
+									placeholder="Escriba su Nombre"
+									onChange={e => setName(e.target.value)}
+									value={name}
+								/>
 							</Form.Group>
 							<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-								<Form.Label>Email address</Form.Label>
-								<Form.Control type="email" placeholder="name@example.com" />
+								<Form.Label>Email</Form.Label>
+								<Form.Control
+									type="email"
+									placeholder="email@ejemplo.com"
+									onChange={e => setEmail(e.target.value)}
+									value={email}
+								/>
 							</Form.Group>
 							<Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-								<Form.Label>Example textarea</Form.Label>
-								<Form.Control as="textarea" rows={3} />
+								<Form.Label>Escriba su Mensaje</Form.Label>
+								<Form.Control
+									as="textarea"
+									placeholder="Su Mensaje"
+									rows={5}
+									onChange={e => setText(e.target.value)}
+									value={text}
+								/>
 							</Form.Group>
-							<Button ClassName="btn btn-primary">Enviar</Button>
+							<Button ClassName="btn btn-primary" type="submit" onClick={handleShow}>
+								Enviar Mensaje
+							</Button>
+							<Modal show={show} onHide={handleClose}>
+								<Modal.Header closeButton>
+									<Modal.Title>Enhorabuena!</Modal.Title>
+								</Modal.Header>
+								<Modal.Body>Correo Enviado...</Modal.Body>
+								<Modal.Footer>
+									<Button variant="info" size="sm" onClick={handleClose}>
+										Cerrar
+									</Button>
+								</Modal.Footer>
+							</Modal>
 						</Form>
 					</Card.Body>
 				</Accordion.Collapse>

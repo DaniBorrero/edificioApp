@@ -127,15 +127,6 @@ def DeleteBuilding():
     all_building = list(map(lambda x: x.serialize(), all_building))
     return jsonify(all_building),200
 
-
-
-
-
-
-
-
-
-
 @api.route('/commonSpace', methods=['GET','POST'])
 def get_all_commonspace():
     if request.method =='GET':

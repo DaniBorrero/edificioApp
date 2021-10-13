@@ -142,11 +142,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("error", error));
 			}, //fin de registrarmarketplace
 			getmarketplace: () => {
+				const store = getStore();
 				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/marketplace")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ marketplace: result });
-						//console.log(store.espacio_comun);
+						console.log(store.marketplace);
 					})
 					.catch(error => console.log("error", error));
 			}, //fin de getmarketplace

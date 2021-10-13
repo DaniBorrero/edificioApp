@@ -10,18 +10,19 @@ export const CardMarketplace = () => {
 		},
 		[store.marketplace]
 	);
-
 	return (
 		<Row>
 			{store.marketplace.map((elemento, posicion) => {
-				<Col xs={12} md={8} key={posicion}>
-					<Card className="mx-3 my-3" bg={"info"} style={{ width: "18rem" }} text={"light"}>
-						<Card.Body>
-							<Card.Title>{elemento.title_announcement}</Card.Title>
-							<Card.Text>{elemento.announcement}</Card.Text>
-						</Card.Body>
-					</Card>
-				</Col>;
+				return (
+					<Col xs={12} md={8} key={posicion}>
+						<Card className="mx-3 my-3" bg={"info"} style={{ width: "18rem" }} text={"light"}>
+							<Card.Body>
+								<Card.Title>{elemento.title_announcement}</Card.Title>
+								<Card.Text>{elemento.announcement}</Card.Text>
+							</Card.Body>
+						</Card>
+					</Col>
+				);
 			})}
 		</Row>
 	);

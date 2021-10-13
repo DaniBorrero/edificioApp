@@ -7,11 +7,12 @@ export const AdminAcordeon = () => {
 	const { store, actions } = useContext(Context);
 	useEffect(
 		() => {
+			actions.getedificio();
 			actions.getdepartamento();
 			actions.getespaciocomun();
 			actions.getdiariomural();
 		},
-
+		[store.edificio],
 		[store.departamento],
 		[store.espacio_comun],
 		[store.diario_mural]
