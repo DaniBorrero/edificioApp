@@ -2,21 +2,16 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Accordion, Container, Modal, Tabs, Table, Tab, Button, Card, Form, Col } from "react-bootstrap";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 
 export const AdminAcordeon = () => {
 	const { store, actions } = useContext(Context);
-	useEffect(
-		() => {
-			actions.getedificio();
-			actions.getdepartamento();
-			actions.getespaciocomun();
-			actions.getdiariomural();
-		},
-		[store.edificio],
-		[store.departamento],
-		[store.espacio_comun],
-		[store.diario_mural]
-	);
+	useEffect(() => {
+		actions.getedificio();
+		actions.getdepartamento();
+		actions.getespaciocomun();
+		actions.getdiariomural();
+	}, []);
 
 	//console.log(store.espacio_comun);
 	// Hooks Building//
@@ -142,16 +137,28 @@ export const AdminAcordeon = () => {
 										{store.edificio.map((elemento, posicion) => {
 											return (
 												<tr key={posicion}>
-													<td>
+													<td className="col-md-1">
 														<Button
-															className="btn btn-light"
+															className="btn btn-info"
+															size="sm"
 															type="button"
 															onClick={() => {
 																actions.borrarEdificio(elemento);
-																console.log("hola");
+																console.log("hola borrar edificio");
 															}}>
 															<i className="fas fa-trash-alt"> </i>
 														</Button>{" "}
+														<Button
+															className="btn btn-info"
+															size="sm"
+															type="button"
+															onClick={() => {
+																actions.editarEdificio(elemento);
+																console.log("hola editar edificio");
+															}}>
+															<i className="fas fa-edit" />
+														</Button>
+														{""}
 													</td>
 													<td>{elemento.id_building}</td>
 													<td> {elemento.name}</td>

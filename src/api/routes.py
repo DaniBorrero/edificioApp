@@ -120,12 +120,14 @@ def get_all_building():
             "msg": "Edificio Registrado"
         }
         return jsonify(response_body),200   
- # DELETE       
-@app.route('/building<int:position>', methods=['DELETE'])
-def DeleteBuilding():
-    all_building = Building.query.all()
-    all_building = list(map(lambda x: x.serialize(), all_building))
-    return jsonify(all_building),200
+# DELETE building
+@api.route('/building/<int:id>', methods=['DELETE'])
+def DeleteBuilding(id):
+    building = Building.query.get(id)
+    db.session.delete(building)
+    db.session.commit()
+    
+    return jsonify({"msg": "Edificio Eliminado"}),200
 
 @api.route('/commonSpace', methods=['GET','POST'])
 def get_all_commonspace():
