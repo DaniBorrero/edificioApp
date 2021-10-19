@@ -14,8 +14,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		actions: {
 			clearToken: () => {
-				console.log("test");
-				window.localStorage.clear();
+				localStorage.removeItem("token");
+				setStore({ token: null });
 			},
 			registraredificio: (NameBuilding, Address, Region, Comuna) => {
 				console.log("flux edificio", NameBuilding, Address, Region, Comuna);

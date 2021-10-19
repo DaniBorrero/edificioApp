@@ -88,11 +88,6 @@ export const NavbarOne = props => {
 	const [navbar, setNavbar] = useState(false);
 	const location = useLocation();
 
-	const handlerlogOut = e => {
-		e.preventDefault();
-		actions.clearToken();
-	};
-
 	const changeBackground = () => {
 		if (window.pageYOffset >= 70) {
 			setNavbar(true);
@@ -133,7 +128,7 @@ export const NavbarOne = props => {
 			</NavMenu>
 			<NavBtn>
 				{localStorage.getItem("token") != null ? (
-					<Button to="/" primary="true">
+					<Button to="/" primary="true" onClick={actions.clearToken}>
 						Cerrar Session
 						{/* {localStorage.removeItem("token")} */}
 					</Button>
