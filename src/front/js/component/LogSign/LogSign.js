@@ -63,7 +63,7 @@ export const LogSign = () => {
 
 							<button
 								href="/logged/"
-								className="btn btn-primary"
+								className="btn btn-info"
 								type="submit"
 								name=""
 								value="Enviar"

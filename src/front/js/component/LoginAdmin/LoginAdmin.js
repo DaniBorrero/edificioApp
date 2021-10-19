@@ -1,8 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { Context } from "../../store/appContext";
+import { useState, useEffect } from "react";
 import loginadminphoto from "../../../img/loginadmin2.jpeg";
 import "./LoginAdmin.css";
 
 export const LoginAdmin = () => {
+	const { store, actions } = useContext(Context);
+	const [emailLogin, setEmailLogin] = useState("");
+	const [passLogin, setPassLogin] = useState("");
+
+	const handlerOnclick = e => {
+		e.preventDefault();
+		actions.loginAdmin(emailLogin, passLogin);
+	};
 	return (
 		<section>
 			<div className="container">
@@ -15,17 +25,35 @@ export const LoginAdmin = () => {
 						<img className="photosign" alt="#" src={loginadminphoto} width="500px" height="750px" />
 					</div>
 					<div className="formBx">
-						<form>
+						<form onSubmit={e => handlerOnclick(e)}>
 							<h2>Inicia Sesión</h2>
-							<input type="email" name="" placeholder="Email" />
-							<input type="password" name="" placeholder="Password" />
-							<input type="submit" name="" value="Enviar" />
-						</form>
-						<form>
-							<h2>Inicia Sesión</h2>
-							<input type="email" name="" placeholder="Email" />
-							<input type="password" name="" placeholder="Password" />
-							<input type="submit" name="" value="Enviar" />
+							<input
+								type="email"
+								name=""
+								placeholder="Email"
+								onChange={e => {
+									setEmailLogin(e.target.value);
+								}}
+							/>
+
+							<input
+								type="password"
+								name=""
+								placeholder="Password"
+								onChange={e => {
+									setPassLogin(e.target.value);
+								}}
+							/>
+
+							<button
+								href="/logged/"
+								className="btn btn-info"
+								type="submit"
+								name=""
+								value="Enviar"
+								onClick={handlerOnclick}>
+								Enviar
+							</button>
 						</form>
 					</div>
 				</div>

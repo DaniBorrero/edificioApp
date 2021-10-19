@@ -8,10 +8,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			departamento: [],
 			marketplace: [],
 			token: null,
-			user: ""
+			user: "",
+			admin: ""
 		},
 
 		actions: {
+			clearToken: () => {
+				console.log("test");
+				window.localStorage.clear();
+			},
 			registraredificio: (NameBuilding, Address, Region, Comuna) => {
 				console.log("flux edificio", NameBuilding, Address, Region, Comuna);
 				var raw = JSON.stringify({
@@ -26,14 +31,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-yellow-lungfish-x3uiy2gc.ws-us18.gitpod.io/api/building", requestOptions)
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/building", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			}, // fin de registrar edificio
 			getedificio: () => {
 				const store = getStore();
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/building")
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/building")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ edificio: result });
@@ -53,14 +58,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-yellow-lungfish-x3uiy2gc.ws-us18.gitpod.io/api/apartment", requestOptions)
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/apartment", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			}, // fin de registrar apartamento
 			getdepartamento: () => {
 				const store = getStore();
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/apartment")
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/apartment")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ departamento: result });
@@ -80,14 +85,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-yellow-lungfish-x3uiy2gc.ws-us18.gitpod.io/api/commonSpace", requestOptions)
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/commonSpace", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			}, //fin de regitrar espacio comun
 			getespaciocomun: () => {
 				const store = getStore();
-				fetch("https://3001-yellow-lungfish-x3uiy2gc.ws-us18.gitpod.io/api/commonSpace")
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/commonSpace")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ espacio_comun: result });
@@ -108,14 +113,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-yellow-lungfish-x3uiy2gc.ws-us18.gitpod.io/api/diariomural", requestOptions)
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/diariomural", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			}, //fin de registrardiariomural
 			getdiariomural: () => {
 				const store = getStore();
-				fetch("https://3001-yellow-lungfish-x3uiy2gc.ws-us18.gitpod.io/api/diariomural")
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/diariomural")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ diario_mural: result });
@@ -123,6 +128,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.log("error", error));
 			}, //fin de getdirariomural
+
 			registrarmarketplace: (Titulo, TipoPublicacion, Anuncio) => {
 				console.log("flux registrar maretplace", Titulo, TipoPublicacion, Anuncio);
 				var raw = JSON.stringify({
@@ -136,13 +142,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/marketplace", requestOptions)
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/marketplace", requestOptions)
 					.then(response => response.text())
-					.then(result => console.log(result))
+					.then(result => {
+						console.log(result);
+					})
 					.catch(error => console.log("error", error));
 			}, //fin de registrarmarketplace
 			getmarketplace: () => {
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/marketplace")
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/marketplace")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ marketplace: result });
@@ -163,7 +171,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/spacereservation", requestOptions)
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/spacereservation", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -225,7 +233,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-yellow-lungfish-x3uiy2gc.ws-us18.gitpod.io/api/enviardatos", requestOptions)
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/enviardatos", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -256,7 +264,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us18.gitpod.io/api/user", requestOptions)
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/user", requestOptions)
 					.then(response => response.json())
 					.then(res => {
 						localStorage.setItem("token", res.token);
@@ -267,6 +275,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.log("error", error));
 			}, // fin loginUser
+
+			loginAdmin: (emailLogin, passLogin) => {
+				const store = getStore();
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+				var raw = JSON.stringify({ email: emailLogin, password: passLogin });
+
+				var requestOptions = {
+					method: "POST",
+					headers: myHeaders,
+					body: raw,
+					redirect: "follow"
+				};
+
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/user", requestOptions)
+					.then(response => response.json())
+					.then(res => {
+						localStorage.setItem("token", res.token);
+						setStore({ token: res.token });
+						setStore({ admin: res.info_user });
+						alert("Bienvenido administrador");
+						location = "/operationadministrator";
+					})
+					.catch(error => console.log("error", error));
+			}, // fin loginAdministrador
 
 			userRegister: (email, pass, phone, name) => {
 				console.log(email, pass, phone, name);
@@ -289,7 +322,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-yellow-lungfish-x3uiy2gc.ws-us18.gitpod.io/api/register", requestOptions)
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/register", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);

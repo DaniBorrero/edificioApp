@@ -6,7 +6,6 @@
 // import { CardGroup, Card } from "react-bootstrap";
 // import { Certificate } from "../component/certificate";
 
-
 // export const Home = () => {
 // 	const { store, actions } = useContext(Context);
 

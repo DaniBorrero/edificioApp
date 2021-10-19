@@ -63,7 +63,6 @@ const Layout = () => {
 						</Route>
 					</Switch>
 				</ScrollToTop>
-				
 			</BrowserRouter>
 		</div>
 	);

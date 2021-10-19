@@ -10,8 +10,9 @@ export const AdminAcordeon = () => {
 			actions.getdepartamento();
 			actions.getespaciocomun();
 			actions.getdiariomural();
+			actions.getedificio();
 		},
-
+		[store.edificio],
 		[store.departamento],
 		[store.espacio_comun],
 		[store.diario_mural]
