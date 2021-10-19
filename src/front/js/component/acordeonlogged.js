@@ -22,7 +22,7 @@ export const Acordeonlogged = () => {
 	};
 
 	return (
-		<Accordion className="datepicker my-5">
+		<Accordion className="datepicker my-0">
 			<br />
 			<br />
 			<br />
