@@ -153,7 +153,8 @@ export const AdminAcordeon = () => {
 															size="sm"
 															type="button"
 															onClick={() => {
-																actions.editarEdificio(elemento);
+																actions.actualizarEdificio(elemento);
+																console.log(elemento);
 																console.log("hola editar edificio");
 															}}>
 															<i className="fas fa-edit" />

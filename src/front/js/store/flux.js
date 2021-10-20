@@ -193,8 +193,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 						getActions().getedificio();
 					})
 					.catch(error => console.log("error", error));
-				//registraredificio(edifAux.NameBuilding, edifAux.Address, edifAux.Region, edifAux.Comuna);
 			}, //fin de borrar edificio
+			actualizarEdificio: elemento => {
+				console.log(
+					"flux actualizarEdificio",
+					elemento.NameBuilding,
+					elemento.Address,
+					elemento.Region,
+					elemento.Comuna
+				);
+				var raw = JSON.stringify({
+					name: elemento.NameBuilding,
+					adress: elemento.Address,
+					region: elemento.Region,
+					comuna: elemento.Comuna
+				});
+				var requestOptions = {
+					method: "PUT",
+					body: raw,
+					redirect: "follow"
+				};
+				fetch(
+					"https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/building/" + elemento.id_building,
+					requestOptions
+				)
+					.then(response => response.text())
+					.then(result => {
+						console.log(result);
+						getActions().getedificio();
+					})
+					.catch(error => console.log("error", error));
+			}, // fin function actualizar edificio
 			enviaremail: (name, email, text) => {
 				console.log("flux", name, email, text);
 				var data = {

@@ -120,15 +120,40 @@ def get_all_building():
             "msg": "Edificio Registrado"
         }
         return jsonify(response_body),200   
-# DELETE building
-@api.route('/building/<int:id>', methods=['DELETE'])
-def DeleteBuilding(id):
-    building = Building.query.get(id)
-    db.session.delete(building)
-    db.session.commit()
-    
-    return jsonify({"msg": "Edificio Eliminado"}),200
-
+# DELETE y UPDATE Building
+@api.route('/building/<int:id>', methods=['DELETE', 'PUT'])
+def DelUpBuilding(id):
+    if request.method =='DELETE':
+        building = Building.query.get(id)
+        db.session.delete(building)
+        db.session.commit()
+        
+        return jsonify({"msg": "Edificio Eliminado"})
+    else:
+        building = Building.query.get(id)
+        
+        # body va a recibir la info de la api y la va a transformar en formato json    
+        body=request.get_json()
+        #validamos que  lo que se traiga en el request no este vacio o null
+        if body is None:
+            return "The request body is null", 400
+        if 'name' not in body:
+            return "Debe especificar Nombre del Edificio",400
+        if 'adress' not in body:
+            return "Debe especificar la direccion del Edificio",400
+        if 'region' not in body:
+            return "Debe especificar la region donde se encuentra el Edificio",400  
+        if 'comuna'not in body:
+            return "Debe especificar la comuna donde se encuentra el Edificio",400
+        building = Building.query.get(id)       
+        building = Building(name=body['name'],adress=body['adress'],
+        region=body['region'],comuna=body['comuna'])
+        db.session.commit() 
+        response_body={
+            "msg": "Edificio Actualizado"
+        }
+        return jsonify(response_body),200      
+        
 @api.route('/commonSpace', methods=['GET','POST'])
 def get_all_commonspace():
     if request.method =='GET':
