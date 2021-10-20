@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Button } from "./Button";
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 import { Link, useLocation } from "react-router-dom";
 import { menuData } from "../../js/component/data/MenuData";
 import Edi from "../../img/logo.png";
 import { FaBars } from "react-icons/fa";
+import PropTypes from "prop-types";
+
+import { Context } from "../store/appContext";
 
 const Nav = styled.nav`
 	height: 70px;
@@ -14,6 +17,7 @@ const Nav = styled.nav`
 	z-index: 100;
 	position: fixed;
 	width: 100%;
+	background: #00447c !important;
 `;
 
 const NavLinks = css`
@@ -23,8 +27,8 @@ const NavLinks = css`
 	padding: 0rem 1rem;
 	height: 100%;
 	cursor: pointer;
-	text-decoration: none;
-	font-size: 22px;
+	text-decoration: none !important;
+	font-size: 23px;
 	font-weight: 500;
 `;
 const Logo = styled.i`
@@ -42,7 +46,7 @@ const Logo = styled.i`
 const MenuBars = styled(FaBars)`
 	display: none;
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 767px) {
 		color: #fff;
 		display: block;
 		background-size: contain;
@@ -61,7 +65,7 @@ const NavMenu = styled.div`
 	align-items: center;
 	margin-right: -48px;
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 767px) {
 		display: none;
 	}
 `;
@@ -74,16 +78,47 @@ const NavBtn = styled.div`
 	align-items: center;
 	margin-right: 24px;
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 767px) {
 		display: none;
 	}
 `;
 
-export const NavbarOne = () => {
+export const NavbarOne = props => {
+	const { store, actions } = useContext(Context);
+	const [navbar, setNavbar] = useState(false);
+	const location = useLocation();
+
+	const changeBackground = () => {
+		if (window.pageYOffset >= 70) {
+			setNavbar(true);
+		} else {
+			setNavbar(false);
+		}
+	};
+
+	useEffect(() => {
+		const watchScroll = () => {
+			window.addEventListener("scroll", changeBackground);
+		};
+
+		watchScroll();
+
+		return () => {
+			window.removeEventListener("scroll", changeBackground);
+		};
+	}, []);
+
+	let style = {
+		background: navbar || location.pathname !== "/" ? "#00447c !important" : "transparent",
+		transition: "0.4s"
+	};
+
 	return (
-		<Nav>
-			<Logo to="/" />
-			<MenuBars />
+		<Nav style={style}>
+			<Link to="/">
+				<Logo to="/" />
+			</Link>
+			<MenuBars onClick={props.toggle} />
 			<NavMenu>
 				{menuData.map((item, index) => (
 					<NavMenuLinks to={item.link} key={index}>
@@ -92,10 +127,19 @@ export const NavbarOne = () => {
 				))}
 			</NavMenu>
 			<NavBtn>
-				<Button to="/login" primary="true">
-					Inicio
-				</Button>
+				{localStorage.getItem("token") != null ? (
+					<Button to="/" primary="true" onClick={actions.clearToken}>
+						Cerrar Session
+						{/* {localStorage.removeItem("token")} */}
+					</Button>
+				) : (
+					<Button to="/registry" primary="true">
+						iniciar
+					</Button>
+				)}
 			</NavBtn>
 		</Nav>
 	);
 };
+
+NavbarOne.propTypes = { toggle: PropTypes.any };

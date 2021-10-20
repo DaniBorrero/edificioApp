@@ -12,6 +12,16 @@ export const CardMarketplace = () => {
 	);
 	return (
 		<Row>
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+
 			{store.marketplace.map((elemento, posicion) => {
 				return (
 					<Col xs={12} md={8} key={posicion}>

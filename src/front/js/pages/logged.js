@@ -14,10 +14,16 @@ export const LoggedScreen = () => {
 			{localStorage.getItem("token") != null ? (
 				<>
 					<Acordeonlogged />
-					{/* <button ons={localStorage.removeItem("token")}>Test</button> */}
 				</>
 			) : (
-				<h1>No tiene persmiso para entrar a esta pagina</h1>
+				<>
+					<br />
+					<br />
+					<br />
+					<br />
+					<br />
+					<h1>No tiene persmiso para entrar a esta pagina</h1>
+				</>
 			)}
 		</>
 	);

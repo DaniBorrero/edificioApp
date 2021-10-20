@@ -8,10 +8,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 			departamento: [],
 			marketplace: [],
 			token: null,
-			user: ""
+			user: "",
+			admin: ""
 		},
 
 		actions: {
+			clearToken: () => {
+				localStorage.removeItem("token");
+				setStore({ token: null });
+			},
 			registraredificio: (NameBuilding, Address, Region, Comuna) => {
 				console.log("flux edificio", NameBuilding, Address, Region, Comuna);
 				var raw = JSON.stringify({
@@ -126,6 +131,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.log("error", error));
 			}, //fin de getdirariomural
+
 			registrarmarketplace: (Titulo, TipoPublicacion, Anuncio) => {
 				console.log("flux registrar maretplace", Titulo, TipoPublicacion, Anuncio);
 				var raw = JSON.stringify({
@@ -141,7 +147,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/marketplace", requestOptions)
 					.then(response => response.text())
-					.then(result => console.log(result))
+					.then(result => {
+						console.log(result);
+					})
 					.catch(error => console.log("error", error));
 			}, //fin de registrarmarketplace
 			getmarketplace: () => {
@@ -316,6 +324,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.log("error", error));
 			}, // fin loginUser
+
+			loginAdmin: (emailLogin, passLogin) => {
+				const store = getStore();
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+				var raw = JSON.stringify({ email: emailLogin, password: passLogin });
+
+				var requestOptions = {
+					method: "POST",
+					headers: myHeaders,
+					body: raw,
+					redirect: "follow"
+				};
+
+				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/user", requestOptions)
+					.then(response => response.json())
+					.then(res => {
+						localStorage.setItem("token", res.token);
+						setStore({ token: res.token });
+						setStore({ admin: res.info_user });
+						alert("Bienvenido administrador");
+						location = "/operationadministrator";
+					})
+					.catch(error => console.log("error", error));
+			}, // fin loginAdministrador
 
 			userRegister: (email, pass, phone, name) => {
 				console.log(email, pass, phone, name);
