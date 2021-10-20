@@ -40,6 +40,7 @@ const Layout = () => {
 					<Switch>
 						<Route exact path="/">
 							<HomeOne />
+							<Footer />
 						</Route>
 						<Route exact path="/registry">
 							<RegistryForm />
@@ -62,7 +63,6 @@ const Layout = () => {
 						</Route>
 					</Switch>
 				</ScrollToTop>
-				<Footer />
 			</BrowserRouter>
 		</div>
 	);

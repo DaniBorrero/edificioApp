@@ -7,9 +7,9 @@ import "./LogSign.css";
 import { Link } from "react-router-dom";
 
 export const LogSign = () => {
-	const [click, setClick] = useState("false");
 	const { store, actions } = useContext(Context);
-	// Para registrarse
+
+	const [click, setClick] = useState("false");
 	const [data, setData] = useState();
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
@@ -63,12 +63,13 @@ export const LogSign = () => {
 
 							<button
 								href="/logged/"
-								className="btn btn-primary"
+								className="btn btn-info"
 								type="submit"
 								name=""
 								value="Enviar"
-								onClick={handlerOnclick}
-							/>
+								onClick={handlerOnclick}>
+								Enviar
+							</button>
 
 							<p className="signup">
 								¿No tienes una cuenta?{" "}

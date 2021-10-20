@@ -22,7 +22,13 @@ export const Acordeonlogged = () => {
 	};
 
 	return (
-		<Accordion className="datepicker">
+		<Accordion className="datepicker my-0">
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
+			<br />
 			<Card>
 				<Card.Header>
 					<Accordion.Toggle as={Card.Header} variant="link" eventKey="0">

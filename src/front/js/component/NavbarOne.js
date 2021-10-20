@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Button } from "./Button";
 import styled, { css } from "styled-components/macro";
 import { Link, useLocation } from "react-router-dom";
@@ -6,6 +6,8 @@ import { menuData } from "../../js/component/data/MenuData";
 import Edi from "../../img/logo.png";
 import { FaBars } from "react-icons/fa";
 import PropTypes from "prop-types";
+
+import { Context } from "../store/appContext";
 
 const Nav = styled.nav`
 	height: 70px;
@@ -82,6 +84,7 @@ const NavBtn = styled.div`
 `;
 
 export const NavbarOne = props => {
+	const { store, actions } = useContext(Context);
 	const [navbar, setNavbar] = useState(false);
 	const location = useLocation();
 
@@ -112,7 +115,9 @@ export const NavbarOne = props => {
 
 	return (
 		<Nav style={style}>
-			<Logo to="/" />
+			<Link to="/">
+				<Logo to="/" />
+			</Link>
 			<MenuBars onClick={props.toggle} />
 			<NavMenu>
 				{menuData.map((item, index) => (
@@ -122,9 +127,16 @@ export const NavbarOne = props => {
 				))}
 			</NavMenu>
 			<NavBtn>
-				<Button to="/registry" primary="true">
-					Inicio
-				</Button>
+				{localStorage.getItem("token") != null ? (
+					<Button to="/" primary="true" onClick={actions.clearToken}>
+						Cerrar Session
+						{/* {localStorage.removeItem("token")} */}
+					</Button>
+				) : (
+					<Button to="/registry" primary="true">
+						iniciar
+					</Button>
+				)}
 			</NavBtn>
 		</Nav>
 	);

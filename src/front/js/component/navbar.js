@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import logoIMG from "../../img/logo.png";
+import { Context } from "../store/appContext";
 
 export const NavBar = () => {
 	return (
