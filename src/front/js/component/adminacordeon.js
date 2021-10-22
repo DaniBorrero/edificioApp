@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import { Accordion, Container, Modal, Tabs, Table, Tab, Button, Card, Form, Col } from "react-bootstrap";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export const AdminAcordeon = () => {
 	const { store, actions } = useContext(Context);
@@ -54,7 +55,6 @@ export const AdminAcordeon = () => {
 	};
 
 	return (
-		//Hooks Modal
 		<Accordion defaultActiveKey="0">
 			<Card>
 				<Card.Header>
@@ -148,17 +148,20 @@ export const AdminAcordeon = () => {
 															}}>
 															<i className="fas fa-trash-alt"> </i>
 														</Button>{" "}
-														<Button
-															className="btn btn-info"
-															size="sm"
-															type="button"
-															onClick={() => {
-																actions.actualizarEdificio(elemento);
-																console.log(elemento);
-																console.log("hola editar edificio");
-															}}>
-															<i className="fas fa-edit" />
-														</Button>
+														<Link to={"/actualizar_edificio/" + elemento.id_building}>
+															<Button
+																className="btn btn-info"
+																size="sm"
+																type="button"
+																/*onClick={() => {
+																		actions.actualizarEdificio(elemento);
+																		console.log(elemento);
+																		console.log("hola editar edificio");
+																	}}*/
+															>
+																<i className="fas fa-edit" />
+															</Button>
+														</Link>
 														{""}
 													</td>
 													<td>{elemento.id_building}</td>

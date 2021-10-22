@@ -120,6 +120,17 @@ def get_all_building():
             "msg": "Edificio Registrado"
         }
         return jsonify(response_body),200   
+# GET ONE BUILDING
+@api.route('/building/<int:id>', methods=['GET'])
+def get_one_building(id):
+    if request.method =='GET':
+       one_building= Building.query.get(id)
+    
+       return jsonify(one_building.serialize()), 200
+       
+
+
+  
 # DELETE y UPDATE Building
 @api.route('/building/<int:id>', methods=['DELETE', 'PUT'])
 def DelUpBuilding(id):
@@ -145,9 +156,11 @@ def DelUpBuilding(id):
             return "Debe especificar la region donde se encuentra el Edificio",400  
         if 'comuna'not in body:
             return "Debe especificar la comuna donde se encuentra el Edificio",400
-        building = Building.query.get(id)       
-        building = Building(name=body['name'],adress=body['adress'],
-        region=body['region'],comuna=body['comuna'])
+          
+        building.name=body["name"]
+        building.adress=body["adress"]
+        building.region=body["region"]
+        building.comuna=body["comuna"]
         db.session.commit() 
         response_body={
             "msg": "Edificio Actualizado"

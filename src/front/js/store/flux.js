@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			espacio_comun: [], // arrglo de objeto
 			diario_mural: [],
 			edificio: [],
+			unEdificio: [],
 			departamento: [],
 			marketplace: [],
 			token: null,
@@ -45,10 +46,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(result => {
 						setStore({ edificio: result });
-						//console.log(store.espacio_comun);
 					})
 					.catch(error => console.log("error", error));
 			}, // fin de get edificio
+			getunedificio: id => {
+				console.log("flux un edificio" + id);
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/building/" + id)
+					.then(response => response.json())
+					.then(result => {
+						setStore({ edificio: result });
+					})
+					.catch(error => console.log("error", error));
+			}, // fin funcion getunedificio
 			registrarapartamento: (NumApartment, FloorApartment) => {
 				console.log("flux apartamento", NumApartment, FloorApartment);
 				var raw = JSON.stringify({
@@ -202,34 +211,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.log("error", error));
 			}, //fin de borrar edificio
-			actualizarEdificio: elemento => {
-				console.log(
-					"flux actualizarEdificio",
-					elemento.NameBuilding,
-					elemento.Address,
-					elemento.Region,
-					elemento.Comuna
-				);
+			actualizarEdificio: (id, NameBuilding, Address, Region, Comuna) => {
+				const store = getStore();
+				console.log("flux actualizarEdificio", NameBuilding, Address, Region, Comuna);
 				var raw = JSON.stringify({
-					name: elemento.NameBuilding,
-					adress: elemento.Address,
-					region: elemento.Region,
-					comuna: elemento.Comuna
+					name: NameBuilding,
+					adress: Address,
+					region: Region,
+					comuna: Comuna
 				});
 				var requestOptions = {
 					method: "PUT",
+					headers: {
+						"Content-Type": "application/json"
+					},
 					body: raw,
 					redirect: "follow"
 				};
-				fetch(
-					"https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/building/" + elemento.id_building,
-					requestOptions
-				)
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/building/" + id, requestOptions)
 					.then(response => response.text())
-					.then(result => {
-						console.log(result);
-						getActions().getedificio();
-					})
+					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			}, // fin function actualizar edificio
 			enviaremail: (name, email, text) => {
