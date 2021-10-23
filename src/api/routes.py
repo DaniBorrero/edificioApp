@@ -89,6 +89,42 @@ def get_all_apartment():
             "msg": "Apartamento Registrado"
         }
         return jsonify(response_body),200    
+# GET ONE APARTMENT
+@api.route('/apartment/<int:id>', methods=['GET'])
+def get_one_apartment(id):
+    if request.method =='GET':
+       one_apartment= Apartment.query.get(id)
+    
+       return jsonify(one_apartment.serialize()), 200    
+# DELETE UPDATE APARTMENT
+api.route('/apartment/<int:id>', methods=['DELETE', 'PUT'])
+def DelUpApartment(id):
+    if request.method =='DELETE':
+        apartment = Apartment.query.get(id)
+        db.session.delete(apartment)
+        db.session.commit()
+        
+        return jsonify({"msg": "Apartamento Eliminado"})
+    else:
+        apartment = Apartment.query.get(id)
+        
+        # body va a recibir la info de la api y la va a transformar en formato json    
+        body=request.get_json()
+        #validamos que  lo que se traiga en el request no este vacio o null
+        if body is None:
+            return "The request body is null", 400
+        if 'num_apartment' not in body:
+            return "Debe especificar Numero del Apartamento",400
+        if 'floor_apartment' not in body:
+            return "Debe especificar el piso del edificio",400   
+        apartment.num_apartment=body["num_apartment"]
+        apartment.floor_apartment=body["floor_apartment"]
+        db.session.commit() 
+        response_body={
+            "msg": "Apartamento Actualizado"
+        }
+        return jsonify(response_body),200   
+
         
 @api.route('/building', methods=['GET','POST'])
 def get_all_building():
@@ -127,10 +163,7 @@ def get_one_building(id):
        one_building= Building.query.get(id)
     
        return jsonify(one_building.serialize()), 200
-       
-
-
-  
+        
 # DELETE y UPDATE Building
 @api.route('/building/<int:id>', methods=['DELETE', 'PUT'])
 def DelUpBuilding(id):
@@ -166,7 +199,7 @@ def DelUpBuilding(id):
             "msg": "Edificio Actualizado"
         }
         return jsonify(response_body),200      
-        
+     
 @api.route('/commonSpace', methods=['GET','POST'])
 def get_all_commonspace():
     if request.method =='GET':
@@ -193,6 +226,46 @@ def get_all_commonspace():
             "msg": "Espacio Comun Registrado"
         }
         return jsonify(response_body),200
+
+# GET ONE COMMONSPACE
+@api.route('/commonSpace/<int:id>', methods=['GET'])
+def get_one_commonspace(id):
+    if request.method =='GET':
+       one_commonspace= CommonSpace.query.get(id)
+    
+       return jsonify(one_commonspace.serialize()), 200    
+# DELETE UPDATE COMMONSPACE
+@api.route('/commonSpace/<int:id>', methods=['DELETE','PUT'])
+def DelUpCommonSpace(id):
+    if request.method =='DELETE':
+        commonSpace = CommonSpace.query.get(id)
+        db.session.delete(commonSpace)
+        db.session.commit()
+        
+        return jsonify({"msg": "Espacio Comun Eliminado"})
+    else:
+        commonSpace = CommonSpace.query.get(id)
+        
+        # body va a recibir la info de la api y la va a transformar en formato json    
+        body=request.get_json()
+        #validamos que  lo que se traiga en el request no este vacio o null
+        if body is None:
+            return "The request body is null", 400
+        if 'name' not in body:
+            return "Debe especificar Nombre del Espacio Comun",400
+        if 'aforo' not in body:
+            return "Debe especificar el aforo",400
+                  
+        commonSpace.name=body["name"]
+        commonSpace.aforo=body["aforo"]
+        db.session.commit() 
+        response_body={
+            "msg": "Espacio Comun Actualizado"
+        }
+        return jsonify(response_body),200      
+
+
+
 
 @api.route('/administrator', methods=['GET','POST'])
 def get_all_administrator():
@@ -224,7 +297,53 @@ def get_all_administrator():
        response_body={
                 "msg": "Administrador Registrado"
        }
-       return jsonify(response_body),200     
+       return jsonify(response_body),200  
+
+# GET ONE ADMINISTRATOR
+@api.route('/administrator/<int:id>', methods=['GET'])
+def get_one_administrator(id):
+    if request.method =='GET':
+       one_administrator= Administrator.query.get(id)
+    
+       return jsonify(one_administrator.serialize()), 200  
+
+# DELETE UPDATE ADMINISTRATOR
+@api.route('/administrator/<int:id>', methods=['DELETE','PUT'])
+def DelUpAdministrator(id):
+    if request.method =='DELETE':
+        administrator = administrator.query.get(id)
+        db.session.delete(administrator)
+        db.session.commit()
+        
+        return jsonify({"msg": "Administrador Eliminado"})
+    else:
+        administrator = administrator.query.get(id)
+        
+        # body va a recibir la info de la api y la va a transformar en formato json    
+        body=request.get_json()
+        #validamos que  lo que se traiga en el request no este vacio o null
+        if body is None:
+            return "The request body is null", 400
+        if 'full_name' not in body:
+            return "Debe especificar Nombre del Administrador",400
+        if 'phone' not in body:
+            return "Debe especificar el telefono",400
+        if 'email' not in body:
+            return "Debe especificar el email",400 
+        if 'password' not in body:
+            return "Debe especificar el password",400       
+                  
+        administrator.full_name=body["full_name"]
+        administrator.phone=body["phone"]
+        administrator.email=body["email"]
+        administrator.password=body["password"]
+
+        db.session.commit() 
+        response_body={
+            "msg": "Administrator Actualizado"
+        }
+        return jsonify(response_body),200      
+
 
 @api.route('/diariomural', methods=['GET','POST'])
 def get_all_diariomural():
@@ -253,7 +372,52 @@ def get_all_diariomural():
         response_body={
             "msg": "Anuncio Registrado en el Diario Mural"
         }
-        return jsonify(response_body),200       
+        return jsonify(response_body),200      
+
+# GET ONE DIARIO MURAL
+@api.route('/diariomural/<int:id>', methods=['GET'])
+def get_one_diariomural(id):
+    if request.method =='GET':
+       one_diariomural= DiarioMural.query.get(id)
+    
+       return jsonify(one_diariomural.serialize()), 200  
+
+# DELETE UPDATE ADMINISTRATOR
+@api.route('/diariomural/<int:id>', methods=['DELETE','PUT'])
+def DelUpDiarioMural(id):
+    if request.method =='DELETE':
+        diariomural = DiarioMural.query.get(id)
+        db.session.delete(diariomural)
+        db.session.commit()
+        
+        return jsonify({"msg": "Diario Mural Eliminado"})
+    else:
+        diariomural = diariomural.query.get(id)
+        
+        # body va a recibir la info de la api y la va a transformar en formato json    
+        body=request.get_json()
+        #validamos que  lo que se traiga en el request no este vacio o null
+        if body is None:
+            return "The request body is null", 400
+        if 'type_publication' not in body:
+            return "Debe especificar tipo de publicacion",400
+        if 'title_announcement' not in body:
+            return "Debe especificar el titulo",400
+        if 'announcement' not in body:
+            return "Debe especificar el anuncio",400 
+           
+                  
+        diariomural.type_publication=body["type_publication"]
+        diariomural.title_announcement=body["title_announcement"]
+        diariomural.announcement=body["announcement"]
+       
+
+        db.session.commit() 
+        response_body={
+            "msg": "Diario Mural Actualizado"
+        }
+        return jsonify(response_body),200 
+
 
 @api.route('/marketplace', methods=['GET','POST'])
 def get_all_marketplace():
