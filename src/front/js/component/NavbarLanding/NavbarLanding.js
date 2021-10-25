@@ -33,9 +33,11 @@ export const NavbarLanding = () => {
 						);
 					})}
 				</ul>
-				<button className="btn__navbar">
-					<i className="fas fa-user" />
-				</button>
+				<a href="/login">
+					<button className="btn__navbar" href="/login">
+						<i className="fas fa-user" />
+					</button>
+				</a>
 			</nav>
 		</div>
 	);

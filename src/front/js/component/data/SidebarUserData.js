@@ -2,6 +2,7 @@ import React from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
+import * as ImIcons from "react-icons/im";
 
 export const SidebarUserData = [
 	{
@@ -26,6 +27,12 @@ export const SidebarUserData = [
 		title: "Reservas",
 		path: "/reservas",
 		icon: <IoIcons.IoMdPeople />,
+		cName: "nav-text"
+	},
+	{
+		title: "Salir Sesión",
+		path: "/",
+		icon: <ImIcons.ImExit />,
 		cName: "nav-text"
 	}
 ];
