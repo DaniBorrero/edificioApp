@@ -3,76 +3,65 @@ import { Context } from "../store/appContext";
 import { Modal, Button, Card, Form } from "react-bootstrap";
 import { FaEdit } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
-export const FormUpdateBuilding = () => {
+
+export const FormUpdateDiarioMural = () => {
 	const { store, actions } = useContext(Context);
 	const { id } = useParams();
-	const [building, setbuilding] = useState(null);
-	useEffect(() => {
-		//actions.getedificio();
+	const [DiarioMural, setDiarioMural] = useState(null);
+	//Hooks DiarioMural
+	const [Titulo, setTitulo] = useState("");
+	const [TipoPublicacion, setPublicacion] = useState("");
+	const [Anuncio, setAnuncio] = useState("");
 
-		if (store.edificio.length > 0) {
-			console.log("paso");
-			const edif = store.edificio.find(building => building.id_building == id);
-			setbuilding(edif);
-			console.log(edif);
-			setNameBuilding(edif.name);
-			setAddress(edif.adress);
-			setRegion(edif.region);
-			setComuna(edif.comuna);
+	useEffect(() => {
+		if (store.diario_mural.length > 0) {
+			console.log("paso DiarioMural");
+			const DM = store.diario_mural.find(DiarioMural => DiarioMural.id_diariomural == id);
+			setDiarioMural(DM);
+			console.log(DM);
+			setTitulo(DM.title_announcement);
+			setPublicacion(DM.type_publication);
+			setAnuncio(DM.announcement);
 		}
 	}, []);
-	// Hooks Building//
-	const [NameBuilding, setNameBuilding] = useState("");
-	const [Address, setAddress] = useState("");
-	const [Region, setRegion] = useState("");
-	const [Comuna, setComuna] = useState("");
 	//Hooks Modal
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
-	const handlerOnclick = e => {
+	const handlerOnclickDiarioMural = e => {
 		e.preventDefault();
-		console.log(e);
-		actions.actualizarEdificio(id, NameBuilding, Address, Region, Comuna);
+		actions.actualizarDiarioMural(id, Titulo, TipoPublicacion, Anuncio);
 	};
+
 	return (
 		<Card.Body>
-			<Form onSubmit={handlerOnclick}>
+			<Form onSubmit={handlerOnclickDiarioMural}>
 				<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-					<Form.Label>Nombre del Edificio:</Form.Label>
+					<Form.Label> Titulo del Anuncio:</Form.Label>
 					<Form.Control
 						type="text"
 						//placeholder="Coloque el Nombre del Edificio"
-						onChange={e => setNameBuilding(e.target.value)}
-						value={NameBuilding}
+						onChange={e => setTitulo(e.target.value)}
+						value={Titulo}
 					/>
 				</Form.Group>
 				<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-					<Form.Label>Direccion del Edificio:</Form.Label>
+					<Form.Label>Tipo de Publicacion:</Form.Label>
 					<Form.Control
 						type="text"
-						//placeholder="Coloque la Dirección"
-						onChange={e => setAddress(e.target.value)}
-						value={Address}
+						placeholder="Coloque el tipo publicacion"
+						onChange={e => setPublicacion(e.target.value)}
+						value={TipoPublicacion}
 					/>
 				</Form.Group>
 				<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-					<Form.Label>Region:</Form.Label>
+					<Form.Label>Anuncio:</Form.Label>
 					<Form.Control
 						type="text"
-						//placeholder="Coloque la Región"
-						onChange={e => setRegion(e.target.value)}
-						value={Region}
-					/>
-				</Form.Group>
-				<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-					<Form.Label>Comuna:</Form.Label>
-					<Form.Control
-						type="text"
-						//placeholder="Coloque la Comuna"
-						onChange={e => setComuna(e.target.value)}
-						value={Comuna}
+						placeholder="Coloque el anuncio a mostrar en el diario mural"
+						onChange={e => setAnuncio(e.target.value)}
+						value={Anuncio}
 					/>
 				</Form.Group>
 				<Button ClassName="btn btn-primary" size="sm" type="submit" onClick={handleShow}>

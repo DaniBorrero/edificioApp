@@ -11,6 +11,10 @@ import injectContext from "./store/appContext";
 import { Acordeonlogged } from "./component/acordeonlogged";
 import { AdminOperation } from "./pages/operationadministrator";
 import { UpdateBuilding } from "./pages/actualizar_edificio";
+import { UpdateApartment } from "./pages/actualizar_apartamento";
+import { UpdateCommonSpace } from "./pages/actualizar_espaciocomun";
+import { UpdateDiarioMural } from "./pages/actualizar_diariomural";
+import { UpdateMarketPlace } from "./pages/actualizar_marketplace";
 import { DiarioMural } from "./pages/diariomural";
 import { NavbarOne } from "./component/NavbarOne";
 import { HomeOne } from "./pages/HomeOne";
@@ -61,6 +65,18 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/actualizar_edificio/:id">
 							<UpdateBuilding />
+						</Route>
+						<Route exact path="/actualizar_apartamento/:id">
+							<UpdateApartment />
+						</Route>
+						<Route exact path="/actualizar_espaciocomun/:id">
+							<UpdateCommonSpace />
+						</Route>
+						<Route exact path="/actualizar_diariomural/:id">
+							<UpdateDiarioMural />
+						</Route>
+						<Route exact path="/actualizar_marketplace/:id">
+							<UpdateMarketPlace />
 						</Route>
 
 						<Route exact path="/diariomural">

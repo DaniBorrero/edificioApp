@@ -149,16 +149,7 @@ export const AdminAcordeon = () => {
 															<i className="fas fa-trash-alt"> </i>
 														</Button>{" "}
 														<Link to={"/actualizar_edificio/" + elemento.id_building}>
-															<Button
-																className="btn btn-info"
-																size="sm"
-																type="button"
-																/*onClick={() => {
-																		actions.actualizarEdificio(elemento);
-																		console.log(elemento);
-																		console.log("hola editar edificio");
-																	}}*/
-															>
+															<Button className="btn btn-info" size="sm" type="button">
 																<i className="fas fa-edit" />
 															</Button>
 														</Link>
@@ -240,9 +231,22 @@ export const AdminAcordeon = () => {
 										{store.departamento.map((elemento, posicion) => {
 											return (
 												<tr key={posicion}>
-													<td>
-														{" "}
-														<i className="fas fa-trash-alt"> </i>
+													<td className="col-md-1">
+														<Button
+															className="btn btn-info"
+															size="sm"
+															type="button"
+															onClick={() => {
+																actions.borrarApartamento(elemento);
+															}}>
+															<i className="fas fa-trash-alt"> </i>
+														</Button>{" "}
+														<Link to={"/actualizar_apartamento/" + elemento.id_apartment}>
+															<Button className="btn btn-info" size="sm" type="button">
+																<i className="fas fa-edit" />
+															</Button>
+														</Link>
+														{""}
 													</td>
 													<td>{elemento.id_apartment}</td>
 													<td> {elemento.num_apartment}</td>
@@ -317,6 +321,24 @@ export const AdminAcordeon = () => {
 										{store.espacio_comun.map((elemento, posicion) => {
 											return (
 												<tr key={posicion}>
+													<td className="col-md-1">
+														<Button
+															className="btn btn-info"
+															size="sm"
+															type="button"
+															onClick={() => {
+																actions.borrarEspacioComun(elemento);
+															}}>
+															<i className="fas fa-trash-alt"> </i>
+														</Button>{" "}
+														<Link
+															to={"/actualizar_espaciocomun/" + elemento.id_commonspace}>
+															<Button className="btn btn-info" size="sm" type="button">
+																<i className="fas fa-edit" />
+															</Button>
+														</Link>
+														{""}
+													</td>
 													<td>{elemento.id_commonspace}</td>
 													<td> {elemento.name}</td>
 													<td>{elemento.aforo}</td>
@@ -400,6 +422,23 @@ export const AdminAcordeon = () => {
 										{store.diario_mural.map((elemento, posicion) => {
 											return (
 												<tr key={posicion}>
+													<td className="col-md-1">
+														<Button
+															className="btn btn-info"
+															size="sm"
+															type="button"
+															onClick={() => {
+																actions.borrarDiarioMural(elemento);
+															}}>
+															<i className="fas fa-trash-alt"> </i>
+														</Button>{" "}
+														<Link to={"/actualizar_diariomural/" + elemento.id_diariomural}>
+															<Button className="btn btn-info" size="sm" type="button">
+																<i className="fas fa-edit" />
+															</Button>
+														</Link>
+														{""}
+													</td>
 													<td>{elemento.id_diariomural}</td>
 													<td> {elemento.title_announcement}</td>
 													<td>{elemento.announcement}</td>
