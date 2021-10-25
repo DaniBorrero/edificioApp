@@ -2,21 +2,17 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Accordion, Container, Modal, Tabs, Table, Tab, Button, Card, Form, Col } from "react-bootstrap";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export const AdminAcordeon = () => {
 	const { store, actions } = useContext(Context);
-	useEffect(
-		() => {
-			actions.getdepartamento();
-			actions.getespaciocomun();
-			actions.getdiariomural();
-			actions.getedificio();
-		},
-		[store.edificio],
-		[store.departamento],
-		[store.espacio_comun],
-		[store.diario_mural]
-	);
+	useEffect(() => {
+		actions.getedificio();
+		actions.getdepartamento();
+		actions.getespaciocomun();
+		actions.getdiariomural();
+	}, []);
 
 	//console.log(store.espacio_comun);
 	// Hooks Building//
@@ -59,7 +55,6 @@ export const AdminAcordeon = () => {
 	};
 
 	return (
-		//Hooks Modal
 		<Accordion defaultActiveKey="0">
 			<Card>
 				<Card.Header>
@@ -142,16 +137,23 @@ export const AdminAcordeon = () => {
 										{store.edificio.map((elemento, posicion) => {
 											return (
 												<tr key={posicion}>
-													<td>
+													<td className="col-md-1">
 														<Button
-															className="btn btn-light"
+															className="btn btn-info"
+															size="sm"
 															type="button"
 															onClick={() => {
 																actions.borrarEdificio(elemento);
-																console.log("hola");
+																console.log("hola borrar edificio");
 															}}>
 															<i className="fas fa-trash-alt"> </i>
 														</Button>{" "}
+														<Link to={"/actualizar_edificio/" + elemento.id_building}>
+															<Button className="btn btn-info" size="sm" type="button">
+																<i className="fas fa-edit" />
+															</Button>
+														</Link>
+														{""}
 													</td>
 													<td>{elemento.id_building}</td>
 													<td> {elemento.name}</td>
@@ -229,9 +231,22 @@ export const AdminAcordeon = () => {
 										{store.departamento.map((elemento, posicion) => {
 											return (
 												<tr key={posicion}>
-													<td>
-														{" "}
-														<i className="fas fa-trash-alt"> </i>
+													<td className="col-md-1">
+														<Button
+															className="btn btn-info"
+															size="sm"
+															type="button"
+															onClick={() => {
+																actions.borrarApartamento(elemento);
+															}}>
+															<i className="fas fa-trash-alt"> </i>
+														</Button>{" "}
+														<Link to={"/actualizar_apartamento/" + elemento.id_apartment}>
+															<Button className="btn btn-info" size="sm" type="button">
+																<i className="fas fa-edit" />
+															</Button>
+														</Link>
+														{""}
 													</td>
 													<td>{elemento.id_apartment}</td>
 													<td> {elemento.num_apartment}</td>
@@ -306,6 +321,24 @@ export const AdminAcordeon = () => {
 										{store.espacio_comun.map((elemento, posicion) => {
 											return (
 												<tr key={posicion}>
+													<td className="col-md-1">
+														<Button
+															className="btn btn-info"
+															size="sm"
+															type="button"
+															onClick={() => {
+																actions.borrarEspacioComun(elemento);
+															}}>
+															<i className="fas fa-trash-alt"> </i>
+														</Button>{" "}
+														<Link
+															to={"/actualizar_espaciocomun/" + elemento.id_commonspace}>
+															<Button className="btn btn-info" size="sm" type="button">
+																<i className="fas fa-edit" />
+															</Button>
+														</Link>
+														{""}
+													</td>
 													<td>{elemento.id_commonspace}</td>
 													<td> {elemento.name}</td>
 													<td>{elemento.aforo}</td>
@@ -389,6 +422,23 @@ export const AdminAcordeon = () => {
 										{store.diario_mural.map((elemento, posicion) => {
 											return (
 												<tr key={posicion}>
+													<td className="col-md-1">
+														<Button
+															className="btn btn-info"
+															size="sm"
+															type="button"
+															onClick={() => {
+																actions.borrarDiarioMural(elemento);
+															}}>
+															<i className="fas fa-trash-alt"> </i>
+														</Button>{" "}
+														<Link to={"/actualizar_diariomural/" + elemento.id_diariomural}>
+															<Button className="btn btn-info" size="sm" type="button">
+																<i className="fas fa-edit" />
+															</Button>
+														</Link>
+														{""}
+													</td>
 													<td>{elemento.id_diariomural}</td>
 													<td> {elemento.title_announcement}</td>
 													<td>{elemento.announcement}</td>

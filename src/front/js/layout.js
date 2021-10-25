@@ -6,6 +6,11 @@ import { LoggedScreen } from "./pages/logged";
 import { RegistryForm } from "./pages/registry";
 import injectContext from "./store/appContext";
 import { AdminOperation } from "./pages/operationadministrator";
+import { UpdateBuilding } from "./pages/actualizar_edificio";
+import { UpdateApartment } from "./pages/actualizar_apartamento";
+import { UpdateCommonSpace } from "./pages/actualizar_espaciocomun";
+import { UpdateDiarioMural } from "./pages/actualizar_diariomural";
+import { UpdateMarketPlace } from "./pages/actualizar_marketplace";
 import { DiarioMural } from "./pages/diariomural";
 import { HomeOne } from "./pages/HomeOne";
 import GlobalStyle from "./globalstyle";
@@ -84,25 +89,24 @@ const Layout = () => {
 							<SidebarAdmin />
 							<AdminOperation />
 						</Route>
-						<Route exact path="/registroedificio">
-							<SidebarAdmin />
-							<AdminOperation />
+						<Route exact path="/actualizar_edificio/:id">
+							<UpdateBuilding />
 						</Route>
-						<Route exact path="/registrodepartamento">
-							<SidebarAdmin />
-							<AdminOperation />
+						<Route exact path="/actualizar_apartamento/:id">
+							<UpdateApartment />
 						</Route>
-						<Route exact path="/registroecomunes">
-							<SidebarAdmin />
-							<AdminOperation />
+						<Route exact path="/actualizar_espaciocomun/:id">
+							<UpdateCommonSpace />
 						</Route>
-						<Route exact path="/diariomuraladmin">
-							<SidebarAdmin />
-							<AdminOperation />
+						<Route exact path="/actualizar_diariomural/:id">
+							<UpdateDiarioMural />
 						</Route>
-						<Route exact path="/mensajeusuario">
-							<SidebarAdmin />
-							<AdminOperation />
+						<Route exact path="/actualizar_marketplace/:id">
+							<UpdateMarketPlace />
+						</Route>
+
+						<Route exact path="/diariomural">
+							<DiarioMural />
 						</Route>
 					</Switch>
 				</ScrollToTop>

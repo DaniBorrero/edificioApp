@@ -10,7 +10,6 @@ export const CardMarketplace = () => {
 		},
 		[store.marketplace]
 	);
-
 	return (
 		<Row>
 			<br />
