@@ -31,21 +31,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/building", requestOptions)
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/building", requestOptions)
 					.then(response => response.text())
-					.then(result => console.log(result))
+					.then(result => {
+						console.log(result);
+						getActions().getedificio(); // para que muestre lo que registro en listar
+					})
 					.catch(error => console.log("error", error));
 			}, // fin de registrar edificio
 			getedificio: () => {
 				const store = getStore();
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/building")
+				fetch(process.env.BACKEND_URL + "/api/building")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ edificio: result });
-						//console.log(store.espacio_comun);
 					})
 					.catch(error => console.log("error", error));
 			}, // fin de get edificio
+			getunedificio: id => {
+				console.log("flux un edificio" + id);
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/building/" + id)
+					.then(response => response.json())
+					.then(result => {
+						setStore({ edificio: result });
+					})
+					.catch(error => console.log("error", error));
+			}, // fin funcion getunedificio
 			registrarapartamento: (NumApartment, FloorApartment) => {
 				console.log("flux apartamento", NumApartment, FloorApartment);
 				var raw = JSON.stringify({
@@ -58,21 +69,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/apartment", requestOptions)
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/apartment", requestOptions)
 					.then(response => response.text())
-					.then(result => console.log(result))
+					.then(result => {
+						console.log(result);
+						getActions().getdepartamento(); // para que muestre lo que registro en listar
+					})
 					.catch(error => console.log("error", error));
 			}, // fin de registrar apartamento
 			getdepartamento: () => {
 				const store = getStore();
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/apartment")
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/apartment")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ departamento: result });
-						//console.log(store.espacio_comun);
+						console.log(store.departamento);
 					})
 					.catch(error => console.log("error", error));
 			}, //fin getdepartamento
+			//getundepartamento
+			getunDepartamento: id => {
+				console.log("flux un apartamento" + id);
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/apartment/" + id)
+					.then(response => response.json())
+					.then(result => {
+						setStore({ departamento: result });
+					})
+					.catch(error => console.log("error", error));
+			}, // fin funcion getundepartamento
+
 			registrarespaciocomun: (CommonSpace, Aforo) => {
 				console.log("flux registrar espacio comun", CommonSpace, Aforo);
 				var raw = JSON.stringify({
@@ -85,14 +110,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/commonSpace", requestOptions)
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/commonSpace", requestOptions)
 					.then(response => response.text())
-					.then(result => console.log(result))
+					.then(result => {
+						console.log(result);
+						getActions().getespaciocomun(); // para que muestre lo que registro en listar
+					})
 					.catch(error => console.log("error", error));
 			}, //fin de regitrar espacio comun
 			getespaciocomun: () => {
 				const store = getStore();
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/commonSpace")
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/commonSpace")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ espacio_comun: result });
@@ -113,14 +141,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/diariomural", requestOptions)
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/diariomural", requestOptions)
 					.then(response => response.text())
-					.then(result => console.log(result))
+					.then(result => {
+						console.log(result);
+						getActions().getdiariomural(); // para que muestre lo que registro en listar
+					})
 					.catch(error => console.log("error", error));
 			}, //fin de registrardiariomural
 			getdiariomural: () => {
 				const store = getStore();
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/diariomural")
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/diariomural")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ diario_mural: result });
@@ -142,19 +173,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/marketplace", requestOptions)
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/marketplace", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
+						getActions().getmarketplace(); // para que muestre lo que registro en listar
 					})
 					.catch(error => console.log("error", error));
 			}, //fin de registrarmarketplace
 			getmarketplace: () => {
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/marketplace")
+				const store = getStore();
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/marketplace")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ marketplace: result });
-						//console.log(store.espacio_comun);
+						console.log(store.marketplace);
 					})
 					.catch(error => console.log("error", error));
 			}, //fin de getmarketplace
@@ -171,7 +204,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/spacereservation", requestOptions)
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/spacereservation", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -179,11 +212,215 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//function borrar edificio
 			borrarEdificio: elemento => {
 				const store = getStore();
-				const edifAux = store.edificio.filter(key => key !== elemento);
-				setStore({ edificio: edifAux });
-				console.log(store.edificio);
-				//registraredificio(edifAux.NameBuilding, edifAux.Address, edifAux.Region, edifAux.Comuna);
+
+				console.log(elemento);
+				var requestOptions = {
+					method: "DELETE",
+					headers: { "Content-Type": "application/json" },
+					redirect: "follow"
+				};
+
+				fetch(
+					"https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/building/" + elemento.id_building,
+					requestOptions
+				)
+					.then(response => response.text())
+					.then(result => {
+						console.log(result);
+						getActions().getedificio();
+					})
+					.catch(error => console.log("error", error));
 			}, //fin de borrar edificio
+			//function borrar apartamento
+			borrarApartamento: elemento => {
+				const store = getStore();
+
+				console.log(elemento);
+				var requestOptions = {
+					method: "DELETE",
+					headers: { "Content-Type": "application/json" },
+					redirect: "follow"
+				};
+
+				fetch(
+					"https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/apartment/" + elemento.id_apartment,
+					requestOptions
+				)
+					.then(response => response.text())
+					.then(result => {
+						console.log(result);
+						getActions().getdepartamento();
+					})
+					.catch(error => console.log("error", error));
+			}, //fin de borrar  un apartamento
+			borrarEspacioComun: elemento => {
+				const store = getStore();
+
+				console.log(elemento);
+				var requestOptions = {
+					method: "DELETE",
+					headers: { "Content-Type": "application/json" },
+					redirect: "follow"
+				};
+
+				fetch(
+					"https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/commonSpace/" + elemento.id_commonspace,
+					requestOptions
+				)
+					.then(response => response.text())
+					.then(result => {
+						console.log(result);
+						getActions().getespaciocomun();
+					})
+					.catch(error => console.log("error", error));
+			}, //fin de borrar  un espacio comun
+			borrarDiarioMural: elemento => {
+				const store = getStore();
+
+				console.log(elemento);
+				var requestOptions = {
+					method: "DELETE",
+					headers: { "Content-Type": "application/json" },
+					redirect: "follow"
+				};
+
+				fetch(
+					"https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/diariomural/" + elemento.id_diariomural,
+					requestOptions
+				)
+					.then(response => response.text())
+					.then(result => {
+						console.log(result);
+						getActions().getdiariomural();
+					})
+					.catch(error => console.log("error", error));
+			}, //fin de borrar  un diario mural
+			borrarMarketPlace: elemento => {
+				const store = getStore();
+
+				console.log(elemento);
+				var requestOptions = {
+					method: "DELETE",
+					headers: { "Content-Type": "application/json" },
+					redirect: "follow"
+				};
+
+				fetch(
+					"https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/marketplace/" + elemento.id_marketplace,
+					requestOptions
+				)
+					.then(response => response.text())
+					.then(result => {
+						console.log(result);
+						getActions().getmarketplace();
+					})
+					.catch(error => console.log("error", error));
+			}, //fin de borrar  un marketplace
+			actualizarEdificio: (id, NameBuilding, Address, Region, Comuna) => {
+				const store = getStore();
+				console.log("flux actualizarEdificio", NameBuilding, Address, Region, Comuna);
+				var raw = JSON.stringify({
+					name: NameBuilding,
+					adress: Address,
+					region: Region,
+					comuna: Comuna
+				});
+				var requestOptions = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: raw,
+					redirect: "follow"
+				};
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/building/" + id, requestOptions)
+					.then(response => response.text())
+					.then(result => console.log(result))
+					.catch(error => console.log("error", error));
+			}, // fin function actualizar edificio
+			actualizarApartamento: (id, NumApartment, FloorApartment) => {
+				const store = getStore();
+				console.log("flux actualizarApartamento", NumApartment, FloorApartment);
+				var raw = JSON.stringify({
+					num_apartment: NumApartment,
+					floor_apartment: FloorApartment
+				});
+				var requestOptions = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: raw,
+					redirect: "follow"
+				};
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/apartment/" + id, requestOptions)
+					.then(response => response.text())
+					.then(result => console.log(result))
+					.catch(error => console.log("error", error));
+			}, // fin function actualizar apartamento
+			actualizarEspaciosComunes: (id, CommonSpace, Aforo) => {
+				const store = getStore();
+				console.log("flux actualizarEspacioComun", CommonSpace, Aforo);
+				var raw = JSON.stringify({
+					name: CommonSpace,
+					aforo: Aforo
+				});
+				var requestOptions = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: raw,
+					redirect: "follow"
+				};
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/commonSpace/" + id, requestOptions)
+					.then(response => response.text())
+					.then(result => console.log(result))
+					.catch(error => console.log("error", error));
+			}, //fin de funcion actualizar espacios comunes
+			actualizarDiarioMural: (id, Titulo, TipoPublicacion, Anuncio) => {
+				const store = getStore();
+				console.log("flux actualizar Diario Mural", Titulo, TipoPublicacion, Anuncio);
+				var raw = JSON.stringify({
+					type_publication: TipoPublicacion,
+					title_announcement: Titulo,
+					announcement: Anuncio
+				});
+				var requestOptions = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: raw,
+					redirect: "follow"
+				};
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/diariomural/" + id, requestOptions)
+					.then(response => response.text())
+					.then(result => console.log(result))
+					.catch(error => console.log("error", error));
+			}, //fin de actualizar diario mural
+			actualizarMarketplace: (id, Titulo, TipoPublicacion, Anuncio) => {
+				const store = getStore();
+				console.log("flux actualizar MarketPlace", Titulo, TipoPublicacion, Anuncio);
+				var raw = JSON.stringify({
+					type_publication: TipoPublicacion,
+					title_announcement: Titulo,
+					announcement: Anuncio
+				});
+				var requestOptions = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: raw,
+					redirect: "follow"
+				};
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/marketplace/" + id, requestOptions)
+					.then(response => response.text())
+					.then(result => console.log(result))
+					.catch(error => console.log("error", error));
+			}, //fin de actualizar marketplace
+
 			enviaremail: (name, email, text) => {
 				console.log("flux", name, email, text);
 				var data = {
@@ -233,7 +470,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/enviardatos", requestOptions)
+
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/enviardatos", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -264,7 +502,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/user", requestOptions)
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/user", requestOptions)
 					.then(response => response.json())
 					.then(res => {
 						localStorage.setItem("token", res.token);
@@ -322,7 +560,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/register", requestOptions)
+				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/register", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
