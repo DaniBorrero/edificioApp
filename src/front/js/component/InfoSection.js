@@ -6,14 +6,14 @@ import PropTypes from "prop-types";
 const Section = styled.section`
 	width: 100%;
 	height: 100%;
-	padding: 4rem 0rem;
+	padding: 1rem 0rem;
 `;
 
 const Container = styled.div`
-	padding: 3rem calc((100vw - 1300px) / 2);
+	padding: 0.5rem calc((100vw - 1300px) / 2);
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 800px;
+	grid-template-rows: 350px;
 
 	@media screen and (max-width: 768px) {
 		grid-template-columns: 1fr;
@@ -70,7 +70,7 @@ export const InfoSection = ({ heading, paragraphOne, paragraphTwo, reverse, imag
 					<h1>{heading}</h1>
 					<p>{paragraphOne}</p>
 					<p>{paragraphTwo}</p>
-					<Button to="/homes">Etiqueta</Button>
+					<Button to="/servicios">Servicios</Button>
 				</ColumnLeft>
 				<ColumnRight reverse={reverse}>
 					<img src={image} alt="home" />

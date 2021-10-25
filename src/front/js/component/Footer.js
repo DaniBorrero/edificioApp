@@ -1,8 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
-import { Button } from "./Button";
-import { IoMdArrowRoundForward } from "react-icons/io";
 import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
 
 const Section = styled.section`
@@ -44,7 +42,7 @@ export const Footer = () => {
 	return (
 		<Section>
 			<SocialIcons>
-				<Youtube />
+				<Youtube to="/https://www.youtube.com" />
 
 				<Instagram />
 

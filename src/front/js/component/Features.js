@@ -5,7 +5,7 @@ import FeatureOne from "/workspace/proyectoFinal/src/front/img/featureone.jpeg";
 
 const Section = styled.section`
 	background: #000d1a;
-	padding: 12rem 0rem;
+	padding: 1rem 0rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -13,7 +13,7 @@ const Section = styled.section`
 
 const Container = styled.div`
 	background: #fff;
-	padding: 3rem 2rem;
+	padding: 1rem 2rem;
 	position: relative;
 `;
 
@@ -88,7 +88,7 @@ export const Features = () => {
 								podrás ver en detalle todos los cobros realizados y todos los gastos que incurre la
 								administracíon.
 							</p>
-							<Button to="/homes">Aprende mas</Button>
+							<Button to="/proyectos">Aprende mas</Button>
 						</Content>
 					</ColumnLeft>
 					<ColumnRight>

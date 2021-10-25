@@ -4,7 +4,7 @@ import { IoMdArrowRoundForward } from "react-icons/io";
 import { IoArrowForward, IoArrowBack } from "react-icons/io5";
 import PropTypes from "prop-types";
 
-const HeroSection = styled.section`
+const HeroSection1 = styled.section`
 	height: 100vh;
 	max-height: 1100px;
 	position: relative;
@@ -22,7 +22,7 @@ const HeroWrapper = styled.div`
 `;
 
 const HeroSlide = styled.div`
-	z-index: 1;
+	z-index: 0;
 	width: 100%;
 	height: 100%;
 `;
@@ -40,7 +40,7 @@ const HeroSlider = styled.div`
 	&::before {
 		content: "";
 		position: absolute;
-		z-index: 2;
+		z-index: 0;
 		width: 100%;
 		height: 100vh;
 		bottom: 0vh;
@@ -60,7 +60,7 @@ const HeroImage = styled.img`
 `;
 const HeroContent = styled.div`
 	position: relative;
-	z-index: 10;
+	z-index: 0;
 	display: flex;
 	flex-direction: column;
 	max-width: 1600px;
@@ -69,7 +69,7 @@ const HeroContent = styled.div`
 
 	h1 {
 		font-size: clamp(2rem, 9vw, 3rem);
-		font-weight: 600;
+		font-weight: 400;
 		text-transform: uppercase;
 		text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
 		text-align: center;
@@ -93,7 +93,7 @@ const SliderButtons = styled.div`
 	bottom: 50px;
 	right: 50px;
 	display: flex;
-	z-index: 10;
+	z-index: 0;
 `;
 
 const arrowButtons = css`
@@ -167,7 +167,7 @@ export const Hero = ({ slides }) => {
 	}
 
 	return (
-		<HeroSection>
+		<HeroSection1>
 			<HeroWrapper>
 				{slides.map((slide, index) => {
 					return (
@@ -189,7 +189,7 @@ export const Hero = ({ slides }) => {
 					<NextArrow onClick={nextSlide} />
 				</SliderButtons>
 			</HeroWrapper>
-		</HeroSection>
+		</HeroSection1>
 	);
 };
 
