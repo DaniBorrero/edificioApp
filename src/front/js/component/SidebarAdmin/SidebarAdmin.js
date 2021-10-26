@@ -8,7 +8,7 @@ import { IconContext } from "react-icons";
 import Edi from "../../../img/logo.png";
 
 export const SidebarAdmin = () => {
-	const [sidebar, setSidebar] = useState(true);
+	const [sidebar, setSidebar] = useState(false);
 
 	const showSidebar = () => setSidebar(!sidebar);
 	return (
