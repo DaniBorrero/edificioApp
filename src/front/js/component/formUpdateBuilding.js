@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Modal, Button, Card, Form } from "react-bootstrap";
-import { FaEdit } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
+
 export const FormUpdateBuilding = () => {
 	const { store, actions } = useContext(Context);
 	const { id } = useParams();
@@ -78,7 +78,7 @@ export const FormUpdateBuilding = () => {
 				<Button ClassName="btn btn-primary" size="sm" type="submit" onClick={handleShow}>
 					Actualizar
 				</Button>{" "}
-				<Link to={"/operationadministrator"}>
+				<Link to={"/admin"}>
 					<Button variant="success" size="sm" type="submit" onClick={handleShow}>
 						Volver
 					</Button>

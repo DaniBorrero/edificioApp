@@ -504,7 +504,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ token: res.token });
 						setStore({ user: res.info_user });
 						alert("Bienvenido: " + store.user.full_name);
-						location = "/logged";
+						location = "/inicio";
 					})
 					.catch(error => console.log("error", error));
 			}, // fin loginUser
@@ -529,15 +529,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ token: res.token });
 						setStore({ admin: res.info_user });
 						alert("Bienvenido administrador");
-						location = "/operationadministrator";
+						location = "/admin";
 					})
 					.catch(error => console.log("error", error));
 			}, // fin loginAdministrador
 
 			userRegister: (email, pass, phone, name) => {
 				console.log(email, pass, phone, name);
-				//var myHeaders = new Headers();
-				//myHeaders.append("Content-Type", "application/json");
+				// var myHeaders = new Headers();
+				// myHeaders.append("Content-Type", "application/json");
 				var raw = JSON.stringify({
 					full_name: name,
 					email: email,
@@ -555,11 +555,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("process.env.BACKEND_URL/api/register", requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/register", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
-						location = "/registry";
+						location = "/inicio";
 					})
 					.catch(error => console.log("error", error));
 			}, // fin de UserRegister

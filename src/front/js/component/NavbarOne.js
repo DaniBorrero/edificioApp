@@ -17,7 +17,7 @@ const Nav = styled.nav`
 	z-index: 100;
 	position: fixed;
 	width: 100%;
-	background: #00447c !important;
+	background: #00447c;
 `;
 
 const NavLinks = css`
@@ -83,16 +83,16 @@ const NavBtn = styled.div`
 	}
 `;
 
-export const NavbarOne = props => {
+export const NavbarOne = ({ toggle }) => {
 	const { store, actions } = useContext(Context);
-	const [navbar, setNavbar] = useState(false);
+	const [navbarOne, setnavbarOne] = useState(false);
 	const location = useLocation();
 
 	const changeBackground = () => {
 		if (window.pageYOffset >= 70) {
-			setNavbar(true);
+			setnavbarOne(true);
 		} else {
-			setNavbar(false);
+			setnavbarOne(false);
 		}
 	};
 
@@ -109,7 +109,7 @@ export const NavbarOne = props => {
 	}, []);
 
 	let style = {
-		background: navbar || location.pathname !== "/" ? "#00447c !important" : "transparent",
+		backgroundColor: navbarOne || location.pathname !== "/" ? "#00447c" : "transparent",
 		transition: "0.4s"
 	};
 
@@ -118,7 +118,7 @@ export const NavbarOne = props => {
 			<Link to="/">
 				<Logo to="/" />
 			</Link>
-			<MenuBars onClick={props.toggle} />
+			<MenuBars onClick={toggle} />
 			<NavMenu>
 				{menuData.map((item, index) => (
 					<NavMenuLinks to={item.link} key={index}>
@@ -133,7 +133,7 @@ export const NavbarOne = props => {
 						{/* {localStorage.removeItem("token")} */}
 					</Button>
 				) : (
-					<Button to="/registry" primary="true">
+					<Button to="/login" primary="true">
 						iniciar
 					</Button>
 				)}
