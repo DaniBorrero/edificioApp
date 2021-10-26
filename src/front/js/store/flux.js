@@ -31,7 +31,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/building", requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/building", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
@@ -50,7 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}, // fin de get edificio
 			getunedificio: id => {
 				console.log("flux un edificio" + id);
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/building/" + id)
+				fetch("process.env.BACKEND_URL/api/building/" + id)
 					.then(response => response.json())
 					.then(result => {
 						setStore({ edificio: result });
@@ -69,7 +69,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/apartment", requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/apartment", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
@@ -79,7 +79,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}, // fin de registrar apartamento
 			getdepartamento: () => {
 				const store = getStore();
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/apartment")
+				fetch(process.env.BACKEND_URL + "/api/apartment")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ departamento: result });
@@ -90,7 +90,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//getundepartamento
 			getunDepartamento: id => {
 				console.log("flux un apartamento" + id);
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/apartment/" + id)
+				fetch("process.env.BACKEND_URL/api/apartment/" + id)
 					.then(response => response.json())
 					.then(result => {
 						setStore({ departamento: result });
@@ -110,7 +110,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/commonSpace", requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/commonSpace", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
@@ -120,7 +120,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}, //fin de regitrar espacio comun
 			getespaciocomun: () => {
 				const store = getStore();
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/commonSpace")
+				fetch("process.env.BACKEND_URL/api/commonSpace")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ espacio_comun: result });
@@ -141,7 +141,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/diariomural", requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/diariomural", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
@@ -151,7 +151,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}, //fin de registrardiariomural
 			getdiariomural: () => {
 				const store = getStore();
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/diariomural")
+				fetch(process.env.BACKEND_URL + "/api/diariomural")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ diario_mural: result });
@@ -173,7 +173,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/marketplace", requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/marketplace", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
@@ -183,7 +183,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}, //fin de registrarmarketplace
 			getmarketplace: () => {
 				const store = getStore();
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/marketplace")
+				fetch("process.env.BACKEND_URL/api/marketplace")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ marketplace: result });
@@ -204,7 +204,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/spacereservation", requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/spacereservation", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -220,8 +220,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch(
-					"https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/building/" + elemento.id_building,
+				fetch(process.env.BACKEND_URL + "/api/building/" + elemento.id_building,
 					requestOptions
 				)
 					.then(response => response.text())
@@ -242,8 +241,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch(
-					"https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/apartment/" + elemento.id_apartment,
+				fetch(process.env.BACKEND_URL + "/api/apartment/" + elemento.id_apartment,
 					requestOptions
 				)
 					.then(response => response.text())
@@ -263,8 +261,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch(
-					"https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/commonSpace/" + elemento.id_commonspace,
+				fetch(process.env.BACKEND_URL + "/api/commonSpace/" + elemento.id_commonspace,
 					requestOptions
 				)
 					.then(response => response.text())
@@ -284,8 +281,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch(
-					"https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/diariomural/" + elemento.id_diariomural,
+				fetch(process.env.BACKEND_URL + "/api/diariomural/" + elemento.id_diariomural,
 					requestOptions
 				)
 					.then(response => response.text())
@@ -305,8 +301,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch(
-					"https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/marketplace/" + elemento.id_marketplace,
+				fetch(process.env.BACKEND_URL + "/api/marketplace/" + elemento.id_marketplace,
 					requestOptions
 				)
 					.then(response => response.text())
@@ -333,7 +328,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/building/" + id, requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/building/" + id, requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -353,7 +348,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/apartment/" + id, requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/apartment/" + id, requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -373,7 +368,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/commonSpace/" + id, requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/commonSpace/" + id, requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -394,7 +389,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/diariomural/" + id, requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/diariomural/" + id, requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -415,7 +410,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/marketplace/" + id, requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/marketplace/" + id, requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -471,7 +466,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/enviardatos", requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/enviardatos", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -502,7 +497,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/user", requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/user", requestOptions)
 					.then(response => response.json())
 					.then(res => {
 						localStorage.setItem("token", res.token);
@@ -527,7 +522,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-sapphire-crow-ulv91v34.ws-us17.gitpod.io/api/user", requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/user", requestOptions)
 					.then(response => response.json())
 					.then(res => {
 						localStorage.setItem("token", res.token);
@@ -560,7 +555,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/register", requestOptions)
+				fetch("process.env.BACKEND_URL/api/register", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
