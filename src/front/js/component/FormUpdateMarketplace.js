@@ -58,7 +58,7 @@ export const FormUpdatMarketplace = () => {
 				<Button ClassName="btn btn-primary" size="sm" type="submit" onClick={handleShow}>
 					Actualizar
 				</Button>{" "}
-				<Link to={"/logged"}>
+				<Link to={"/user"}>
 					<Button variant="success" size="sm" type="submit" onClick={handleShow}>
 						Volver
 					</Button>

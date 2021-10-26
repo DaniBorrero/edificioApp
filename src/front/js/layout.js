@@ -2,10 +2,8 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { Marketplace } from "./pages/marketplace";
-import { LoggedScreen } from "./pages/logged";
 import { RegistryForm } from "./pages/registry";
 import injectContext from "./store/appContext";
-import { AdminOperation } from "./pages/operationadministrator";
 import { UpdateBuilding } from "./pages/actualizar_edificio";
 import { UpdateApartment } from "./pages/actualizar_apartamento";
 import { UpdateCommonSpace } from "./pages/actualizar_espaciocomun";
@@ -22,6 +20,13 @@ import { Servicios } from "./pages/Servicios";
 import { NavbarLanding } from "./component/NavbarLanding/NavbarLanding";
 import { Proyectos } from "./pages/Proyectos";
 import { Contacto } from "./pages/Contacto";
+import { MensajeAdmin } from "./component/MensajeAdmin";
+import { MarketplaceUser } from "./component/MarketplaceUser";
+import { Redificio } from "./pages/Redificio";
+import { Rdepto } from "./pages/Rdepto";
+import { RECadmin } from "./pages/RECadmin";
+import { DmuralAdmin } from "./pages/DmuralAdmin";
+import { Equipo } from "./pages/Equipo";
 
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -51,6 +56,7 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/equipo">
 							<NavbarLanding />
+							<Equipo />
 							<Footer />
 						</Route>
 						<Route exact path="/contacto">
@@ -65,19 +71,19 @@ const Layout = () => {
 							<LoginManager />
 							<Footer />
 						</Route>
-						<Route exact path="/user">
-							<SidebarUser />
-							<LoggedScreen />
-						</Route>
 						<Route exact path="/inicio">
 							<SidebarUser />
-							<LoggedScreen />
+							<DiarioMural />
 						</Route>
 						<Route exact path="/mensajes">
 							<SidebarUser />
-							<LoggedScreen />
+							<MensajeAdmin />
 						</Route>
 						<Route exact path="/marketplace">
+							<SidebarUser />
+							<MarketplaceUser />
+						</Route>
+						<Route exact path="/vistamarket">
 							<SidebarUser />
 							<Marketplace />
 						</Route>
@@ -87,7 +93,19 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/admin">
 							<SidebarAdmin />
-							<AdminOperation />
+							<Redificio />
+						</Route>
+						<Route exact path="/registrodepartamento">
+							<SidebarAdmin />
+							<Rdepto />
+						</Route>
+						<Route exact path="/registroecomunes">
+							<SidebarAdmin />
+							<RECadmin />
+						</Route>
+						<Route exact path="/diariomuraladmin">
+							<SidebarAdmin />
+							<DmuralAdmin />
 						</Route>
 						<Route exact path="/actualizar_edificio/:id">
 							<UpdateBuilding />
@@ -103,10 +121,6 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/actualizar_marketplace/:id">
 							<UpdateMarketPlace />
-						</Route>
-
-						<Route exact path="/diariomural">
-							<DiarioMural />
 						</Route>
 					</Switch>
 				</ScrollToTop>

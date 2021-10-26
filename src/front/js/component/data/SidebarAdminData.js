@@ -8,7 +8,7 @@ import * as ImIcons from "react-icons/im";
 export const SidebarAdminData = [
 	{
 		title: "Registrar Edificio",
-		path: "/registroedificio",
+		path: "/admin",
 		icon: <FaIcons.FaBuilding />,
 		cName: "nav-text1"
 	},
@@ -30,12 +30,12 @@ export const SidebarAdminData = [
 		icon: <BsIcons.BsClipboardData />,
 		cName: "nav-text1"
 	},
-	{
-		title: "Mensaje a Usuario ",
-		path: "/mensajeusuario",
-		icon: <FaIcons.FaEnvelopeOpenText />,
-		cName: "nav-text1"
-	},
+	// {
+	// 	title: "Mensaje a Usuario ",
+	// 	path: "/mensajeusuario",
+	// 	icon: <FaIcons.FaEnvelopeOpenText />,
+	// 	cName: "nav-text1"
+	// },
 	{
 		title: "Salir sesión",
 		path: "/",

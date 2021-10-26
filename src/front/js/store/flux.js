@@ -31,7 +31,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/building", requestOptions)
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/building", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
@@ -50,7 +50,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}, // fin de get edificio
 			getunedificio: id => {
 				console.log("flux un edificio" + id);
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/building/" + id)
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/building/" + id)
 					.then(response => response.json())
 					.then(result => {
 						setStore({ edificio: result });
@@ -69,7 +69,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/apartment", requestOptions)
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/apartment", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
@@ -79,7 +79,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}, // fin de registrar apartamento
 			getdepartamento: () => {
 				const store = getStore();
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/apartment")
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/apartment")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ departamento: result });
@@ -90,7 +90,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//getundepartamento
 			getunDepartamento: id => {
 				console.log("flux un apartamento" + id);
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/apartment/" + id)
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/apartment/" + id)
 					.then(response => response.json())
 					.then(result => {
 						setStore({ departamento: result });
@@ -110,7 +110,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/commonSpace", requestOptions)
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/commonSpace", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
@@ -120,7 +120,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}, //fin de regitrar espacio comun
 			getespaciocomun: () => {
 				const store = getStore();
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/commonSpace")
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/commonSpace")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ espacio_comun: result });
@@ -141,7 +141,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/diariomural", requestOptions)
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/diariomural", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
@@ -151,7 +151,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}, //fin de registrardiariomural
 			getdiariomural: () => {
 				const store = getStore();
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/diariomural")
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/diariomural")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ diario_mural: result });
@@ -173,7 +173,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/marketplace", requestOptions)
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/marketplace", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
@@ -183,7 +183,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}, //fin de registrarmarketplace
 			getmarketplace: () => {
 				const store = getStore();
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/marketplace")
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/marketplace")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ marketplace: result });
@@ -204,7 +204,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/spacereservation", requestOptions)
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/spacereservation", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -221,7 +221,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				fetch(
-					"https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/building/" + elemento.id_building,
+					"https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/building/" + elemento.id_building,
 					requestOptions
 				)
 					.then(response => response.text())
@@ -243,7 +243,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				fetch(
-					"https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/apartment/" + elemento.id_apartment,
+					"https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/apartment/" + elemento.id_apartment,
 					requestOptions
 				)
 					.then(response => response.text())
@@ -264,7 +264,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				fetch(
-					"https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/commonSpace/" + elemento.id_commonspace,
+					"https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/commonSpace/" + elemento.id_commonspace,
 					requestOptions
 				)
 					.then(response => response.text())
@@ -285,7 +285,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				fetch(
-					"https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/diariomural/" + elemento.id_diariomural,
+					"https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/diariomural/" + elemento.id_diariomural,
 					requestOptions
 				)
 					.then(response => response.text())
@@ -306,7 +306,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				fetch(
-					"https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/marketplace/" + elemento.id_marketplace,
+					"https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/marketplace/" + elemento.id_marketplace,
 					requestOptions
 				)
 					.then(response => response.text())
@@ -333,7 +333,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/building/" + id, requestOptions)
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/building/" + id, requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -353,7 +353,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/apartment/" + id, requestOptions)
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/apartment/" + id, requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -373,7 +373,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/commonSpace/" + id, requestOptions)
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/commonSpace/" + id, requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -394,7 +394,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/diariomural/" + id, requestOptions)
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/diariomural/" + id, requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -415,7 +415,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/marketplace/" + id, requestOptions)
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/marketplace/" + id, requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -471,7 +471,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/enviardatos", requestOptions)
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/enviardatos", requestOptions)
 					.then(response => response.text())
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
@@ -502,14 +502,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/user", requestOptions)
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/user", requestOptions)
 					.then(response => response.json())
 					.then(res => {
 						localStorage.setItem("token", res.token);
 						setStore({ token: res.token });
 						setStore({ user: res.info_user });
 						alert("Bienvenido: " + store.user.full_name);
-						location = "/logged";
+						location = "/inicio";
 					})
 					.catch(error => console.log("error", error));
 			}, // fin loginUser
@@ -534,15 +534,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ token: res.token });
 						setStore({ admin: res.info_user });
 						alert("Bienvenido administrador");
-						location = "/operationadministrator";
+						location = "/admin";
 					})
 					.catch(error => console.log("error", error));
 			}, // fin loginAdministrador
 
 			userRegister: (email, pass, phone, name) => {
 				console.log(email, pass, phone, name);
-				//var myHeaders = new Headers();
-				//myHeaders.append("Content-Type", "application/json");
+				// var myHeaders = new Headers();
+				// myHeaders.append("Content-Type", "application/json");
 				var raw = JSON.stringify({
 					full_name: name,
 					email: email,
@@ -560,11 +560,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch("https://3001-olive-gecko-z048x7n7.ws-us17.gitpod.io/api/register", requestOptions)
+				fetch("https://3001-purple-muskox-bfzhje3d.ws-us17.gitpod.io/api/register", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
-						location = "/registry";
+						location = "/inicio";
 					})
 					.catch(error => console.log("error", error));
 			}, // fin de UserRegister

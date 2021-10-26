@@ -24,9 +24,9 @@ export const SidebarUserData = [
 		cName: "nav-text"
 	},
 	{
-		title: "Reservas",
-		path: "/reservas",
-		icon: <IoIcons.IoMdPeople />,
+		title: "Publicaciones MarketPlace",
+		path: "/vistamarket",
+		icon: <FaIcons.FaSearchDollar />,
 		cName: "nav-text"
 	},
 	{
