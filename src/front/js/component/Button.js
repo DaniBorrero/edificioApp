@@ -23,6 +23,7 @@ export const Button = styled(Link)`
 	&:hover {
 		transform: translateY(-2px);
 		background: #00447c;
+		text-decoration: none;
 	}
 `;
 
