@@ -36,7 +36,7 @@ export const Acordeonlogged = () => {
 	};
 	const handlerOnclickEnviarCorreoAdmin = e => {
 		e.preventDefault();
-		actions.enviaremail(name, email, text);
+		//actions.enviaremail(name, email, text);
 	};
 	return (
 		<Accordion className="datepicker my-0">
@@ -64,6 +64,7 @@ export const Acordeonlogged = () => {
 											placeholder="Coloque el titulo del anuncio"
 											onChange={e => setTitulo(e.target.value)}
 											value={Titulo}
+											required
 										/>
 									</Form.Group>
 									<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -165,6 +166,7 @@ export const Acordeonlogged = () => {
 									placeholder="Escriba su Nombre"
 									onChange={e => setName(e.target.value)}
 									value={name}
+									required 
 								/>
 							</Form.Group>
 							<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
