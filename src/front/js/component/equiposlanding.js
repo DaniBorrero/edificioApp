@@ -3,6 +3,8 @@ import { CardGroup } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import Perfil1 from "../../img/Perfil1.jpg";
 
+
+
 export const EquiposLanding = () => {
 	return (
 		<>

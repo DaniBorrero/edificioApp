@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 // CSS Modules, react-datepicker-cssmodules.css
 import "react-datepicker/dist/react-datepicker-cssmodules.css";
 import { Context } from "../store/appContext";
+import acceso from "../../img/noacceso.png";
 
 export const LoggedScreen = () => {
 	const { store, actions } = useContext(Context);
@@ -22,7 +23,12 @@ export const LoggedScreen = () => {
 					<br />
 					<br />
 					<br />
-					<h1>No tiene persmiso para entrar a esta pagina</h1>
+					<div>
+						<h1 className="permiso">Debes registrarte para ingresar a nuestra página</h1>
+					</div>
+					<div>
+						<img className="acceso" src={acceso} alt="fotoAcceso" />
+					</div>
 				</>
 			)}
 		</>

@@ -1,9 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
-import { Button } from "./Button";
-import { IoMdArrowRoundForward } from "react-icons/io";
-import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
+import { FaInstagram, FaFacebookF, FaYoutube, FaTwitter } from "react-icons/fa";
 
 const Section = styled.section`
 	background: #000d1a;
@@ -40,15 +38,26 @@ const Youtube = styled(FaYoutube)`
 	${Icons};
 `;
 
+const Twitter = styled(FaTwitter)`
+	${Icons};
+`;
+
 export const Footer = () => {
 	return (
 		<Section>
 			<SocialIcons>
-				<Youtube />
-
-				<Instagram />
-
-				<Facebook />
+				<a href="//www.youtube.com">
+					<Youtube />
+				</a>
+				<a href="https://www.instagram.com">
+					<Instagram />
+				</a>
+				<a href="https://www.facebook.com">
+					<Facebook />
+				</a>
+				<a href="https://www.twitter.com">
+					<Twitter />
+				</a>
 			</SocialIcons>
 		</Section>
 	);

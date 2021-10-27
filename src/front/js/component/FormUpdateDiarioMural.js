@@ -67,7 +67,7 @@ export const FormUpdateDiarioMural = () => {
 				<Button ClassName="btn btn-primary" size="sm" type="submit" onClick={handleShow}>
 					Actualizar
 				</Button>{" "}
-				<Link to={"/operationadministrator"}>
+				<Link to={"/admin"}>
 					<Button variant="success" size="sm" type="submit" onClick={handleShow}>
 						Volver
 					</Button>

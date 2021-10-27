@@ -1,36 +1,34 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-import { Home } from "./pages/home";
-import { Demo } from "./pages/demo";
 import { Marketplace } from "./pages/marketplace";
-import { Single } from "./pages/single";
-import { LoggedScreen } from "./pages/logged";
 import { RegistryForm } from "./pages/registry";
 import injectContext from "./store/appContext";
-import { Acordeonlogged } from "./component/acordeonlogged";
-import { AdminOperation } from "./pages/operationadministrator";
 import { UpdateBuilding } from "./pages/actualizar_edificio";
 import { UpdateApartment } from "./pages/actualizar_apartamento";
 import { UpdateCommonSpace } from "./pages/actualizar_espaciocomun";
 import { UpdateDiarioMural } from "./pages/actualizar_diariomural";
 import { UpdateMarketPlace } from "./pages/actualizar_marketplace";
 import { DiarioMural } from "./pages/diariomural";
-import { NavbarOne } from "./component/NavbarOne";
 import { HomeOne } from "./pages/HomeOne";
 import GlobalStyle from "./globalstyle";
-import { Dropdown } from "react-bootstrap";
-import { LoginAdmin } from "./component/LoginAdmin/LoginAdmin";
 import { Footer } from "./component/Footer";
+import { SidebarUser } from "./component/SidebarUser/SidebarUser";
+import { SidebarAdmin } from "./component/SidebarAdmin/SidebarAdmin";
+import { LoginManager } from "./pages/LoginManager";
+import { Servicios } from "./pages/Servicios";
+import { NavbarLanding } from "./component/NavbarLanding/NavbarLanding";
+import { Proyectos } from "./pages/Proyectos";
+import { Contacto } from "./pages/Contacto";
+import { MensajeAdmin } from "./component/MensajeAdmin";
+import { MarketplaceUser } from "./component/MarketplaceUser";
+import { Redificio } from "./pages/Redificio";
+import { Rdepto } from "./pages/Rdepto";
+import { RECadmin } from "./pages/RECadmin";
+import { DmuralAdmin } from "./pages/DmuralAdmin";
+import { Equipo } from "./pages/Equipo";
 
 const Layout = () => {
-	const [open, setOpen] = useState(false);
-
-	const toggle = () => {
-		setOpen(!open);
-		console.log("funciona");
-	};
-
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
@@ -40,28 +38,74 @@ const Layout = () => {
 			<GlobalStyle />
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<NavbarOne toggle={toggle} />
-					<Dropdown open={open} toggle={toggle} />
 					<Switch>
 						<Route exact path="/">
+							<NavbarLanding />
 							<HomeOne />
 							<Footer />
 						</Route>
-						<Route exact path="/registry">
+						<Route exact path="/servicios">
+							<NavbarLanding />
+							<Servicios />
+							<Footer />
+						</Route>
+						<Route exact path="/proyectos">
+							<NavbarLanding />
+							<Proyectos />
+							<Footer />
+						</Route>
+						<Route exact path="/equipo">
+							<NavbarLanding />
+							<Equipo />
+							<Footer />
+						</Route>
+						<Route exact path="/contacto">
+							<Contacto />
+						</Route>
+						<Route exact path="/login">
+							<NavbarLanding />
 							<RegistryForm />
+							<Footer />
 						</Route>
-
-						<Route exact path="/admin">
-							<LoginAdmin />
+						<Route exact path="/loginadmin">
+							<LoginManager />
+							<Footer />
 						</Route>
-						<Route exact path="/logged">
-							<LoggedScreen />
+						<Route exact path="/inicio">
+							<SidebarUser />
+							<DiarioMural />
+						</Route>
+						<Route exact path="/mensajes">
+							<SidebarUser />
+							<MensajeAdmin />
 						</Route>
 						<Route exact path="/marketplace">
+							<SidebarUser />
+							<MarketplaceUser />
+						</Route>
+						<Route exact path="/vistamarket">
+							<SidebarUser />
 							<Marketplace />
 						</Route>
-						<Route exact path="/operationadministrator">
-							<AdminOperation />
+						<Route exact path="/reservas">
+							<SidebarUser />
+							<DiarioMural />
+						</Route>
+						<Route exact path="/admin">
+							<SidebarAdmin />
+							<Redificio />
+						</Route>
+						<Route exact path="/registrodepartamento">
+							<SidebarAdmin />
+							<Rdepto />
+						</Route>
+						<Route exact path="/registroecomunes">
+							<SidebarAdmin />
+							<RECadmin />
+						</Route>
+						<Route exact path="/diariomuraladmin">
+							<SidebarAdmin />
+							<DmuralAdmin />
 						</Route>
 						<Route exact path="/actualizar_edificio/:id">
 							<UpdateBuilding />
@@ -77,10 +121,6 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/actualizar_marketplace/:id">
 							<UpdateMarketPlace />
-						</Route>
-
-						<Route exact path="/diariomural">
-							<DiarioMural />
 						</Route>
 					</Switch>
 				</ScrollToTop>
