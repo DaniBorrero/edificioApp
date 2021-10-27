@@ -407,61 +407,61 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("error", error));
 			}, //fin de actualizar marketplace
 
-			enviaremail: (name, email, text) => {
-				console.log("flux", name, email, text);
-				var data = {
-					Messages: [
-						{
-							/* Quién envía el mail, estos valores
-										salen del formulario*/
+			// enviaremail: (name, email, text) => {
+			// 	console.log("flux", name, email, text);
+			// 	var data = {
+			// 		Messages: [
+			// 			{
+			// 				/* Quién envía el mail, estos valores
+			// 							salen del formulario*/
 
-							From: {
-								Email: "tuedificioapp@gmail.com",
-								Name: name
-							},
-							/*no se cambia*/
-							To: [
-								{
-									Email: "tuedificioapp@gmail.com",
-									Name: "tuedificio"
-								}
-							] /*hasta aca*/,
-							/* Este es el asunto del mail */
+			// 				From: {
+			// 					Email: "tuedificioapp@gmail.com",
+			// 					Name: name
+			// 				},
+			// 				/*no se cambia*/
+			// 				To: [
+			// 					{
+			// 						Email: "tuedificioapp@gmail.com",
+			// 						Name: "tuedificio"
+			// 					}
+			// 				] /*hasta aca*/,
+			// 				/* Este es el asunto del mail */
 
-							Subject: "Correo enviado desde el Formulario",
-							/* Este es el cuerpo del mail */
+			// 				Subject: "Correo enviado desde el Formulario",
+			// 				/* Este es el cuerpo del mail */
 
-							TextPart: text + email,
+			// 				TextPart: text + email,
 
-							/* aca es un html que puedes poner lindo para el mail */
+			// 				/* aca es un html que puedes poner lindo para el mail */
 
-							HTMLPart:
-								"<h5> El usuario:</h5>" +
-								email +
-								"  envió el siguiente mensaje: " +
-								text +
-								"<br/> TuEdificio © 2021",
-							CustomID: "AppGettingStartedTest"
-						}
-					]
-				};
-				var myHeaders = new Headers();
-				myHeaders.append("Content-Type", "application/json");
-				console.log(data, "prueba");
+			// 				HTMLPart:
+			// 					"<h5> El usuario:</h5>" +
+			// 					email +
+			// 					"  envió el siguiente mensaje: " +
+			// 					text +
+			// 					"<br/> TuEdificio © 2021",
+			// 				CustomID: "AppGettingStartedTest"
+			// 			}
+			// 		]
+			// 	};
+			// 	var myHeaders = new Headers();
+			// 	myHeaders.append("Content-Type", "application/json");
+			// 	console.log(data, "prueba");
 
-				var raw = JSON.stringify(data);
-				var requestOptions = {
-					method: "POST",
-					headers: myHeaders,
-					body: raw,
-					redirect: "follow"
-				};
+			// 	var raw = JSON.stringify(data);
+			// 	var requestOptions = {
+			// 		method: "POST",
+			// 		headers: myHeaders,
+			// 		body: raw,
+			// 		redirect: "follow"
+			// 	};
 
-				fetch(process.env.BACKEND_URL + "/api/enviardatos", requestOptions)
-					.then(response => response.text())
-					.then(result => console.log(result))
-					.catch(error => console.log("error", error));
-			}, // fin de enviar email
+			// 	fetch(process.env.BACKEND_URL + "/api/enviardatos", requestOptions)
+			// 		.then(response => response.text())
+			// 		.then(result => console.log(result))
+			// 		.catch(error => console.log("error", error));
+			// }, // fin de enviar email
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");

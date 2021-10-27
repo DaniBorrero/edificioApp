@@ -14,36 +14,36 @@ export const EquiposLanding = () => {
 				<h1>Nuestro Equipo</h1>
 				<br />
 			</div>
-			<CardGroup>
-				<Card>
+			<CardGroup className="my-2">
+				<Card className="mx-2">
 					<Card.Img variant="top" src={Perfil1} />
 					<Card.Body>
 						<Card.Title>Daniel Borrero</Card.Title>
 						<Card.Text>Desarrollador Full-Stack</Card.Text>
 					</Card.Body>
 				</Card>
-				<Card>
+				<Card className="mx-2">
 					<Card.Img variant="top" src={Perfil2} />
 					<Card.Body>
 						<Card.Title>Emerson Ahumada</Card.Title>
 						<Card.Text>Desarrollador Full-Stack</Card.Text>
 					</Card.Body>
 				</Card>
-				<Card>
+				<Card className="mx-2">
 					<Card.Img variant="top" src={Perfil3} />
 					<Card.Body>
 						<Card.Title>Jorge Barahona</Card.Title>
 						<Card.Text>Desarrollador Full-Stack</Card.Text>
 					</Card.Body>
 				</Card>
-				<Card>
+				<Card className="mx-2">
 					<Card.Img variant="top" src={Perfil4} />
 					<Card.Body>
 						<Card.Title>Pedro Mengarelli</Card.Title>
 						<Card.Text>Desarrollador Full-Stack</Card.Text>
 					</Card.Body>
 				</Card>
-				<Card>
+				<Card className="mx-2">
 					<Card.Img variant="top" src={Perfil5} />
 					<Card.Body>
 						<Card.Title>Teresa Andrade</Card.Title>
