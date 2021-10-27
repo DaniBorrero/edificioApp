@@ -656,6 +656,7 @@ def get_datos():
 
 
 # Post Enviar email Formulario contacto    
+ 
 @api.route('/enviardatos', methods=['POST'])    
 def enviardatos():
     # body va a recibir la info de la api y la va a transformar en formato json    
@@ -694,7 +695,7 @@ def send_email(body):
         ]
         }
         result = mailjet.send.create(data=data)
-    
+ 
 
 
 
