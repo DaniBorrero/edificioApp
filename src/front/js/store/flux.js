@@ -580,7 +580,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					full_name: name,
 					phone: phone,
 					email: email,
-					dpto: dpto
+					numero_apartment: dpto
 				});
 				var requestOptions = {
 					method: "PUT",

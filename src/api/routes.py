@@ -628,7 +628,7 @@ def get_one_userregister(id):
        return jsonify(one_userregister.serialize()), 200         
 
 # DELETE UPDATE USER register
-api.route('/register/<int:id>', methods=['DELETE', 'PUT'])
+@api.route('/register/<int:id>', methods=['DELETE', 'PUT'])
 def DelUpUserRegister(id):
     if request.method =='DELETE':
         user = User.query.get(id)
@@ -649,13 +649,14 @@ def DelUpUserRegister(id):
         if 'phone' not in body:
             return "Debe especificar Numero de telefono",400
         if 'email' not in body:
-            return "Debe especificar el email",400  
-        if 'password'not in body:
-            return "Debe especificar el paswword",400  
+            return "Debe especificar el email",400 
+        if 'numero_apartment' not in body:
+            return "Debe especificar el numero de depto",400       
+          
         user.full_name=body["full_name"]
         user.phone=body["phone"]
         user.email=body["email"]
-        user.password=body["password"]
+        user.numero_apartment=body["numero_apartment"]
         db.session.commit() 
         response_body={
             "msg": "Usuario Registrado Actualizado"

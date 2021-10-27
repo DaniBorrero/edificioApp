@@ -62,7 +62,7 @@ export const FormUpdatUsuariosRegistrado = () => {
 				<Button ClassName="btn btn-primary" size="sm" type="submit" onClick={handleShow}>
 					Actualizar
 				</Button>{" "}
-				<Link to={"/marketplace"}>
+				<Link to={"/listausuarios"}>
 					<Button variant="success" size="sm" type="submit" onClick={handleShow}>
 						Volver
 					</Button>
