@@ -12,13 +12,13 @@ export const CardMural = () => {
 	);
 
 	return (
-		<Row>
+		<Row xs={12} md={8} className="g-4">
 			{store.diario_mural.map((elemento, posicion) => {
 				return (
-					<Col xs={12} md={8} key={posicion}>
-						<Card className="mx-3 my-3" bg={"warning"} style={{ width: "18rem" }} text={"light"}>
+					<Col key={posicion}>
+						<Card className="mx-3 my-3" bg={"secondary"} style={{ width: "18rem" }} text={"light"}>
+							<Card.Header>{elemento.title_announcement}</Card.Header>
 							<Card.Body>
-								<Card.Title>{elemento.title_announcement}</Card.Title>
 								<Card.Text>{elemento.announcement}</Card.Text>
 							</Card.Body>
 						</Card>
