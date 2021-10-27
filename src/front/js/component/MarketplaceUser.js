@@ -14,7 +14,6 @@ export const MarketplaceUser = () => {
 	console.log(store.marketplace);
 	//Hooks Marketplace
 	const [Titulo, setTitulo] = useState("");
-	const [TipoPublicacion, setPublicacion] = useState("");
 	const [Anuncio, setAnuncio] = useState("");
 
 	//Hooks Modal
@@ -31,7 +30,7 @@ export const MarketplaceUser = () => {
 
 	const handlerOnclickMarketplace = e => {
 		e.preventDefault();
-		actions.registrarmarketplace(Titulo, TipoPublicacion, Anuncio);
+		actions.registrarmarketplace(Titulo, Anuncio);
 	};
 	const handlerOnclickEnviarCorreoAdmin = e => {
 		e.preventDefault();
@@ -52,15 +51,6 @@ export const MarketplaceUser = () => {
 										placeholder="Coloque el titulo del anuncio"
 										onChange={e => setTitulo(e.target.value)}
 										value={Titulo}
-									/>
-								</Form.Group>
-								<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-									<Form.Label>Tipo de Publicacion:</Form.Label>
-									<Form.Control
-										type="text"
-										placeholder="Coloque el tipo publicacion"
-										onChange={e => setPublicacion(e.target.value)}
-										value={TipoPublicacion}
 									/>
 								</Form.Group>
 								<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -99,7 +89,6 @@ export const MarketplaceUser = () => {
 										<th>Id</th>
 										<th>Titulo</th>
 										<th>Anuncio</th>
-										<th>tipo de publicacion</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -126,7 +115,6 @@ export const MarketplaceUser = () => {
 												<td>{elemento.id_marketplace}</td>
 												<td> {elemento.title_announcement}</td>
 												<td>{elemento.announcement}</td>
-												<td>{elemento.type_publication}</td>
 											</tr>
 										);
 									})}

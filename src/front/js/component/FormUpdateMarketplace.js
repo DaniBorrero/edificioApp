@@ -11,7 +11,6 @@ export const FormUpdatMarketplace = () => {
 
 	//Hooks Marketplace
 	const [Titulo, setTitulo] = useState("");
-	const [TipoPublicacion, setPublicacion] = useState("");
 	const [Anuncio, setAnuncio] = useState("");
 
 	//Hooks Modal
@@ -27,13 +26,12 @@ export const FormUpdatMarketplace = () => {
 			console.log(Market);
 			setTitulo(Market.title_announcement);
 			setAnuncio(Market.announcement);
-			setPublicacion(Market.type_publication);
 		}
 	}, []);
 
 	const handlerOnclickMarketplace = e => {
 		e.preventDefault();
-		actions.actualizarMarketplace(id, Titulo, TipoPublicacion, Anuncio);
+		actions.actualizarMarketplace(id, Titulo, Anuncio);
 	};
 	return (
 		<Card.Body>
@@ -47,10 +45,6 @@ export const FormUpdatMarketplace = () => {
 						onChange={e => setTitulo(e.target.value)}
 						value={Titulo}
 					/>
-				</Form.Group>
-				<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-					<Form.Label>Tipo de Publicacion:</Form.Label>
-					<Form.Control type="text" onChange={e => setPublicacion(e.target.value)} value={TipoPublicacion} />
 				</Form.Group>
 				<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
 					<Form.Label>Anuncio:</Form.Label>

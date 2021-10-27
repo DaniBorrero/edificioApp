@@ -29,7 +29,6 @@ export const DiarioMuralAdmin = () => {
 
 	//Hooks DiarioMural
 	const [Titulo, setTitulo] = useState("");
-	const [TipoPublicacion, setPublicacion] = useState("");
 	const [Anuncio, setAnuncio] = useState("");
 
 	//Hooks Modal
@@ -72,15 +71,6 @@ export const DiarioMuralAdmin = () => {
 									/>
 								</Form.Group>
 								<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-									<Form.Label>Tipo de Publicacion:</Form.Label>
-									<Form.Control
-										type="text"
-										placeholder="Coloque el tipo publicacion"
-										onChange={e => setPublicacion(e.target.value)}
-										value={TipoPublicacion}
-									/>
-								</Form.Group>
-								<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
 									<Form.Label>Anuncio:</Form.Label>
 									<Form.Control
 										type="text"
@@ -114,7 +104,6 @@ export const DiarioMuralAdmin = () => {
 										<th>Id</th>
 										<th>Titulo</th>
 										<th>Anuncio</th>
-										<th>tipo de publicacion</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -141,7 +130,6 @@ export const DiarioMuralAdmin = () => {
 												<td>{elemento.id_diariomural}</td>
 												<td> {elemento.title_announcement}</td>
 												<td>{elemento.announcement}</td>
-												<td>{elemento.type_publication}</td>
 											</tr>
 										);
 									})}

@@ -130,11 +130,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.log("error", error));
 			}, //fin de espacio comun
-			registrardiariomural: (Titulo, TipoPublicacion, Anuncio) => {
-				console.log("flux registrar diario mural", Titulo, TipoPublicacion, Anuncio);
+			registrardiariomural: (Titulo, Anuncio) => {
+				console.log("flux registrar diario mural", Titulo, Anuncio);
 				var raw = JSON.stringify({
 					title_announcement: Titulo,
-					type_publication: TipoPublicacion,
+
 					announcement: Anuncio
 				});
 				var requestOptions = {
@@ -162,11 +162,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("error", error));
 			}, //fin de getdirariomural
 
-			registrarmarketplace: (Titulo, TipoPublicacion, Anuncio) => {
-				console.log("flux registrar maretplace", Titulo, TipoPublicacion, Anuncio);
+			registrarmarketplace: (Titulo, Anuncio) => {
+				console.log("flux registrar maretplace", Titulo, Anuncio);
 				var raw = JSON.stringify({
 					title_announcement: Titulo,
-					type_publication: TipoPublicacion,
 					announcement: Anuncio
 				});
 				var requestOptions = {
@@ -365,11 +364,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			}, //fin de funcion actualizar espacios comunes
-			actualizarDiarioMural: (id, Titulo, TipoPublicacion, Anuncio) => {
+			actualizarDiarioMural: (id, Titulo, Anuncio) => {
 				const store = getStore();
-				console.log("flux actualizar Diario Mural", Titulo, TipoPublicacion, Anuncio);
+				console.log("flux actualizar Diario Mural", Titulo, Anuncio);
 				var raw = JSON.stringify({
-					type_publication: TipoPublicacion,
 					title_announcement: Titulo,
 					announcement: Anuncio
 				});
@@ -386,11 +384,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			}, //fin de actualizar diario mural
-			actualizarMarketplace: (id, Titulo, TipoPublicacion, Anuncio) => {
+			actualizarMarketplace: (id, Titulo, Anuncio) => {
 				const store = getStore();
-				console.log("flux actualizar MarketPlace", Titulo, TipoPublicacion, Anuncio);
+				console.log("flux actualizar MarketPlace", Titulo, Anuncio);
 				var raw = JSON.stringify({
-					type_publication: TipoPublicacion,
 					title_announcement: Titulo,
 					announcement: Anuncio
 				});

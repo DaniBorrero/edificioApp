@@ -1,26 +1,8 @@
 """empty message
 
-<<<<<<< HEAD:migrations/versions/58ab7bf51c15_.py
-<<<<<<< HEAD:migrations/versions/b93f388a1523_.py
-<<<<<<< HEAD:migrations/versions/60f6f4734c27_.py
-Revision ID: 60f6f4734c27
+Revision ID: 6ca71e2eb6a3
 Revises: 
-Create Date: 2021-10-27 01:03:21.894951
-=======
-Revision ID: b93f388a1523
-Revises: 
-Create Date: 2021-10-26 01:26:56.524259
->>>>>>> 63bfbe2af7f6b633636b6c866a5e449430367d53:migrations/versions/b93f388a1523_.py
-=======
-Revision ID: 58ab7bf51c15
-Revises: 
-Create Date: 2021-10-26 21:39:57.965569
->>>>>>> 47fefb3272711ec8d974868b89a7cab336b05689:migrations/versions/58ab7bf51c15_.py
-=======
-Revision ID: 9d6b651f2546
-Revises: 
-Create Date: 2021-10-27 14:21:27.451269
->>>>>>> 3b99962bb6755221f27011d6ef66d46c0add7bdf:migrations/versions/9d6b651f2546_.py
+Create Date: 2021-10-27 17:57:19.917721
 
 """
 from alembic import op
@@ -28,19 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<< HEAD:migrations/versions/58ab7bf51c15_.py
-<<<<<<< HEAD:migrations/versions/b93f388a1523_.py
-<<<<<<< HEAD:migrations/versions/60f6f4734c27_.py
-revision = '60f6f4734c27'
-=======
-revision = 'b93f388a1523'
->>>>>>> 63bfbe2af7f6b633636b6c866a5e449430367d53:migrations/versions/b93f388a1523_.py
-=======
-revision = '58ab7bf51c15'
->>>>>>> 47fefb3272711ec8d974868b89a7cab336b05689:migrations/versions/58ab7bf51c15_.py
-=======
-revision = '9d6b651f2546'
->>>>>>> 3b99962bb6755221f27011d6ef66d46c0add7bdf:migrations/versions/9d6b651f2546_.py
+revision = '6ca71e2eb6a3'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -90,7 +60,6 @@ def upgrade():
     op.create_table('diariomural',
     sa.Column('id_diariomural', sa.Integer(), nullable=False),
     sa.Column('administrator_id', sa.Integer(), nullable=True),
-    sa.Column('type_publication', sa.String(length=1), nullable=False),
     sa.Column('title_announcement', sa.String(length=50), nullable=False),
     sa.Column('announcement', sa.String(length=200), nullable=False),
     sa.ForeignKeyConstraint(['administrator_id'], ['administrator.id_admin'], ),
@@ -114,7 +83,6 @@ def upgrade():
     )
     op.create_table('marketplace',
     sa.Column('id_marketplace', sa.Integer(), nullable=False),
-    sa.Column('type_publication', sa.String(length=1), nullable=False),
     sa.Column('title_announcement', sa.String(length=50), nullable=False),
     sa.Column('announcement', sa.String(length=200), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),

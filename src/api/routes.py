@@ -396,17 +396,15 @@ def get_all_diariomural():
             return "The request body is null", 400
         if 'title_announcement' not in body:
             return "Debe especificar El Titulo del Anuncio",400
-        if  'type_publication' not in body:
-            return "Debe especificar El Tipo de publicacion",400   
+        
         if 'announcement' not in body:
             return "Debe especificar el anuncio",400
         
-        newDiarioMural= DiarioMural(title_announcement=body['title_announcement'],announcement=body['announcement'],type_publication=body['type_publication'])
+        newDiarioMural= DiarioMural(title_announcement=body['title_announcement'],announcement=body['announcement'])
         db.session.add(newDiarioMural)
-        db.session.commit()
+        db.session.commit()        
         response_body={
-            "msg": "Anuncio Registrado en el Diario Mural"
-        }
+            "msg": "Anuncio Registrado en el Diario Mural"        }
         return jsonify(response_body),200      
 
 # GET ONE DIARIO MURAL
@@ -434,15 +432,11 @@ def DelUpDiarioMural(id):
         #validamos que  lo que se traiga en el request no este vacio o null
         if body is None:
             return "The request body is null", 400
-        if 'type_publication' not in body:
-            return "Debe especificar tipo de publicacion",400
         if 'title_announcement' not in body:
             return "Debe especificar el titulo",400
         if 'announcement' not in body:
             return "Debe especificar el anuncio",400 
            
-                  
-        diariomural.type_publication=body["type_publication"]
         diariomural.title_announcement=body["title_announcement"]
         diariomural.announcement=body["announcement"]
        
@@ -469,13 +463,11 @@ def get_all_marketplace():
        if body is None:
            return "The request body is null", 400
        if 'title_announcement' not in body:
-           return "Debe especificar El Titulo del Anuncio",400
-       if  'type_publication' not in body:
-           return "Debe especificar El Tipo de publicacion",400      
+           return "Debe especificar El Titulo del Anuncio",400     
        if 'announcement' not in body:
            return "Debe especificar el anuncio",400
     
-       newMarketplace= Marketplace(title_announcement=body['title_announcement'],announcement=body['announcement'],type_publication=body['type_publication'])
+       newMarketplace= Marketplace(title_announcement=body['title_announcement'],announcement=body['announcement'])
        db.session.add(newMarketplace)
        db.session.commit()
        response_body={
@@ -508,15 +500,13 @@ def DelUpMarketplace(id):
         #validamos que  lo que se traiga en el request no este vacio o null
         if body is None:
             return "The request body is null", 400
-        if 'type_publication' not in body:
-            return "Debe especificar tipo de publicacion",400
         if 'title_announcement' not in body:
             return "Debe especificar el titulo",400
         if 'announcement' not in body:
             return "Debe especificar el anuncio",400 
            
                   
-        marketplace.type_publication=body["type_publication"]
+        
         marketplace.title_announcement=body["title_announcement"]
         marketplace.announcement=body["announcement"]
        
