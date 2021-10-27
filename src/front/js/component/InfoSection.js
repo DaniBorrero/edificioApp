@@ -7,6 +7,8 @@ const Section = styled.section`
 	width: 100%;
 	height: 100%;
 	padding: 1rem 0rem;
+	min-height: 60vh;
+	padding-top: 2rem;
 `;
 
 const Container = styled.div`

@@ -35,7 +35,7 @@ export const LogSign = () => {
 	};
 
 	return (
-		<section>
+		<section className="logsign">
 			<div className={click ? "container" : "container active"}>
 				<div className="user signinBx">
 					<div className="imgBx">
