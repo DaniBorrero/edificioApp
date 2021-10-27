@@ -4,6 +4,7 @@ import { Accordion, Container, Modal, Tabs, Table, Tab, Button, Card, Form, Col 
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import acceso from "../../img/noacceso.png";
 
 export const RegistroEcomunes = () => {
 	const { store, actions } = useContext(Context);
@@ -56,92 +57,112 @@ export const RegistroEcomunes = () => {
 
 	return (
 		<div>
-			<Card className="my-5 container">
-				<Card.Header>Registro de Espacios Comunes</Card.Header>
-				<Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
-					<Tab eventKey="home" title="Registrar">
-						<Card.Body>
-							<Form onSubmit={handlerOnclickEspComun}>
-								<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-									<Form.Label>Espacio Comun </Form.Label>
-									<Form.Control
-										type="text"
-										placeholder="Coloque el Nombre del Espacio Comun"
-										required
-										onChange={e => setCommonSpace(e.target.value)}
-										value={CommonSpace}
-									/>
-								</Form.Group>
-								<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-									<Form.Label>Aforo:</Form.Label>
-									<Form.Control
-										type="text"
-										placeholder="Coloque el aforo"
-										required
-										onChange={e => setAforo(e.target.value)}
-										value={Aforo}
-									/>
-								</Form.Group>
-								<Button ClassName="btn btn-primary" size="sm" type="submit" onClick={handleShow}>
-									Registrar Espacio Comun
-								</Button>
-								<Modal show={show} onHide={handleClose}>
-									<Modal.Header closeButton>
-										<Modal.Title>Enhorabuena!</Modal.Title>
-									</Modal.Header>
-									<Modal.Body>Registro Exitoso...</Modal.Body>
-									<Modal.Footer>
-										<Button variant="info" size="sm" onClick={handleClose}>
-											Cerrar
+			{localStorage.getItem("token_admin") != null ? (
+				<>
+					<Card className="my-5 container">
+						<Card.Header>Registro de Espacios Comunes</Card.Header>
+						<Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+							<Tab eventKey="home" title="Registrar">
+								<Card.Body>
+									<Form onSubmit={handlerOnclickEspComun}>
+										<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+											<Form.Label>Espacio Comun </Form.Label>
+											<Form.Control
+												type="text"
+												placeholder="Coloque el Nombre del Espacio Comun"
+												required
+												onChange={e => setCommonSpace(e.target.value)}
+												value={CommonSpace}
+											/>
+										</Form.Group>
+										<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+											<Form.Label>Aforo:</Form.Label>
+											<Form.Control
+												type="text"
+												placeholder="Coloque el aforo"
+												required
+												onChange={e => setAforo(e.target.value)}
+												value={Aforo}
+											/>
+										</Form.Group>
+										<Button
+											ClassName="btn btn-primary"
+											size="sm"
+											type="submit"
+											onClick={handleShow}>
+											Registrar Espacio Comun
 										</Button>
-									</Modal.Footer>
-								</Modal>
-							</Form>
-						</Card.Body>
-					</Tab>
-					<Tab eventKey="profile" title="Listar Espacios Comunes">
-						<Card.Body>
-							<Table striped bordered hover size="sm">
-								<thead>
-									<tr>
-										<th>Id</th>
-										<th>Nombre</th>
-										<th>Aforo</th>
-									</tr>
-								</thead>
-								<tbody>
-									{store.espacio_comun.map((elemento, posicion) => {
-										return (
-											<tr key={posicion}>
-												<td className="col-md-1">
-													<Button
-														className="btn btn-info"
-														size="sm"
-														type="button"
-														onClick={() => {
-															actions.borrarEspacioComun(elemento);
-														}}>
-														<i className="fas fa-trash-alt"> </i>
-													</Button>{" "}
-													<Link to={"/actualizar_espaciocomun/" + elemento.id_commonspace}>
-														<Button className="btn btn-info" size="sm" type="button">
-															<i className="fas fa-edit" />
-														</Button>
-													</Link>
-													{""}
-												</td>
-												<td>{elemento.id_commonspace}</td>
-												<td> {elemento.name}</td>
-												<td>{elemento.aforo}</td>
+										<Modal show={show} onHide={handleClose}>
+											<Modal.Header closeButton>
+												<Modal.Title>Enhorabuena!</Modal.Title>
+											</Modal.Header>
+											<Modal.Body>Registro Exitoso...</Modal.Body>
+											<Modal.Footer>
+												<Button variant="info" size="sm" onClick={handleClose}>
+													Cerrar
+												</Button>
+											</Modal.Footer>
+										</Modal>
+									</Form>
+								</Card.Body>
+							</Tab>
+							<Tab eventKey="profile" title="Listar Espacios Comunes">
+								<Card.Body>
+									<Table striped bordered hover size="sm">
+										<thead>
+											<tr>
+												<th>Id</th>
+												<th>Nombre</th>
+												<th>Aforo</th>
 											</tr>
-										);
-									})}
-								</tbody>
-							</Table>
-						</Card.Body>
-					</Tab>
-				</Tabs>
-			</Card>
+										</thead>
+										<tbody>
+											{store.espacio_comun.map((elemento, posicion) => {
+												return (
+													<tr key={posicion}>
+														<td className="col-md-1">
+															<Button
+																className="btn btn-info"
+																size="sm"
+																type="button"
+																onClick={() => {
+																	actions.borrarEspacioComun(elemento);
+																}}>
+																<i className="fas fa-trash-alt"> </i>
+															</Button>{" "}
+															<Link
+																to={
+																	"/actualizar_espaciocomun/" +
+																	elemento.id_commonspace
+																}>
+																<Button
+																	className="btn btn-info"
+																	size="sm"
+																	type="button">
+																	<i className="fas fa-edit" />
+																</Button>
+															</Link>
+															{""}
+														</td>
+														<td>{elemento.id_commonspace}</td>
+														<td> {elemento.name}</td>
+														<td>{elemento.aforo}</td>
+													</tr>
+												);
+											})}
+										</tbody>
+									</Table>
+								</Card.Body>
+							</Tab>
+						</Tabs>
+					</Card>
+				</>
+			) : (
+				<>
+					<h1 className="d-flex justify-content-center my-3">Debes registrarte para inicar session.</h1>
+					<img className="acceso container d-flex justify-content-center" src={acceso} alt="fotoAcceso" />
+				</>
+			)}
 		</div>
 	);
 };
