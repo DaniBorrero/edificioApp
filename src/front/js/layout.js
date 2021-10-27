@@ -30,6 +30,7 @@ import { RECadmin } from "./pages/RECadmin";
 import { DmuralAdmin } from "./pages/DmuralAdmin";
 import { Equipo } from "./pages/Equipo";
 import acceso from "../img/noacceso.png";
+import "../styles/registry.scss";
 
 const Layout = () => {
 	const { store, actions } = useContext(Context);
@@ -113,18 +114,19 @@ const Layout = () => {
 						) : (
 							<>
 								<NavbarLanding />
-								<h1 className="d-flex justify-content-center my-3">
-									Debe iniciar session como administrador primero.
-								</h1>
-								<h2 className="d-flex justify-content-center my-3">
-									Para ingresar como administrador click
-									<Link to="loginadmin"> Aca</Link>
-								</h2>
-								<img
-									className="acceso container d-flex justify-content-center"
-									src={acceso}
-									alt="fotoAcceso"
-								/>
+								<h1 className="permiso">Debe iniciar session para ingresar.</h1>
+
+								<img className="acceso" src={acceso} alt="fotoAcceso" />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
 								<Footer />
 							</>
 						)}
@@ -155,14 +157,17 @@ const Layout = () => {
 						) : (
 							<>
 								<NavbarLanding />
-								<h1 className="d-flex justify-content-center my-3">
-									Debes registrarte para inicar session.
-								</h1>
-								<img
-									className="acceso container d-flex justify-content-center"
-									src={acceso}
-									alt="fotoAcceso"
-								/>
+								<h1 className="permiso">Debes registrarte para inicar session.</h1>
+								<img className="acceso" src={acceso} alt="fotoAcceso" />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
+
 								<Footer />
 							</>
 						)}
