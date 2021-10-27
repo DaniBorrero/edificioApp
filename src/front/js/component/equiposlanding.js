@@ -7,7 +7,7 @@ export const EquiposLanding = () => {
 	return (
 		<>
 			<CardGroup>
-                <h1>Nuestro Equipo<h1/>
+				<h1>Nuestro Equipo</h1>
 				<Card>
 					<Card.Img variant="top" src="holder.js/100px160" />
 					<Card.Body>
