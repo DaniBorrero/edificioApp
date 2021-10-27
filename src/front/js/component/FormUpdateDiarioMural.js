@@ -41,6 +41,7 @@ export const FormUpdateDiarioMural = () => {
 					<Form.Label> Titulo del Anuncio:</Form.Label>
 					<Form.Control
 						type="text"
+						required
 						//placeholder="Coloque el Nombre del Edificio"
 						onChange={e => setTitulo(e.target.value)}
 						value={Titulo}
@@ -50,6 +51,7 @@ export const FormUpdateDiarioMural = () => {
 					<Form.Label>Tipo de Publicacion:</Form.Label>
 					<Form.Control
 						type="text"
+						required
 						placeholder="Coloque el tipo publicacion"
 						onChange={e => setPublicacion(e.target.value)}
 						value={TipoPublicacion}
@@ -59,6 +61,7 @@ export const FormUpdateDiarioMural = () => {
 					<Form.Label>Anuncio:</Form.Label>
 					<Form.Control
 						type="text"
+						required
 						placeholder="Coloque el anuncio a mostrar en el diario mural"
 						onChange={e => setAnuncio(e.target.value)}
 						value={Anuncio}

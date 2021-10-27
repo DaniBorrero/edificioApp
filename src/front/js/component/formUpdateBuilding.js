@@ -43,6 +43,7 @@ export const FormUpdateBuilding = () => {
 					<Form.Label>Nombre del Edificio:</Form.Label>
 					<Form.Control
 						type="text"
+						required
 						//placeholder="Coloque el Nombre del Edificio"
 						onChange={e => setNameBuilding(e.target.value)}
 						value={NameBuilding}
@@ -52,6 +53,7 @@ export const FormUpdateBuilding = () => {
 					<Form.Label>Direccion del Edificio:</Form.Label>
 					<Form.Control
 						type="text"
+						required
 						//placeholder="Coloque la Dirección"
 						onChange={e => setAddress(e.target.value)}
 						value={Address}
@@ -61,6 +63,7 @@ export const FormUpdateBuilding = () => {
 					<Form.Label>Region:</Form.Label>
 					<Form.Control
 						type="text"
+						required
 						//placeholder="Coloque la Región"
 						onChange={e => setRegion(e.target.value)}
 						value={Region}
@@ -70,6 +73,7 @@ export const FormUpdateBuilding = () => {
 					<Form.Label>Comuna:</Form.Label>
 					<Form.Control
 						type="text"
+						required
 						//placeholder="Coloque la Comuna"
 						onChange={e => setComuna(e.target.value)}
 						value={Comuna}
