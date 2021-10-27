@@ -116,7 +116,10 @@ const Layout = () => {
 								<h1 className="d-flex justify-content-center my-3">
 									Debe iniciar session como administrador primero.
 								</h1>
-								Para ingresar como administrador click <Link to="/loginadmin" />
+								<h2 className="d-flex justify-content-center my-3">
+									Para ingresar como administrador click
+									<Link to="loginadmin"> Aca</Link>
+								</h2>
 								<img
 									className="acceso container d-flex justify-content-center"
 									src={acceso}
