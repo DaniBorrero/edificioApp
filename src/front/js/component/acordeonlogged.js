@@ -65,7 +65,10 @@ export const Acordeonlogged = () => {
 											required
 											onChange={e => setTitulo(e.target.value)}
 											value={Titulo}
-											
+
+											required
+							
+
 										/>
 									</Form.Group>
 									<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

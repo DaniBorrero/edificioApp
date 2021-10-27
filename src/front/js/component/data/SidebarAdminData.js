@@ -29,17 +29,17 @@ export const SidebarAdminData = [
 		path: "/diariomuraladmin",
 		icon: <BsIcons.BsClipboardData />,
 		cName: "nav-text1"
-	},
+	}
 	// {
 	// 	title: "Mensaje a Usuario ",
 	// 	path: "/mensajeusuario",
 	// 	icon: <FaIcons.FaEnvelopeOpenText />,
 	// 	cName: "nav-text1"
 	// },
-	{
-		title: "Salir sesión",
-		path: "/",
-		icon: <ImIcons.ImExit />,
-		cName: "nav-text1"
-	}
+	// {
+	// 	title: "Salir sesión",
+	// 	path: "/",
+	// 	icon: <ImIcons.ImExit />,
+	// 	cName: "nav-text1"
+	// }
 ];
