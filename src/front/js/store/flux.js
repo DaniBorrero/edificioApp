@@ -496,7 +496,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ user: res.info_user });
 						setStore({ current_user: "user" });
 						alert("Bienvenido: " + store.user.full_name);
-						location = "/logged";
+						location = "/inicio";
 					})
 					.catch(error => {
 						console.log("error", error);
@@ -556,7 +556,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
-						location = "/registry";
+						location = "/login";
 					})
 					.catch(error => console.log("error", error));
 			},

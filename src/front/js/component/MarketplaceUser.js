@@ -114,8 +114,8 @@ export const MarketplaceUser = () => {
 												</td>
 												<td>{elemento.id_marketplace}</td>
 												<td> {elemento.title_announcement}</td>
-												<td>{elemento.announcement}</td>
-d											</tr>
+												<td>{elemento.announcement}</td>d{" "}
+											</tr>
 										);
 									})}
 								</tbody>
