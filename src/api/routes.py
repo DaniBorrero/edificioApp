@@ -396,17 +396,15 @@ def get_all_diariomural():
             return "The request body is null", 400
         if 'title_announcement' not in body:
             return "Debe especificar El Titulo del Anuncio",400
-        if  'type_publication' not in body:
-            return "Debe especificar El Tipo de publicacion",400   
+        
         if 'announcement' not in body:
             return "Debe especificar el anuncio",400
         
-        newDiarioMural= DiarioMural(title_announcement=body['title_announcement'],announcement=body['announcement'],type_publication=body['type_publication'])
+        newDiarioMural= DiarioMural(title_announcement=body['title_announcement'],announcement=body['announcement'])
         db.session.add(newDiarioMural)
-        db.session.commit()
+        db.session.commit()        
         response_body={
-            "msg": "Anuncio Registrado en el Diario Mural"
-        }
+            "msg": "Anuncio Registrado en el Diario Mural"        }
         return jsonify(response_body),200      
 
 # GET ONE DIARIO MURAL
@@ -434,15 +432,11 @@ def DelUpDiarioMural(id):
         #validamos que  lo que se traiga en el request no este vacio o null
         if body is None:
             return "The request body is null", 400
-        if 'type_publication' not in body:
-            return "Debe especificar tipo de publicacion",400
         if 'title_announcement' not in body:
             return "Debe especificar el titulo",400
         if 'announcement' not in body:
             return "Debe especificar el anuncio",400 
            
-                  
-        diariomural.type_publication=body["type_publication"]
         diariomural.title_announcement=body["title_announcement"]
         diariomural.announcement=body["announcement"]
        
@@ -469,13 +463,11 @@ def get_all_marketplace():
        if body is None:
            return "The request body is null", 400
        if 'title_announcement' not in body:
-           return "Debe especificar El Titulo del Anuncio",400
-       if  'type_publication' not in body:
-           return "Debe especificar El Tipo de publicacion",400      
+           return "Debe especificar El Titulo del Anuncio",400     
        if 'announcement' not in body:
            return "Debe especificar el anuncio",400
     
-       newMarketplace= Marketplace(title_announcement=body['title_announcement'],announcement=body['announcement'],type_publication=body['type_publication'])
+       newMarketplace= Marketplace(title_announcement=body['title_announcement'],announcement=body['announcement'])
        db.session.add(newMarketplace)
        db.session.commit()
        response_body={
@@ -508,15 +500,13 @@ def DelUpMarketplace(id):
         #validamos que  lo que se traiga en el request no este vacio o null
         if body is None:
             return "The request body is null", 400
-        if 'type_publication' not in body:
-            return "Debe especificar tipo de publicacion",400
         if 'title_announcement' not in body:
             return "Debe especificar el titulo",400
         if 'announcement' not in body:
             return "Debe especificar el anuncio",400 
            
                   
-        marketplace.type_publication=body["type_publication"]
+        
         marketplace.title_announcement=body["title_announcement"]
         marketplace.announcement=body["announcement"]
        
@@ -590,29 +580,80 @@ def DelUpSpaceReservation(id):
         }
         return jsonify(response_body),200
 
-@api.route('/register', methods=['POST'])
+@api.route('/register', methods=['GET','POST'])
 def post_user():
- # body va a recibir la info de la api y la va a transformar en formato json    
-    body=request.get_json()
-    #validamos que  lo que se traiga en el request no este vacio o null
-    if body is None:
-        return "The request body is null", 400
-    if 'full_name' not in body:
-        return "Debe especificar Nombre Completo",400
-    if 'phone' not in body:
-        return "Debe especificar Numero de telefono",400
-    if 'email' not in body:
-        return "Debe especificar el email",400  
-    if 'password'not in body:
-        return "Debe especificar el paswword",400
-    newUser= User(full_name=body['full_name'],phone=body['phone'],
-    email=body['email'],password=body['password'])
-    db.session.add(newUser)
-    db.session.commit()
-    response_body={
-        "msg": "Usuario Registrado"
-    }
-    return jsonify(response_body),200
+    if request.method =='GET':
+        # esta varibale estoy consultando a la base de datos por todos los registros de la tabla user
+        all_user= User.query.all()
+        all_user= list(map(lambda x: x.serialize(), all_user))
+        return jsonify(all_user), 200 
+    else:     
+        # body va a recibir la info de la api y la va a transformar en formato json    
+        body=request.get_json()
+        #validamos que  lo que se traiga en el request no este vacio o null
+        if body is None:
+            return "The request body is null", 400
+        if 'full_name' not in body:
+            return "Debe especificar Nombre Completo",400
+        if 'phone' not in body:
+            return "Debe especificar Numero de telefono",400
+        if 'email' not in body:
+            return "Debe especificar el email",400  
+        if 'password'not in body:
+            return "Debe especificar el paswword",400
+        newUser= User(full_name=body['full_name'],phone=body['phone'],
+        email=body['email'],password=body['password'])
+        db.session.add(newUser)
+        db.session.commit()
+        response_body={
+            "msg": "Usuario Registrado"
+        }
+        return jsonify(response_body),200
+   
+# GET ONE userregister
+@api.route('/register/<int:id>', methods=['GET'])
+def get_one_userregister(id):
+    if request.method =='GET':
+       one_userregister= User.query.get(id)
+       return jsonify(one_userregister.serialize()), 200         
+
+# DELETE UPDATE USER register
+@api.route('/register/<int:id>', methods=['DELETE', 'PUT'])
+def DelUpUserRegister(id):
+    if request.method =='DELETE':
+        user = User.query.get(id)
+        db.session.delete(user)
+        db.session.commit()
+        
+        return jsonify({"msg": "Usuario Eliminado"})
+    else:
+        user = User.query.get(id)
+        
+        # body va a recibir la info de la api y la va a transformar en formato json    
+        body=request.get_json()
+        #validamos que  lo que se traiga en el request no este vacio o null
+        if body is None:
+            return "The request body is null", 400
+        if 'full_name' not in body:
+            return "Debe especificar Nombre Completo",400
+        if 'phone' not in body:
+            return "Debe especificar Numero de telefono",400
+        if 'email' not in body:
+            return "Debe especificar el email",400 
+        if 'numero_apartment' not in body:
+            return "Debe especificar el numero de depto",400       
+          
+        user.full_name=body["full_name"]
+        user.phone=body["phone"]
+        user.email=body["email"]
+        user.numero_apartment=body["numero_apartment"]
+        db.session.commit() 
+        response_body={
+            "msg": "Usuario Registrado Actualizado"
+        }
+        return jsonify(response_body),200            
+
+
 
 #INICIO Reserva espacio comun
 
