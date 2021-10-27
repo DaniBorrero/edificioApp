@@ -196,14 +196,17 @@ const Layout = () => {
 						) : (
 							<>
 								<NavbarLanding />
-								<h1 className="d-flex justify-content-center my-3">
-									Debes registrarte para inicar session.
-								</h1>
-								<img
-									className="acceso container d-flex justify-content-center"
-									src={acceso}
-									alt="fotoAcceso"
-								/>
+								<h1 className="permiso">Debes registrarte para inicar session.</h1>
+								<img className="acceso" src={acceso} alt="fotoAcceso" />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
+
 								<Footer />
 							</>
 						)}

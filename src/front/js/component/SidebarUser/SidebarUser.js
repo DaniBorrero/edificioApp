@@ -8,7 +8,6 @@ import { IconContext } from "react-icons";
 import Edi from "../../../img/logo.png";
 import * as ImIcons from "react-icons/im";
 import { Context } from "../../store/appContext";
-import acceso from "../../../img/noacceso.png";
 
 export const SidebarUser = () => {
 	const { store, actions } = useContext(Context);
@@ -45,9 +44,11 @@ export const SidebarUser = () => {
 									</li>
 								);
 							})}
-							<Link to="/" className="nav-text" onClick={actions.clearToken}>
-								<ImIcons.ImExit /> Salir Session.
-							</Link>
+							<li className="nav-text">
+								<a href="/" onClick={actions.clearToken}>
+									<ImIcons.ImExit /> <span>Salir Sesion</span>
+								</a>
+							</li>
 						</ul>
 					</nav>
 				</IconContext.Provider>

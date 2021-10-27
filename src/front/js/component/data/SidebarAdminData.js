@@ -42,10 +42,10 @@ export const SidebarAdminData = [
 	// 	icon: <FaIcons.FaEnvelopeOpenText />,
 	// 	cName: "nav-text1"
 	// },
-	{
-		title: "Salir sesión",
-		path: "/",
-		icon: <ImIcons.ImExit />,
-		cName: "nav-text1"
-	}
+	// {
+	// 	title: "Salir sesión",
+	// 	path: "/",
+	// 	icon: <ImIcons.ImExit />,
+	// 	cName: "nav-text1"
+	// }
 ];
