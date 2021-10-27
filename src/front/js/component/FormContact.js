@@ -47,6 +47,7 @@ export const FormContact = () => {
 								<Form.Control
 									type="text"
 									placeholder="Escriba su Nombre"
+									required
 									onChange={e => setName(e.target.value)}
 									value={name}
 								/>
@@ -56,6 +57,7 @@ export const FormContact = () => {
 								<Form.Control
 									type="email"
 									placeholder="email@ejemplo.com"
+									required
 									onChange={e => setEmail(e.target.value)}
 									value={email}
 								/>
@@ -66,6 +68,7 @@ export const FormContact = () => {
 									as="textarea"
 									placeholder="Su Mensaje"
 									rows={5}
+									required
 									onChange={e => setText(e.target.value)}
 									value={text}
 								/>

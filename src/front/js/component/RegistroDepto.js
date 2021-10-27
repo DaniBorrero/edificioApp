@@ -67,6 +67,7 @@ export const RegistroDepto = () => {
 									<Form.Control
 										type="text"
 										placeholder="Coloque el Numero de Dpto"
+										required
 										onChange={e => setNumApartment(e.target.value)}
 										value={NumApartment}
 									/>
@@ -76,6 +77,7 @@ export const RegistroDepto = () => {
 									<Form.Control
 										type="text"
 										placeholder="Coloque el piso"
+										required
 										onChange={e => setFloorApartment(e.target.value)}
 										value={FloorApartment}
 									/>

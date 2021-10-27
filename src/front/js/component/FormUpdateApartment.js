@@ -38,6 +38,7 @@ export const FormUpdateApartment = () => {
 					<Form.Label>Numero del Departamento:</Form.Label>
 					<Form.Control
 						type="text"
+						required
 						//placeholder="Coloque el Nombre del Edificio"
 						onChange={e => setNumApartment(e.target.value)}
 						value={NumApartment}
@@ -47,6 +48,7 @@ export const FormUpdateApartment = () => {
 					<Form.Label>Piso del Departamento:</Form.Label>
 					<Form.Control
 						type="text"
+						required
 						//placeholder="Coloque la Dirección"
 						onChange={e => setFloorApartment(e.target.value)}
 						value={FloorApartment}

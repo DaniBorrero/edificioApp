@@ -138,8 +138,39 @@ const Layout = () => {
 								<Footer />
 							</>
 						)}
+						<Route exact path="/admin">
+							<SidebarAdmin />
+							<Redificio />
+						</Route>
+						<Route exact path="/registrodepartamento">
+							<SidebarAdmin />
+							<Rdepto />
+						</Route>
+						<Route exact path="/registroecomunes">
+							<SidebarAdmin />
+							<RECadmin />
+						</Route>
+						<Route exact path="/diariomuraladmin">
+							<SidebarAdmin />
+							<DmuralAdmin />
+						</Route>
+						<Route exact path="/actualizar_edificio/:id">
+							<UpdateBuilding />
+						</Route>
+						<Route exact path="/actualizar_apartamento/:id">
+							<UpdateApartment />
+						</Route>
+						<Route exact path="/actualizar_espaciocomun/:id">
+							<UpdateCommonSpace />
+						</Route>
+						<Route exact path="/actualizar_diariomural/:id">
+							<UpdateDiarioMural />
+						</Route>
+						<Route exact path="/actualizar_marketplace/:id">
+							<UpdateMarketPlace />
+						</Route>
 						;{/* Condiciones para permitir acceso a usuarios */}
-						{localStorage.getItem("token") != ("undefined" || null) ? (
+						{localStorage.getItem("token") != null ? (
 							<>
 								<Route exact path="/inicio">
 									<SidebarUser />

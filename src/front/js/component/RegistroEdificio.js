@@ -66,6 +66,7 @@ export const RegistroEdificio = () => {
 									<Form.Control
 										type="text"
 										placeholder="Coloque el Nombre del Edificio"
+										required
 										onChange={e => setNameBuilding(e.target.value)}
 										value={NameBuilding}
 									/>
@@ -75,6 +76,7 @@ export const RegistroEdificio = () => {
 									<Form.Control
 										type="text"
 										placeholder="Coloque la Dirección"
+										required
 										onChange={e => setAddress(e.target.value)}
 										value={Address}
 									/>
@@ -84,6 +86,7 @@ export const RegistroEdificio = () => {
 									<Form.Control
 										type="text"
 										placeholder="Coloque la Región"
+										required
 										onChange={e => setRegion(e.target.value)}
 										value={Region}
 									/>
@@ -93,6 +96,7 @@ export const RegistroEdificio = () => {
 									<Form.Control
 										type="text"
 										placeholder="Coloque la Comuna"
+										required
 										onChange={e => setComuna(e.target.value)}
 										value={Comuna}
 									/>
