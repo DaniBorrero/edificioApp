@@ -62,9 +62,13 @@ export const Acordeonlogged = () => {
 										<Form.Control
 											type="text"
 											placeholder="Coloque el titulo del anuncio"
+											required
 											onChange={e => setTitulo(e.target.value)}
 											value={Titulo}
+
 											required
+							
+
 										/>
 									</Form.Group>
 									<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -72,6 +76,7 @@ export const Acordeonlogged = () => {
 										<Form.Control
 											type="text"
 											placeholder="Coloque el tipo publicacion"
+											required
 											onChange={e => setPublicacion(e.target.value)}
 											value={TipoPublicacion}
 										/>
@@ -81,6 +86,7 @@ export const Acordeonlogged = () => {
 										<Form.Control
 											type="text"
 											placeholder="Coloque el anuncio a mostrar en el diario mural"
+											required
 											onChange={e => setAnuncio(e.target.value)}
 											value={Anuncio}
 										/>
