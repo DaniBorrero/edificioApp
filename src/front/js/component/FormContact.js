@@ -14,7 +14,7 @@ export const FormContact = () => {
 	const handlerOnclick = e => {
 		e.preventDefault();
 
-		// actions.enviaremail(name, email, text);
+		actions.enviaremail(name, email, text);
 		// aqui debeir el actions enviar email y con la variable form actions.enviaremail(form)
 	};
 
@@ -31,7 +31,7 @@ export const FormContact = () => {
 							<Col md={6} className="info-box">
 								<Icon icon="bx:bx-envelope" color="#5c7aea" width="52" height="52" />
 								<h3 className="d-inline">Escríbenos</h3>
-								<p>tuedificioapp@gmail.com</p>
+								<p>appedificio@gmail.com</p>
 							</Col>
 							<Col md={6} className="info-box">
 								<Icon icon="bx:bx-phone" color="#5c7aea" width="52" height="52" />

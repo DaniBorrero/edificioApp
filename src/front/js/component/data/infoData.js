@@ -17,7 +17,7 @@ export const InfoData = {
 };
 
 export const InfoDataTwo = {
-	heading: "Reserva Tus Espacios ",
+	heading: "Conecta con tus Vecinos ",
 	paragraphOne:
 		"orem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500",
 	paragraphTwo:

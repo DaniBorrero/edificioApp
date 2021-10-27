@@ -35,7 +35,7 @@ export const MensajeAdmin = () => {
 	};
 	const handlerOnclickEnviarCorreoAdmin = e => {
 		e.preventDefault();
-		//actions.enviaremail(name, email, text);
+		actions.enviaremail(name, email, text);
 	};
 	return (
 		<div>
