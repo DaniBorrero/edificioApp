@@ -8,6 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			departamento: [],
 			marketplace: [],
 			token: null,
+			current_user: "",
 			user: "",
 			admin: ""
 		},
@@ -183,7 +184,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}, //fin de registrarmarketplace
 			getmarketplace: () => {
 				const store = getStore();
-				fetch("process.env.BACKEND_URL/api/marketplace")
+				fetch(process.env.BACKEND_URL + "/api/marketplace")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ marketplace: result });
@@ -493,6 +494,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						localStorage.setItem("token", res.token);
 						setStore({ token: res.token });
 						setStore({ user: res.info_user });
+						setStore({ current_user: "user" });
 						alert("Bienvenido: " + store.user.full_name);
 						location = "/inicio";
 					})
@@ -516,9 +518,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(res => {
 						localStorage.setItem("token", res.token);
-						setStore({ token: res.token });
+						setStore({ token_admin: res.token });
 						setStore({ admin: res.info_user });
-						alert("Bienvenido administrador");
+						setStore({ current_user: "admin" });
+						console.log(store.current_user);
+						alert("Bienvenido: ");
 						location = "/admin";
 					})
 					.catch(error => console.log("error", error));

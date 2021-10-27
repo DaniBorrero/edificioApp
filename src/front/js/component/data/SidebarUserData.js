@@ -28,11 +28,12 @@ export const SidebarUserData = [
 		path: "/vistamarket",
 		icon: <FaIcons.FaSearchDollar />,
 		cName: "nav-text"
-	},
-	{
-		title: "Salir Sesión",
-		path: "/",
-		icon: <ImIcons.ImExit />,
-		cName: "nav-text"
 	}
+	// {
+
+	// 	title: "Salir Sesión",
+	// 	path: "/",
+	// 	icon: <ImIcons.ImExit />,
+	// 	cName: "nav-text"
+	// }
 ];
