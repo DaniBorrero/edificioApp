@@ -7,6 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			edificio: [],
 			departamento: [],
 			marketplace: [],
+			usuarios: [],
 			token: null,
 			current_user: "",
 			user: "",
@@ -556,7 +557,57 @@ const getState = ({ getStore, getActions, setStore }) => {
 						location = "/registry";
 					})
 					.catch(error => console.log("error", error));
-			}, // fin de UserRegister
+			},
+			getUserRegistrado: () => {
+				const store = getStore();
+				fetch(process.env.BACKEND_URL + "/api/register")
+					.then(response => response.json())
+					.then(result => {
+						setStore({ usuarios: result });
+						console.log(store.usuarios);
+					})
+					.catch(error => console.log("error", error));
+			}, // fin de getUserRegistrado
+			actualizarUsuarioregistrado: (id, name, phone, email, dpto) => {
+				const store = getStore();
+				console.log("flux actualizar Usuario Registrado", name, phone, email, dpto);
+				var raw = JSON.stringify({
+					full_name: name,
+					phone: phone,
+					email: email,
+					dpto: dpto
+				});
+				var requestOptions = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: raw,
+					redirect: "follow"
+				};
+				fetch(process.env.BACKEND_URL + "/api/register/" + id, requestOptions)
+					.then(response => response.text())
+					.then(result => console.log(result))
+					.catch(error => console.log("error", error));
+			}, //fin de actualizar usuario registrado
+			borrarUsuarioRegistrado: elemento => {
+				const store = getStore();
+
+				console.log(elemento);
+				var requestOptions = {
+					method: "DELETE",
+					headers: { "Content-Type": "application/json" },
+					redirect: "follow"
+				};
+
+				fetch(process.env.BACKEND_URL + "/api/register/" + elemento.id_user, requestOptions)
+					.then(response => response.text())
+					.then(result => {
+						console.log(result);
+						getActions().getUserRegistrado();
+					})
+					.catch(error => console.log("error", error));
+			}, //fin de borrar  un marketplace
 
 			changeColor: (index, color) => {
 				//get the store

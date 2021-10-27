@@ -30,6 +30,8 @@ import { RECadmin } from "./pages/RECadmin";
 import { DmuralAdmin } from "./pages/DmuralAdmin";
 import { Equipo } from "./pages/Equipo";
 import acceso from "../img/noacceso.png";
+import { ListaUsuariosReg } from "./pages/ListarUsuariosReg";
+import { UpdateUsuariosReg } from "./pages/actualizar_usuario";
 
 const Layout = () => {
 	const { store, actions } = useContext(Context);
@@ -94,6 +96,11 @@ const Layout = () => {
 									<SidebarAdmin />
 									<DmuralAdmin />
 								</Route>
+								<Route exact path="/listausuarios">
+									<SidebarAdmin />
+									<ListaUsuariosReg />
+								</Route>
+
 								<Route exact path="/actualizar_edificio/:id">
 									<UpdateBuilding />
 								</Route>
@@ -108,6 +115,9 @@ const Layout = () => {
 								</Route>
 								<Route exact path="/actualizar_marketplace/:id">
 									<UpdateMarketPlace />
+								</Route>
+								<Route exact path="/actualizar_usuario/:id">
+									<UpdateUsuariosReg />
 								</Route>
 							</>
 						) : (

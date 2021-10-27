@@ -590,29 +590,79 @@ def DelUpSpaceReservation(id):
         }
         return jsonify(response_body),200
 
-@api.route('/register', methods=['POST'])
+@api.route('/register', methods=['GET','POST'])
 def post_user():
- # body va a recibir la info de la api y la va a transformar en formato json    
-    body=request.get_json()
-    #validamos que  lo que se traiga en el request no este vacio o null
-    if body is None:
-        return "The request body is null", 400
-    if 'full_name' not in body:
-        return "Debe especificar Nombre Completo",400
-    if 'phone' not in body:
-        return "Debe especificar Numero de telefono",400
-    if 'email' not in body:
-        return "Debe especificar el email",400  
-    if 'password'not in body:
-        return "Debe especificar el paswword",400
-    newUser= User(full_name=body['full_name'],phone=body['phone'],
-    email=body['email'],password=body['password'])
-    db.session.add(newUser)
-    db.session.commit()
-    response_body={
-        "msg": "Usuario Registrado"
-    }
-    return jsonify(response_body),200
+    if request.method =='GET':
+        # esta varibale estoy consultando a la base de datos por todos los registros de la tabla user
+        all_user= User.query.all()
+        all_user= list(map(lambda x: x.serialize(), all_user))
+        return jsonify(all_user), 200 
+    else:     
+        # body va a recibir la info de la api y la va a transformar en formato json    
+        body=request.get_json()
+        #validamos que  lo que se traiga en el request no este vacio o null
+        if body is None:
+            return "The request body is null", 400
+        if 'full_name' not in body:
+            return "Debe especificar Nombre Completo",400
+        if 'phone' not in body:
+            return "Debe especificar Numero de telefono",400
+        if 'email' not in body:
+            return "Debe especificar el email",400  
+        if 'password'not in body:
+            return "Debe especificar el paswword",400
+        newUser= User(full_name=body['full_name'],phone=body['phone'],
+        email=body['email'],password=body['password'])
+        db.session.add(newUser)
+        db.session.commit()
+        response_body={
+            "msg": "Usuario Registrado"
+        }
+        return jsonify(response_body),200
+   
+# GET ONE userregister
+@api.route('/register/<int:id>', methods=['GET'])
+def get_one_userregister(id):
+    if request.method =='GET':
+       one_userregister= User.query.get(id)
+       return jsonify(one_userregister.serialize()), 200         
+
+# DELETE UPDATE USER register
+api.route('/register/<int:id>', methods=['DELETE', 'PUT'])
+def DelUpUserRegister(id):
+    if request.method =='DELETE':
+        user = User.query.get(id)
+        db.session.delete(user)
+        db.session.commit()
+        
+        return jsonify({"msg": "Usuario Eliminado"})
+    else:
+        user = User.query.get(id)
+        
+        # body va a recibir la info de la api y la va a transformar en formato json    
+        body=request.get_json()
+        #validamos que  lo que se traiga en el request no este vacio o null
+        if body is None:
+            return "The request body is null", 400
+        if 'full_name' not in body:
+            return "Debe especificar Nombre Completo",400
+        if 'phone' not in body:
+            return "Debe especificar Numero de telefono",400
+        if 'email' not in body:
+            return "Debe especificar el email",400  
+        if 'password'not in body:
+            return "Debe especificar el paswword",400  
+        user.full_name=body["full_name"]
+        user.phone=body["phone"]
+        user.email=body["email"]
+        user.password=body["password"]
+        db.session.commit() 
+        response_body={
+            "msg": "Usuario Registrado Actualizado"
+        }
+        return jsonify(response_body),200            
+
+
 
 #INICIO Reserva espacio comun
 
