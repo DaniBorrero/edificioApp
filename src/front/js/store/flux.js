@@ -498,7 +498,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						alert("Bienvenido: " + store.user.full_name);
 						location = "/inicio";
 					})
-					.catch(error => console.log("error", error));
+					.catch(error => {
+						console.log("error", error);
+						alert("Email y/o contraseña no coinciden.");
+					});
 			}, // fin loginUser
 
 			loginAdmin: (emailLogin, passLogin) => {
