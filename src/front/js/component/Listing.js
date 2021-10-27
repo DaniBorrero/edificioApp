@@ -7,8 +7,8 @@ import ProjectTwo from "../../img/proyecto2.jpg";
 
 const Section = styled.section`
 	width: 100%;
-	height: 100%;
-	padding: 1rem calc((100vw - 1300px) / 2);
+	height: 70%;
+	padding: 1rem calc((83vw - 1200px) / 2);
 `;
 
 const Container = styled.div`
@@ -39,7 +39,7 @@ const InfoRow = styled.div`
 
 const InfoWrap = styled.div`
 	padding: 0rem 1rem;
-	min-height: 420px;
+	min-height: 350px;
 	height: 100%;
 
 	h2 {
@@ -91,16 +91,7 @@ export const Listing = () => {
 						<h2>Proyecto ISA Mayecura Las Condes, Santiago</h2>
 					</InfoWrap>
 					<InfoWrap>
-						<Image
-							src={ProjectTwo}
-							alt="home"
-							css={`
-								margin-top: 120px;
-								@media screen and (max-width: 767px) {
-									margin-top: 2px;
-								}
-							`}
-						/>
+						<Image src={ProjectTwo} alt="home" />
 						<h2>Proyecto Teniente Montt 1980 Providencia, Santiago</h2>
 					</InfoWrap>
 				</InfoRow>
