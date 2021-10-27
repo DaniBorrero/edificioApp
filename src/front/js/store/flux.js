@@ -180,7 +180,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch(process.env.BACKEND_URL + "/api/marketplace", requestOptions)
+				fetch("https://3001-kumquat-constrictor-3l9qbkha.ws-us18.gitpod.io/api/marketplace", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
@@ -502,7 +502,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ user: res.info_user });
 						setStore({ current_user: "user" });
 						alert("Bienvenido: " + store.user.full_name);
-						location = "/logged";
+						location = "/inicio";
 					})
 					.catch(error => {
 						console.log("error", error);
@@ -561,7 +561,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
-						location = "/registry";
+						location = "/login";
 					})
 					.catch(error => console.log("error", error));
 			},

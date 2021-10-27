@@ -52,7 +52,7 @@ export const LoginAdmin = () => {
 							/>
 
 							<button
-								href="/logged/"
+								href="/admin"
 								className="btn btn-info"
 								type="submit"
 								name=""

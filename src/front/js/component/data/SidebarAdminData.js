@@ -35,7 +35,7 @@ export const SidebarAdminData = [
 		path: "/listausuarios",
 		icon: <BsIcons.BsClipboardData />,
 		cName: "nav-text1"
-	},
+	}
 	// {
 	// 	title: "Mensaje a Usuario ",
 	// 	path: "/mensajeusuario",
