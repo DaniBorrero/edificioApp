@@ -30,6 +30,8 @@ import { RECadmin } from "./pages/RECadmin";
 import { DmuralAdmin } from "./pages/DmuralAdmin";
 import { Equipo } from "./pages/Equipo";
 import acceso from "../img/noacceso.png";
+import { ListaUsuariosReg } from "./pages/ListarUsuariosReg";
+import { UpdateUsuariosReg } from "./pages/actualizar_usuario";
 
 const Layout = () => {
 	const { store, actions } = useContext(Context);
@@ -75,6 +77,67 @@ const Layout = () => {
 							<LoginManager />
 							<Footer />
 						</Route>
+						{/* Condciones para permitir accesos a administradores */}
+						{localStorage.getItem("token") != ("undefined" || null) && store.current_user === "admin" ? (
+							<>
+								<Route exact path="/admin">
+									<SidebarAdmin />
+									<Redificio />
+								</Route>
+								<Route exact path="/registrodepartamento">
+									<SidebarAdmin />
+									<Rdepto />
+								</Route>
+								<Route exact path="/registroecomunes">
+									<SidebarAdmin />
+									<RECadmin />
+								</Route>
+								<Route exact path="/diariomuraladmin">
+									<SidebarAdmin />
+									<DmuralAdmin />
+								</Route>
+								<Route exact path="/listausuarios">
+									<SidebarAdmin />
+									<ListaUsuariosReg />
+								</Route>
+
+								<Route exact path="/actualizar_edificio/:id">
+									<UpdateBuilding />
+								</Route>
+								<Route exact path="/actualizar_apartamento/:id">
+									<UpdateApartment />
+								</Route>
+								<Route exact path="/actualizar_espaciocomun/:id">
+									<UpdateCommonSpace />
+								</Route>
+								<Route exact path="/actualizar_diariomural/:id">
+									<UpdateDiarioMural />
+								</Route>
+								<Route exact path="/actualizar_marketplace/:id">
+									<UpdateMarketPlace />
+								</Route>
+								<Route exact path="/actualizar_usuario/:id">
+									<UpdateUsuariosReg />
+								</Route>
+							</>
+						) : (
+							<>
+								<NavbarLanding />
+								<h1 className="d-flex justify-content-center my-3">
+									Debe iniciar session como administrador primero.
+								</h1>
+								<h2 className="d-flex justify-content-center my-3">
+									Para ingresar como administrador click
+									<Link to="loginadmin"> Aca</Link>
+								</h2>
+								<img
+									className="acceso container d-flex justify-content-center"
+									src={acceso}
+									alt="fotoAcceso"
+								/>
+								<Footer />
+							</>
+						)}
 						<Route exact path="/admin">
 							<SidebarAdmin />
 							<Redificio />
@@ -133,14 +196,17 @@ const Layout = () => {
 						) : (
 							<>
 								<NavbarLanding />
-								<h1 className="d-flex justify-content-center my-3">
-									Debes registrarte para inicar session.
-								</h1>
-								<img
-									className="acceso container d-flex justify-content-center"
-									src={acceso}
-									alt="fotoAcceso"
-								/>
+								<h1 className="permiso">Debes registrarte para inicar session.</h1>
+								<img className="acceso" src={acceso} alt="fotoAcceso" />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
+								<br />
+
 								<Footer />
 							</>
 						)}

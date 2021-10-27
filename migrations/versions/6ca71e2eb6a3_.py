@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 58ab7bf51c15
+Revision ID: 6ca71e2eb6a3
 Revises: 
-Create Date: 2021-10-26 21:39:57.965569
+Create Date: 2021-10-27 17:57:19.917721
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '58ab7bf51c15'
+revision = '6ca71e2eb6a3'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -60,7 +60,6 @@ def upgrade():
     op.create_table('diariomural',
     sa.Column('id_diariomural', sa.Integer(), nullable=False),
     sa.Column('administrator_id', sa.Integer(), nullable=True),
-    sa.Column('type_publication', sa.String(length=1), nullable=False),
     sa.Column('title_announcement', sa.String(length=50), nullable=False),
     sa.Column('announcement', sa.String(length=200), nullable=False),
     sa.ForeignKeyConstraint(['administrator_id'], ['administrator.id_admin'], ),
@@ -84,7 +83,6 @@ def upgrade():
     )
     op.create_table('marketplace',
     sa.Column('id_marketplace', sa.Integer(), nullable=False),
-    sa.Column('type_publication', sa.String(length=1), nullable=False),
     sa.Column('title_announcement', sa.String(length=50), nullable=False),
     sa.Column('announcement', sa.String(length=200), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),

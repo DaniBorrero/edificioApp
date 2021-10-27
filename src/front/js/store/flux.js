@@ -7,6 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			edificio: [],
 			departamento: [],
 			marketplace: [],
+			usuarios: [],
 			token: null,
 			token_admin: null,
 			current_user: "",
@@ -56,7 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}, // fin de get edificio
 			getunedificio: id => {
 				console.log("flux un edificio" + id);
-				fetch("process.env.BACKEND_URL/api/building/" + id)
+				fetch(process.env.BACKEND_URL + id)
 					.then(response => response.json())
 					.then(result => {
 						setStore({ edificio: result });
@@ -85,7 +86,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}, // fin de registrar apartamento
 			getdepartamento: () => {
 				const store = getStore();
-				fetch(process.env.BACKEND_URL + "/api/apartment")
+				fetch(process.env.BACKEND_URL + "api/apartment")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ departamento: result });
@@ -96,7 +97,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//getundepartamento
 			getunDepartamento: id => {
 				console.log("flux un apartamento" + id);
-				fetch("process.env.BACKEND_URL/api/apartment/" + id)
+				fetch(process.env.BACKEND_URL + "/api/apartment/" + id)
 					.then(response => response.json())
 					.then(result => {
 						setStore({ departamento: result });
@@ -126,7 +127,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}, //fin de regitrar espacio comun
 			getespaciocomun: () => {
 				const store = getStore();
-				fetch("process.env.BACKEND_URL/api/commonSpace")
+				fetch(process.env.BACKEND_URL + "/api/commonSpace")
 					.then(response => response.json())
 					.then(result => {
 						setStore({ espacio_comun: result });
@@ -134,11 +135,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.log("error", error));
 			}, //fin de espacio comun
-			registrardiariomural: (Titulo, TipoPublicacion, Anuncio) => {
-				console.log("flux registrar diario mural", Titulo, TipoPublicacion, Anuncio);
+			registrardiariomural: (Titulo, Anuncio) => {
+				console.log("flux registrar diario mural", Titulo, Anuncio);
 				var raw = JSON.stringify({
 					title_announcement: Titulo,
-					type_publication: TipoPublicacion,
+
 					announcement: Anuncio
 				});
 				var requestOptions = {
@@ -166,11 +167,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("error", error));
 			}, //fin de getdirariomural
 
-			registrarmarketplace: (Titulo, TipoPublicacion, Anuncio) => {
-				console.log("flux registrar maretplace", Titulo, TipoPublicacion, Anuncio);
+			registrarmarketplace: (Titulo, Anuncio) => {
+				console.log("flux registrar maretplace", Titulo, Anuncio);
 				var raw = JSON.stringify({
 					title_announcement: Titulo,
-					type_publication: TipoPublicacion,
 					announcement: Anuncio
 				});
 				var requestOptions = {
@@ -370,11 +370,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			}, //fin de funcion actualizar espacios comunes
-			actualizarDiarioMural: (id, Titulo, TipoPublicacion, Anuncio) => {
+			actualizarDiarioMural: (id, Titulo, Anuncio) => {
 				const store = getStore();
-				console.log("flux actualizar Diario Mural", Titulo, TipoPublicacion, Anuncio);
+				console.log("flux actualizar Diario Mural", Titulo, Anuncio);
 				var raw = JSON.stringify({
-					type_publication: TipoPublicacion,
 					title_announcement: Titulo,
 					announcement: Anuncio
 				});
@@ -391,11 +390,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(result => console.log(result))
 					.catch(error => console.log("error", error));
 			}, //fin de actualizar diario mural
-			actualizarMarketplace: (id, Titulo, TipoPublicacion, Anuncio) => {
+			actualizarMarketplace: (id, Titulo, Anuncio) => {
 				const store = getStore();
-				console.log("flux actualizar MarketPlace", Titulo, TipoPublicacion, Anuncio);
+				console.log("flux actualizar MarketPlace", Titulo, Anuncio);
 				var raw = JSON.stringify({
-					type_publication: TipoPublicacion,
 					title_announcement: Titulo,
 					announcement: Anuncio
 				});
@@ -504,7 +502,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ user: res.info_user });
 						setStore({ current_user: "user" });
 						alert("Bienvenido: " + store.user.full_name);
-						location = "/inicio";
+						location = "/logged";
 					})
 					.catch(error => {
 						console.log("error", error);
@@ -540,8 +538,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			userRegister: (email, pass, phone, name) => {
 				console.log(email, pass, phone, name);
-				// var myHeaders = new Headers();
-				// myHeaders.append("Content-Type", "application/json");
+				//var myHeaders = new Headers();
+				//myHeaders.append("Content-Type", "application/json");
 				var raw = JSON.stringify({
 					full_name: name,
 					email: email,
@@ -563,10 +561,60 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
-						location = "/inicio";
+						location = "/registry";
 					})
 					.catch(error => console.log("error", error));
-			}, // fin de UserRegister
+			},
+			getUserRegistrado: () => {
+				const store = getStore();
+				fetch(process.env.BACKEND_URL + "/api/register")
+					.then(response => response.json())
+					.then(result => {
+						setStore({ usuarios: result });
+						console.log(store.usuarios);
+					})
+					.catch(error => console.log("error", error));
+			}, // fin de getUserRegistrado
+			actualizarUsuarioregistrado: (id, name, phone, email, dpto) => {
+				const store = getStore();
+				console.log("flux actualizar Usuario Registrado", name, phone, email, dpto);
+				var raw = JSON.stringify({
+					full_name: name,
+					phone: phone,
+					email: email,
+					numero_apartment: dpto
+				});
+				var requestOptions = {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: raw,
+					redirect: "follow"
+				};
+				fetch(process.env.BACKEND_URL + "/api/register/" + id, requestOptions)
+					.then(response => response.text())
+					.then(result => console.log(result))
+					.catch(error => console.log("error", error));
+			}, //fin de actualizar usuario registrado
+			borrarUsuarioRegistrado: elemento => {
+				const store = getStore();
+
+				console.log(elemento);
+				var requestOptions = {
+					method: "DELETE",
+					headers: { "Content-Type": "application/json" },
+					redirect: "follow"
+				};
+
+				fetch(process.env.BACKEND_URL + "/api/register/" + elemento.id_user, requestOptions)
+					.then(response => response.text())
+					.then(result => {
+						console.log(result);
+						getActions().getUserRegistrado();
+					})
+					.catch(error => console.log("error", error));
+			}, //fin de borrar  un marketplace
 
 			changeColor: (index, color) => {
 				//get the store

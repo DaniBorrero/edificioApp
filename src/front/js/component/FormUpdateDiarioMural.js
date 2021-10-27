@@ -10,7 +10,6 @@ export const FormUpdateDiarioMural = () => {
 	const [DiarioMural, setDiarioMural] = useState(null);
 	//Hooks DiarioMural
 	const [Titulo, setTitulo] = useState("");
-	const [TipoPublicacion, setPublicacion] = useState("");
 	const [Anuncio, setAnuncio] = useState("");
 
 	useEffect(() => {
@@ -20,7 +19,6 @@ export const FormUpdateDiarioMural = () => {
 			setDiarioMural(DM);
 			console.log(DM);
 			setTitulo(DM.title_announcement);
-			setPublicacion(DM.type_publication);
 			setAnuncio(DM.announcement);
 		}
 	}, []);
@@ -31,7 +29,7 @@ export const FormUpdateDiarioMural = () => {
 
 	const handlerOnclickDiarioMural = e => {
 		e.preventDefault();
-		actions.actualizarDiarioMural(id, Titulo, TipoPublicacion, Anuncio);
+		actions.actualizarDiarioMural(id, Titulo, Anuncio);
 	};
 
 	return (
@@ -45,16 +43,6 @@ export const FormUpdateDiarioMural = () => {
 						//placeholder="Coloque el Nombre del Edificio"
 						onChange={e => setTitulo(e.target.value)}
 						value={Titulo}
-					/>
-				</Form.Group>
-				<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-					<Form.Label>Tipo de Publicacion:</Form.Label>
-					<Form.Control
-						type="text"
-						required
-						placeholder="Coloque el tipo publicacion"
-						onChange={e => setPublicacion(e.target.value)}
-						value={TipoPublicacion}
 					/>
 				</Form.Group>
 				<Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

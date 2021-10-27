@@ -11,23 +11,13 @@ export const CardMarketplace = () => {
 		[store.marketplace]
 	);
 	return (
-		<Row>
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-			<br />
-
+		<Row xs={12} md={8} className="g-4">
 			{store.marketplace.map((elemento, posicion) => {
 				return (
-					<Col xs={12} md={8} key={posicion}>
-						<Card className="mx-3 my-3" bg={"info"} style={{ width: "18rem" }} text={"light"}>
+					<Col key={posicion}>
+						<Card className="mx-3 my-3" bg={"secondary"} style={{ width: "18rem" }} text={"light"}>
+							<Card.Header>{elemento.title_announcement}</Card.Header>
 							<Card.Body>
-								<Card.Title>{elemento.title_announcement}</Card.Title>
 								<Card.Text>{elemento.announcement}</Card.Text>
 							</Card.Body>
 						</Card>

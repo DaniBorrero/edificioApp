@@ -30,7 +30,6 @@ export const DiarioMuralAdmin = () => {
 
 	//Hooks DiarioMural
 	const [Titulo, setTitulo] = useState("");
-	const [TipoPublicacion, setPublicacion] = useState("");
 	const [Anuncio, setAnuncio] = useState("");
 
 	//Hooks Modal
