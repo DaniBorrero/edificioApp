@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Accordion, Container, Modal, Tabs, Table, Tab, Button, Card, Form, Col } from "react-bootstrap";
 import { Context } from "../store/appContext";
-import { DateP } from "./datepicker";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";

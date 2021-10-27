@@ -220,9 +220,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch(process.env.BACKEND_URL + "/api/building/" + elemento.id_building,
-					requestOptions
-				)
+				fetch(process.env.BACKEND_URL + "/api/building/" + elemento.id_building, requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
@@ -241,9 +239,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch(process.env.BACKEND_URL + "/api/apartment/" + elemento.id_apartment,
-					requestOptions
-				)
+				fetch(process.env.BACKEND_URL + "/api/apartment/" + elemento.id_apartment, requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
@@ -261,9 +257,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch(process.env.BACKEND_URL + "/api/commonSpace/" + elemento.id_commonspace,
-					requestOptions
-				)
+				fetch(process.env.BACKEND_URL + "/api/commonSpace/" + elemento.id_commonspace, requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
@@ -281,9 +275,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch(process.env.BACKEND_URL + "/api/diariomural/" + elemento.id_diariomural,
-					requestOptions
-				)
+				fetch(process.env.BACKEND_URL + "/api/diariomural/" + elemento.id_diariomural, requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
@@ -301,9 +293,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch(process.env.BACKEND_URL + "/api/marketplace/" + elemento.id_marketplace,
-					requestOptions
-				)
+				fetch(process.env.BACKEND_URL + "/api/marketplace/" + elemento.id_marketplace, requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
