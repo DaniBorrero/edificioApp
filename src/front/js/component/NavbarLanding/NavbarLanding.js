@@ -33,6 +33,7 @@ export const NavbarLanding = () => {
 						);
 					})}
 				</ul>
+
 				<a href="/login">
 					<button className="btn__navbar" href="/login">
 						<i className="fas fa-user" />
