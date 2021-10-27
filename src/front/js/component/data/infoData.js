@@ -1,6 +1,8 @@
 import ImageOne from "../../../img/informacionphoto.jpeg";
 import ImageTwo from "../../../img/relaxphoto.jpeg";
 import ImageThree from "../../../img/espaciophoto.jpeg";
+import Cuate from "../../../img/cuate.png";
+import Park from "../../../img/park.png";
 
 export const InfoData = {
 	heading: "Recibe toda la información relevante de tu edifico ",
@@ -9,7 +11,7 @@ export const InfoData = {
 	paragraphTwo:
 		"cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años",
 	buttonLabel: "",
-	image: ImageOne,
+	image: Cuate,
 	reverse: false,
 	delay: 100
 };
@@ -21,7 +23,7 @@ export const InfoDataTwo = {
 	paragraphTwo:
 		"cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años",
 	buttonLabel: "",
-	image: ImageTwo,
+	image: Park,
 	reverse: true,
 	delay: 300
 };
