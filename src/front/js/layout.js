@@ -75,61 +75,39 @@ const Layout = () => {
 							<LoginManager />
 							<Footer />
 						</Route>
-						{/* Condciones para permitir accesos a administradores */}
-						{localStorage.getItem("token") != ("undefined" || null) && store.current_user === "admin" ? (
-							<>
-								<Route exact path="/admin">
-									<SidebarAdmin />
-									<Redificio />
-								</Route>
-								<Route exact path="/registrodepartamento">
-									<SidebarAdmin />
-									<Rdepto />
-								</Route>
-								<Route exact path="/registroecomunes">
-									<SidebarAdmin />
-									<RECadmin />
-								</Route>
-								<Route exact path="/diariomuraladmin">
-									<SidebarAdmin />
-									<DmuralAdmin />
-								</Route>
-								<Route exact path="/actualizar_edificio/:id">
-									<UpdateBuilding />
-								</Route>
-								<Route exact path="/actualizar_apartamento/:id">
-									<UpdateApartment />
-								</Route>
-								<Route exact path="/actualizar_espaciocomun/:id">
-									<UpdateCommonSpace />
-								</Route>
-								<Route exact path="/actualizar_diariomural/:id">
-									<UpdateDiarioMural />
-								</Route>
-								<Route exact path="/actualizar_marketplace/:id">
-									<UpdateMarketPlace />
-								</Route>
-							</>
-						) : (
-							<>
-								<NavbarLanding />
-								<h1 className="d-flex justify-content-center my-3">
-									Debe iniciar session como administrador primero.
-								</h1>
-								<h2 className="d-flex justify-content-center my-3">
-									Para ingresar como administrador click
-									<Link to="loginadmin"> Aca</Link>
-								</h2>
-								<img
-									className="acceso container d-flex justify-content-center"
-									src={acceso}
-									alt="fotoAcceso"
-								/>
-								<Footer />
-							</>
-						)}
+						<Route exact path="/admin">
+							<SidebarAdmin />
+							<Redificio />
+						</Route>
+						<Route exact path="/registrodepartamento">
+							<SidebarAdmin />
+							<Rdepto />
+						</Route>
+						<Route exact path="/registroecomunes">
+							<SidebarAdmin />
+							<RECadmin />
+						</Route>
+						<Route exact path="/diariomuraladmin">
+							<SidebarAdmin />
+							<DmuralAdmin />
+						</Route>
+						<Route exact path="/actualizar_edificio/:id">
+							<UpdateBuilding />
+						</Route>
+						<Route exact path="/actualizar_apartamento/:id">
+							<UpdateApartment />
+						</Route>
+						<Route exact path="/actualizar_espaciocomun/:id">
+							<UpdateCommonSpace />
+						</Route>
+						<Route exact path="/actualizar_diariomural/:id">
+							<UpdateDiarioMural />
+						</Route>
+						<Route exact path="/actualizar_marketplace/:id">
+							<UpdateMarketPlace />
+						</Route>
 						;{/* Condiciones para permitir acceso a usuarios */}
-						{localStorage.getItem("token") != ("undefined" || null) ? (
+						{localStorage.getItem("token") != null ? (
 							<>
 								<Route exact path="/inicio">
 									<SidebarUser />

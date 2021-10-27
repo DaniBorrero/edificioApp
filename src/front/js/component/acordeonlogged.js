@@ -36,7 +36,7 @@ export const Acordeonlogged = () => {
 	};
 	const handlerOnclickEnviarCorreoAdmin = e => {
 		e.preventDefault();
-		actions.enviaremail(name, email, text);
+		//actions.enviaremail(name, email, text);
 	};
 	return (
 		<Accordion className="datepicker my-0">
