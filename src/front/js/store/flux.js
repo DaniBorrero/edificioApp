@@ -9,6 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			marketplace: [],
 			usuarios: [],
 			token: null,
+			token_admin: null,
 			current_user: "",
 			user: "",
 			admin: ""
@@ -18,6 +19,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			clearToken: () => {
 				localStorage.removeItem("token");
 				setStore({ token: null });
+			},
+			clearToken_admin: () => {
+				localStorage.removeItem("token_admin");
+				setStore({ token_admin: null });
 			},
 			registraredificio: (NameBuilding, Address, Region, Comuna) => {
 				console.log("flux edificio", NameBuilding, Address, Region, Comuna);
@@ -174,7 +179,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: raw,
 					redirect: "follow"
 				};
-				fetch(process.env.BACKEND_URL + "/api/marketplace", requestOptions)
+
+				fetch("https://3001-kumquat-constrictor-3l9qbkha.ws-us18.gitpod.io/api/marketplace", requestOptions)
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
@@ -496,7 +502,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ user: res.info_user });
 						setStore({ current_user: "user" });
 						alert("Bienvenido: " + store.user.full_name);
-						location = "/logged";
+						location = "/inicio";
 					})
 					.catch(error => {
 						console.log("error", error);
@@ -517,15 +523,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					redirect: "follow"
 				};
 
-				fetch(process.env.BACKEND_URL + "/api/user", requestOptions)
+				fetch(process.env.BACKEND_URL + "/api/administrator", requestOptions)
 					.then(response => response.json())
 					.then(res => {
-						localStorage.setItem("token", res.token);
-						setStore({ token_admin: res.token });
-						setStore({ admin: res.info_user });
+						localStorage.setItem("token_admin", res.token_admin);
+
 						setStore({ current_user: "admin" });
 						console.log(store.current_user);
-						alert("Bienvenido: ");
+						alert("Bienvenido");
 						location = "/admin";
 					})
 					.catch(error => console.log("error", error));
@@ -556,7 +561,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.text())
 					.then(result => {
 						console.log(result);
-						location = "/registry";
+						location = "/login";
 					})
 					.catch(error => console.log("error", error));
 			},

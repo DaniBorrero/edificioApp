@@ -64,6 +64,41 @@ def get_all_user():
         else:
             return(jsonify({"mensaje":"mail no se encuentra registrado"}))
 # GET ONE USER
+@api.route('/administrator', methods=['GET','POST'])
+def get_all_administrator():
+    if request.method =='GET':
+        # esta varibale estoy consultando a la base de datos por todos los registros de la tabla administrator
+        all_administrator= Administrator.query.all()
+        all_administrator= list(map(lambda x: x.serialize(), all_administrator))
+        return jsonify(all_administrator), 200   
+    else:
+        body = request.get_json() # obtener el request body de la solicitud
+        if body is None:
+            return "The request body is null", 400
+        if 'email' not in body:
+            return 'Especificar email', 400
+        if 'password' not in body:
+            return 'Especificar password',400
+        #estoy consultando si existe alguien con el email que mande en la api y consigo la primera coincidencia
+        oneAdmin = Administrator.query.filter_by(email=body["email"]).first()
+        if oneAdmin:
+            if (oneAdmin.password == body["password"] ):                 
+                expira = datetime.timedelta(minutes=2)
+                access_token = create_access_token(identity=oneAdmin.email, expires_delta=expira)
+                data = {
+                    "info_user": oneAdmin.serialize(),
+                    "token_admin": access_token,
+                    "expires": expira.total_seconds()
+                }
+                
+                return(
+                    jsonify(data)
+                    
+                )
+            else:
+                return(jsonify({"mensaje":False}))
+        else:
+            return(jsonify({"mensaje":"mail no se encuentra registrado"}))   
 @api.route('/user/<int:id>', methods=['GET'])
 def get_one_user(id):
     if request.method =='GET':
@@ -302,38 +337,8 @@ def DelUpCommonSpace(id):
         }
         return jsonify(response_body),200      
 
-@api.route('/administrator', methods=['GET','POST'])
-def get_all_administrator():
-    if request.method =='GET':
-        # esta varibale estoy consultando a la base de datos por todos los registros de la tabla administrator
-        all_administrator= Administrator.query.all()
-        all_administrator= list(map(lambda x: x.serialize(), all_administrator))
-        return jsonify(all_administrator), 200   
-    else:    
-       # POST administrator
-       # body va a recibir la info de la api y la va a transformar en formato json    
-       body=request.get_json()
-       #validamos que  lo que se traiga en el request no este vacio o null
-       if body is None:
-            return "The request body is null", 400
-       if 'full_name' not in body:
-             return "Debe especificar Nombre Completo",400
-       if 'phone' not in body: 
-             return "Debe especificar el telefono",400
-       if 'email' not in body:
-             return "Debe especificar el email",400  
-       if 'password'not in body:
-             return "Debe especificar el paswword",400
-
-       newAdministrator= Administrator(full_name=body['full_name'],phone=body['phone'],
-       email=body['email'],password=body['password'])
-       db.session.add(newAdministrator)
-       db.session.commit()
-       response_body={
-                "msg": "Administrador Registrado"
-       }
-       return jsonify(response_body),200  
-
+ 
+        
 # GET ONE ADMINISTRATOR
 @api.route('/administrator/<int:id>', methods=['GET'])
 def get_one_administrator(id):

@@ -45,7 +45,7 @@ export const SidebarAdmin = () => {
 							);
 						})}
 						<li className="nav-text">
-							<a href="/" onClick={actions.clearToken}>
+							<a href="/" onClick={actions.clearToken_admin}>
 								<ImIcons.ImExit /> <span>Salir Sesion</span>
 							</a>
 						</li>
