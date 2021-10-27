@@ -10,8 +10,12 @@ export const LoginAdmin = () => {
 	const [passLogin, setPassLogin] = useState("");
 
 	const handlerOnclick = e => {
-		e.preventDefault();
-		actions.loginAdmin(emailLogin, passLogin);
+		if (emailLogin == "" || passLogin == "") {
+			alert("Verifique sus datos por favor");
+		} else {
+			e.preventDefault();
+			actions.loginAdmin(emailLogin, passLogin);
+		}
 	};
 	return (
 		<section>
@@ -48,7 +52,7 @@ export const LoginAdmin = () => {
 							/>
 
 							<button
-								href="/logged/"
+								href="/admin"
 								className="btn btn-info"
 								type="submit"
 								name=""

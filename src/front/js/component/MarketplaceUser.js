@@ -84,8 +84,7 @@ export const MarketplaceUser = () => {
 							<Table striped bordered hover size="sm">
 								<thead>
 									<tr>
-										<th />
-
+										<th className="col-md-1" />
 										<th>Id</th>
 										<th>Titulo</th>
 										<th>Anuncio</th>
@@ -114,7 +113,7 @@ export const MarketplaceUser = () => {
 												</td>
 												<td>{elemento.id_marketplace}</td>
 												<td> {elemento.title_announcement}</td>
-												<td>{elemento.announcement}</td>d{" "}
+												<td>{elemento.announcement}</td>{" "}
 											</tr>
 										);
 									})}
