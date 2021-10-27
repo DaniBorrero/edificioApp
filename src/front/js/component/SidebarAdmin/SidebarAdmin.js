@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -6,8 +6,12 @@ import { SidebarAdminData } from "../data/SidebarAdminData";
 import "./SidebarAdmin.css";
 import { IconContext } from "react-icons";
 import Edi from "../../../img/logo.png";
+import * as ImIcons from "react-icons/im";
+import { Context } from "../../store/appContext";
+import acceso from "../../../img/noacceso.png";
 
 export const SidebarAdmin = () => {
+	const { store, actions } = useContext(Context);
 	const [sidebar, setSidebar] = useState(false);
 
 	const showSidebar = () => setSidebar(!sidebar);
@@ -40,6 +44,9 @@ export const SidebarAdmin = () => {
 								</li>
 							);
 						})}
+						<Link to="/" className="nav-text" onClick={actions.clearToken}>
+							<ImIcons.ImExit /> Salir Session.
+						</Link>
 					</ul>
 				</nav>
 			</IconContext.Provider>
