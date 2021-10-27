@@ -39,6 +39,7 @@ export const FormUpdateCommonSpace = () => {
 					<Form.Label>Espacio Comun:</Form.Label>
 					<Form.Control
 						type="text"
+						required
 						//placeholder="Coloque el Nombre del Edificio"
 						onChange={e => setCommonSpace(e.target.value)}
 						value={CommonSpace}
@@ -48,6 +49,7 @@ export const FormUpdateCommonSpace = () => {
 					<Form.Label>Aforo:</Form.Label>
 					<Form.Control
 						type="text"
+						required
 						//placeholder="Coloque la Dirección"
 						onChange={e => setAforo(e.target.value)}
 						value={Aforo}

@@ -42,6 +42,7 @@ export const FormUpdatMarketplace = () => {
 					<Form.Label> Titulo del Anuncio:</Form.Label>
 					<Form.Control
 						type="text"
+						required
 						//placeholder="Coloque el Nombre del Edificio"
 						onChange={e => setTitulo(e.target.value)}
 						value={Titulo}

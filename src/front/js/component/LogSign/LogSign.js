@@ -25,13 +25,21 @@ export const LogSign = () => {
 		setClick(!click);
 	};
 	const handlerOnclick = e => {
-		e.preventDefault();
-		actions.loginUser(emailLogin, passLogin);
+		if (emailLogin == "" || passLogin == "") {
+			alert("Verifique sus datos por favor");
+		} else {
+			e.preventDefault();
+			actions.loginUser(emailLogin, passLogin);
+		}
 	};
 
 	const handlersubmit = e => {
-		e.preventDefault();
-		actions.userRegister(email, pass, phone, name);
+		if (email == "" || pass == "" || phone == "" || name == "") {
+			alert("Ingrese todos los datos por favor");
+		} else {
+			e.preventDefault();
+			actions.userRegister(email, pass, phone, name);
+		}
 	};
 
 	return (
@@ -48,6 +56,7 @@ export const LogSign = () => {
 								type="email"
 								name=""
 								placeholder="Email"
+								required
 								onChange={e => {
 									setEmailLogin(e.target.value);
 								}}
@@ -56,6 +65,7 @@ export const LogSign = () => {
 								type="password"
 								name=""
 								placeholder="Password"
+								required
 								onChange={e => {
 									setPassLogin(e.target.value);
 								}}
@@ -92,6 +102,7 @@ export const LogSign = () => {
 								type="email"
 								name=""
 								placeholder="Email"
+								required
 								onChange={e => {
 									setEmail(e.target.value);
 								}}
@@ -100,6 +111,7 @@ export const LogSign = () => {
 								type="password"
 								name=""
 								placeholder="Password"
+								required
 								onChange={e => {
 									setPass(e.target.value);
 								}}
@@ -108,6 +120,7 @@ export const LogSign = () => {
 								type="text"
 								name=""
 								placeholder="Nombre Completo"
+								required
 								onChange={e => {
 									setName(e.target.value);
 								}}
@@ -116,6 +129,7 @@ export const LogSign = () => {
 								type="text"
 								name=""
 								placeholder="Departamento"
+								required
 								onChange={e => {
 									setNumeroApartment(parseInt(e.target.value));
 								}}
@@ -125,6 +139,7 @@ export const LogSign = () => {
 								type="text"
 								name=""
 								placeholder="Telefono 56..."
+								required
 								onChange={e => {
 									setPhone(parseInt(e.target.value));
 								}}

@@ -459,7 +459,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// 	fetch(process.env.BACKEND_URL + "/api/enviardatos", requestOptions)
 			// 		.then(response => response.text())
-			// 		.then(result => console.log(result))
+			// 		.then(result => {console.log(result)
+			//       alert("Mensaje enviado exitosamente.")
+			//		})
 			// 		.catch(error => console.log("error", error));
 			// }, // fin de enviar email
 			// Use getActions to call a function within a fuction
@@ -498,7 +500,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						alert("Bienvenido: " + store.user.full_name);
 						location = "/inicio";
 					})
-					.catch(error => console.log("error", error));
+					.catch(error => {
+						console.log("error", error);
+						alert("Email y/o contraseña no coinciden.");
+					});
 			}, // fin loginUser
 
 			loginAdmin: (emailLogin, passLogin) => {
