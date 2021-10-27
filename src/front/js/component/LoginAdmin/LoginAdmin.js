@@ -31,6 +31,7 @@ export const LoginAdmin = () => {
 								type="email"
 								name=""
 								placeholder="Email"
+								required
 								onChange={e => {
 									setEmailLogin(e.target.value);
 								}}
@@ -40,6 +41,7 @@ export const LoginAdmin = () => {
 								type="password"
 								name=""
 								placeholder="Password"
+								required
 								onChange={e => {
 									setPassLogin(e.target.value);
 								}}

@@ -67,6 +67,7 @@ export const RegistroEcomunes = () => {
 									<Form.Control
 										type="text"
 										placeholder="Coloque el Nombre del Espacio Comun"
+										required
 										onChange={e => setCommonSpace(e.target.value)}
 										value={CommonSpace}
 									/>
@@ -76,6 +77,7 @@ export const RegistroEcomunes = () => {
 									<Form.Control
 										type="text"
 										placeholder="Coloque el aforo"
+										required
 										onChange={e => setAforo(e.target.value)}
 										value={Aforo}
 									/>
