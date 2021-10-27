@@ -111,6 +111,7 @@ export const RegistroEcomunes = () => {
 									<Table striped bordered hover size="sm">
 										<thead>
 											<tr>
+												<th />
 												<th>Id</th>
 												<th>Nombre</th>
 												<th>Aforo</th>

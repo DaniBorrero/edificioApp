@@ -30,7 +30,7 @@ export const SliderData = [
 		alt: "house"
 	},
 	{
-		title: "Reserva los espacios comunes de tu comunidad",
+		title: "Conoce a tu comunidad a través de nuestra aplicación",
 		subtitle: "Todo desde tu celular",
 		path: "/home",
 		label: "Ver",

@@ -701,45 +701,45 @@ def get_datos():
 
 
 
-# # Post Enviar email Formulario contacto    
-# @api.route('/enviardatos', methods=['POST'])    
-# def enviardatos():
-#     # body va a recibir la info de la api y la va a transformar en formato json    
-#     body=request.get_json()
-#     send_email(body)  
-#     response_body={
-#         "msg": "Correo Enviado"
-#     }
-#     return jsonify(response_body),200 
+ # Post Enviar email Formulario contacto    
+@api.route('/enviardatos', methods=['POST'])    
+def enviardatos():
+    #body va a recibir la info de la api y la va a transformar en formato json    
+     body=request.get_json()
+     send_email(body)  
+     response_body={
+         "msg": "Correo Enviado"
+     }
+     return jsonify(response_body),200 
    
-# def send_email(body):
-#     api_key = 'cc580c7f14b0cfdc5af6343135b8b7d5'
-#     api_secret = 'e5865e3a1325358760fbb08d3f02a076'
-#     mailjet = Client(auth=(api_key, api_secret), version='v3.1')
-#     if body:
-#         result = mailjet.send.create(data=body)
-#     else:
-#         data = {
-#         'Messages': [
-#             {
-#             "From": {
-#                 "Email":"tuedificioapp@gmail.com",
-#                 "Name": body.name
-#             },
-#             "To": [
-#                 {
-#                 "Email": "tuedificioapp@gmail.com",
-#                 "Name": "tuedificio"
-#                 }
-#             ],
-#             "Subject": "MAIL PREDEFINIDO .",
-#             "TextPart": body.text + body.email,
-#             "HTMLPart": "<h3>Dear passenger 1, welcome to <a href='https://www.mailjet.com/'>Mailjet</a>!</h3><br />May the delivery force be with you!",
-#             "CustomID": "AppGettingStartedTest"
-#             }
-#         ]
-#         }
-#         result = mailjet.send.create(data=data)
+def send_email(body):
+    api_key = 'c2fe792c34a5abfc6bba23a9324a748e'
+    api_secret = 'ab73d815217857ca0282562651fe916a'
+    mailjet = Client(auth=(api_key, api_secret), version='v3.1')
+    if body:
+        result = mailjet.send.create(data=body)
+    else:
+        data = {
+         'Messages': [
+             {
+             "From": {
+                 "Email":"appedificio@gmail.com",
+                 "Name": body.name
+             },
+             "To": [
+                 {
+                 "Email": "appedificio@gmail.com",
+                 "Name": "tuedificio"
+                 }
+             ],
+             "Subject": "MAIL PREDEFINIDO .",
+             "TextPart": body.text + body.email,
+             "HTMLPart": "<h3>Dear passenger 1, welcome to <a href='https://www.mailjet.com/'>Mailjet</a>!</h3><br />May the delivery force be with you!",
+             "CustomID": "AppGettingStartedTest"
+             }
+         ]
+         }
+        result = mailjet.send.create(data=data)
     
 
 
